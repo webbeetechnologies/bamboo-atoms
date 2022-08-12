@@ -1,12 +1,12 @@
 # Bamboo Shoots
 The following attributes define Bamboo shoots best:
+-   dependency-injection
 -   strongly typed
 -   well tested
--   Performant
+-   highly performant
 -   un-styled
 -   un-opinionated
 -   building-blocks
--	dependency-injection
 
   
 ## Goals:
@@ -24,8 +24,11 @@ The following attributes define Bamboo shoots best:
 You want to make a library that enables theming by injecting component styles. The library should make efficient use of context to create a simple theming solution.
 
 Build the library with support for Dark/Light theme.
+
 Implement minimal default style to represent an aesthetic UI.
+
 Give the ability to compose elements with different styles using nested react context using Bamboo shoots to make high-level components.
+
 Export access to the context using hooks, Providers and Consumers.
 
 #### User Stories
@@ -72,8 +75,10 @@ Export access to the context using hooks, Providers and Consumers.
 ## Component Injection
 
 You want to write a library that allows developers to inject components into the component tree.
-the developers to can not only consume, but also replace components in the context using nested context for special cases.
-You allow the developers to use the injected dependencies using a useComponent hook or ComponentProvider and ComponentConsumer components.
+
+The developers to can not only consume, but also replace components in the context using nested context for special cases.
+
+You allow the developers to use the injected dependencies using a useComponent hook or ProvideComponents and ConsumeComponents components.
 
 #### User Stories
 -   As a developer, I want to declare my components once at the beginning and use them anywhere in the project.
@@ -85,7 +90,6 @@ You allow the developers to use the injected dependencies using a useComponent h
 -   As a developer, I want the library to infer the type of the custom injected components.
 
 #### Acceptance criteria
-
 -   A composed component should inherit the styles.
 -   A composed component can be injected into other components
 -   No circular dependency injection
@@ -125,32 +129,67 @@ You allow the developers to use the injected dependencies using a useComponent h
 			</View>
 		)
 	}
+
+
+
+    const App = () => {
+        return (
+            // Comes with a default set of low-level components.
+            // ProvideComponents is entirely optional; unless you want to overwrite the defaults.
+            // Nesting providers allows us to replace components to be rendered deep down in the library
+            <ProvideComponents>
+                <SimpleCard />
+                <ProvideComponents components={{ Button: HtmlButton }}>
+                    // Renders HtmlButton as the Button
+                    <SimpleCard />
+                </ProvideComponents>
+            </ProvideComponents>
+        )
+    }
 ```
 #### Draft Usage: Consumer
-``` jsx 	
+``` jsx
+    const HtmlButton = (props) => <button {...props} />
+
 	const SimpleCard = (props) => {
 		.
 		.
 		.
 		return (
-			<ConsumeComponents>
-				{
-					({ View, Heading, Text, Button }) => (
-						<View>
-							<Heading>Heading</Heading>
-							<Text>....</Text>
-							<Button>Click Me</Button>
-						</View>
-					)
-				}
-			</ConsumeComponents>
+            <ConsumeComponents>
+                {
+                    ({ View, Heading, Text, Button }) => (
+                        <View>
+                            <Heading>Heading</Heading>
+                            <Text>....</Text>
+                            <Button>Click Me</Button>
+                        </View>
+                    )
+                }
+            </ConsumeComponents>
 		)
 	}
+
+    const App = () => {
+        return (
+            // Comes with a default set of low-level components.
+            // ProvideComponents is entirely optional; unless you want to overwrite the defaults.
+            // Nesting providers allows us to replace components to be rendered deep down in the library
+            <ProvideComponents>
+                <SimpleCard />
+                <ProvideComponents components={{ Button: HtmlButton }}>
+                    // Renders HtmlButton as the Button
+                    <SimpleCard />
+                </ProvideComponents>
+            </ProvideComponents>
+        )
+    }
 ```
 
 ## Bamboo Testing
 
 You want that the components you've written to be robust and well tested. 
+
 You want to write well documented components. Storybook enables you to write stories for each of your components and create detailed automated testing of your stories.
 
 Bamboo Shoots should implement storybook for the component unit testing needs.
@@ -173,17 +212,24 @@ Bamboo Shoots should implement storybook for the component unit testing needs.
 
 ## Benchmarking
 You want to write performant code to ensure the application using your software doesn't run slow.
+
 Bamboo shoots components will be tested for performance in comparison against react-native components for mobile and HTML elements for the web. A performance baseline for all the components needs be established.
-You want to memoize your hooks and Context components.
+
+Create components and hooks that are memoized and do not update every render.
 
 #### Acceptable Criteria
 - At most 5% performance degradation compared to react-native for mobile and html for browser.
+- No additional performance degradation owing to theming and context.
 
  
 ## Component API
 
-Components that you write for Bamboo shoots will entirely be replaceable with react-native components. The typed interface for Bamboo shoot will always be same as that of react-native/react-native-web components.
-The components that are unique to Bamboo Shoots also follow an API similar to react-native naming convention for props.
+You should write Bamboo shoots components that are drop-in replacements for react-native components and vice-versa.
+
+The typed interface for Bamboo shoot will always be same as that of react-native/react-native-web components.
+
+The custom components that are unique to Bamboo Shoots also follow an API similar to react-native naming convention for props. That means, for example: click handler callback would be `onPress` instead of ~~`onClick`~~.
+
 The developers who adopt the system should have to learn one library, that is react-native.
 
 #### Acceptable Criteria
