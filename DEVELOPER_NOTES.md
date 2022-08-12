@@ -23,7 +23,7 @@ The following attributes define Bamboo shoots best:
 
 You want to make a library that enables theming by injecting component styles. The library should make efficient use of context to create a simple theming solution.
 
-Build the library with support for Dark/Light theme.
+Build the library with support for Dark/Light modes.
 
 Implement minimal default style to represent an aesthetic UI.
 
@@ -33,7 +33,7 @@ Export access to the context using hooks, Providers and Consumers.
 
 #### User Stories
 -   As a developer, I want to inject my styles to create a global custom theme for my components
--   As a developer, I want to toggle between dark and light themes
+-   As a developer, I want to toggle between dark and light modes
 -   As a developer, I want to inject module level styles at a lower level in the component tree.
 -   As a developer, I want to consume the theme in my components; Class OR Function Components
 -   As a developer, I want to overwrite the style of my components
@@ -41,12 +41,12 @@ Export access to the context using hooks, Providers and Consumers.
 #### Acceptance Criteria
 
 -   The components appear cohesive without adding any developer style
--   Components implement the light/dark theme inherited.
+-   Components implement the inherited light/dark mode style.
 -   Components implement the component theme.
 -   Components implement custom styles provided inline.
 -   Components are allowed to define _hover, _focus, _active styles as necessary
 -   useComponentTheme returns a normalised theme taking into consideration the following
--   current theme (light/dark)
+-   current color mode (light/dark)
 -   _hover state
 -   _focus state
 -   _active state

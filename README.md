@@ -1,5 +1,8 @@
 ## Bamboo Shoots
-
+There are three fundamental parts to Bamboo shoots
+1. Dependency Injection
+2. Performant cross-platform low-level components/hooks
+3. Theming
 
 
 #### What problems do we intend to solve?
@@ -26,7 +29,7 @@ Export a barely styled set of low-level components that are a drop in replacemen
 
 Provide an efficient way to compose complex elements using dependency injection principals. Bamboo Shoots provides an easily configurable component store and a neat useComponent hook that gives you the component specific for the current context.
 
-Provide a simplified and elegant way to create and inject themes. Shoot has light/dark theme modes built-in and also enables custom component theming at a component specific level. An efficient useTheme hook is available to deliver a refined experience.
+Provide a simplified and elegant way to create and inject themes. Shoot has light/dark modes built-in and also enables custom component theming at a component specific level. An efficient useTheme hook is available to deliver a refined experience.
 
 
 
@@ -37,33 +40,3 @@ Provide a simplified and elegant way to create and inject themes. Shoot has ligh
 Though it enables complex theming, it is not a design library.
 
 A high level component library that would otherwise actually create a product.
-
-
-
-
-#### List of components
-
-- User Inputs
-    - TextInput
-    - Switch
-    - Checkbox
-    - Radio
-    - Select
-    - Button
-- UI Elements
-    - ActivityIndicator
-    - View
-    - ProgressBar
-    - Divider
-    - Icon
-- Typography
-    - Text
-    - Underline
-    - Italic
-    - Strong
-    - Heading
-    - H1/H2/H3/H4/H5/h6
-- Image
-- Context
-    - ProvideComponents/ConsumeComponents
-    - ProvideTheme/ConsumeTheme
