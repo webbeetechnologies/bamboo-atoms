@@ -27,7 +27,6 @@ Where necessary, create a building-block component with theming support.
     - View
     - ProgressBar
     - Divider
-    - Icon
 - Typography
     - Text
     - Underline
@@ -39,3 +38,19 @@ Where necessary, create a building-block component with theming support.
 - Context
     - ProvideComponents/ConsumeComponents
     - ProvideTheme/ConsumeTheme
+
+
+
+### Notes
+
+Though Icon would be a low-level component, all developers have different preferences; feel free to inject the Icon component from the library of your choice.
+Use the top level Component Context provider to inject the icons into your context.
+
+```jsx
+    // App.[js|tsx]
+    export default App = () => (
+        <ProvideComponents value={{ Icon: YourIconComponent }}>
+            { ... }
+        </ProvideComponents>
+    )
+```
