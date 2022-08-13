@@ -37,6 +37,7 @@ Export access to the context using hooks, Providers and Consumers.
 -   As a developer, I want to inject module level styles at a lower level in the component tree.
 -   As a developer, I want to consume the theme in my components; Class OR Function Components
 -   As a developer, I want to overwrite the style of my components
+-   As a developer, I want to inject a custom style extraction function.
 
 #### Acceptance Criteria
 
@@ -51,25 +52,38 @@ Export access to the context using hooks, Providers and Consumers.
 -   _focus state
 -   _active state
 
-#### Draft Structure
+#### Draft Structure: Theme
 ```mermaid
 	graph
 		O[Theme]-->A[Component1];
 		O --> A2[Component2];
 		A-->B[Support light/dark mode];
 		A2-->B;
-		B-->C[No];
+		B-->C[No : Priority 100];
 		C-->D[Style Object];
-		D-->E[CSS];
-		D-->F[_hover]; 		D-->G[_active]; 		D-->H[_focus];
+		D-->E[CSS : Priority 60];
+		D-->F[_hover : Priority 90];		D-->H[_focus : Priority 80];		D-->G[_active : Priority 70];
 		F-->E; 		G-->E; 		H-->E;
 		B-->I[Yes];
-		I-->J[Light];
-		I-->K[Dark];
+		I-->J[Light : Priority 100];
+		I-->K[Dark : Priority 100];
 		J-->D;
 		K-->D;
 ```
 
+#### Inject extractComponentStyles
+```tsx
+    // App.[js|tsx]
+
+	type Theme = Record<string, Record<string, any>;
+	
+	const func = (theme: Theme, componentName: string) => ({} as CSSStyleDeclaration)
+    export default App = () => (
+        <ProvideTheme value={{ extractStyles: func }}>
+            { ... }
+        </ProvideTheme>
+    )
+```
   
 
 ## Component Injection
