@@ -217,8 +217,15 @@ Bamboo shoots components will be tested for performance in comparison against re
 
 Create components and hooks that are memoized and do not update every render.
 
+Library: [React Component Benchmark](https://github.com/paularmstrong/react-component-benchmark)
+
+
+#### User Story
+- Include Benchmarking into our automated testing process
+
+
 #### Acceptable Criteria
-- At most 5% performance degradation compared to react-native for mobile and html for browser.
+- At most 10% performance degradation compared to react-native for mobile and html for browser.
 - No additional performance degradation owing to theming and context.
 
  
