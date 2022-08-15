@@ -17,7 +17,7 @@ The following attributes define Bamboo shoots best:
 4.  Testing
 5.  Performance Benchmarking
 
-  
+
 
 ## Theme Injection
 
@@ -31,6 +31,8 @@ Give the ability to compose elements with different styles using nested react co
 
 Export access to the context using hooks, Providers and Consumers.
 
+A higher level component library/ software product, consuming a lower level bamboo library, should be able to overwrite the styles of a lower level library while supporting nested context.
+
 #### User Stories
 -   As a developer, I want to inject my styles to create a global custom theme for my components
 -   As a developer, I want to toggle between dark and light modes
@@ -38,6 +40,10 @@ Export access to the context using hooks, Providers and Consumers.
 -   As a developer, I want to consume the theme in my components; Class OR Function Components
 -   As a developer, I want to overwrite the style of my components
 -   As a developer, I want to inject a custom style extraction function.
+- 	As a library A developer, I want to overwrite the built-in styles of a component
+-	As a library B developer, I want to consume Library A and overwrite the built-in styles of a component
+-	As a library C developer, I want to consume Library B and overwrite the built-in styles of a component
+
 
 #### Acceptance Criteria
 
@@ -51,6 +57,7 @@ Export access to the context using hooks, Providers and Consumers.
 -   _hover state
 -   _focus state
 -   _active state
+-	Although the level of context provider increases, the core principle **(dependency injection)** at the top level is maintained.
 
 #### Draft Structure: Theme
 ```mermaid
@@ -94,6 +101,9 @@ The developers to can not only consume, but also replace components in the conte
 
 You allow the developers to use the injected dependencies using a useComponent hook or ProvideComponents and ConsumeComponents components.
 
+Component injection allows multiple levels of library developers the flexibility to effectively replace components as per their needs.
+A higher level component library/ software product, consuming a lower level bamboo library, should be able to overwrite the components of a lower level library while supporting nested context.
+
 #### User Stories
 -   As a developer, I want to declare my components once at the beginning and use them anywhere in the project.
 -   As a developer, I want to be able to consume injected components in my higher-level components
@@ -102,11 +112,17 @@ You allow the developers to use the injected dependencies using a useComponent h
 -   As a developer, I want to be able to inject custom component styles for my composed complex components.
 -   As a developer, I want to be able to create Class or Function components
 -   As a developer, I want the library to infer the type of the custom injected components.
+-	As a contributor, I want to write build-in components
+- 	As a library A developer, I want to overwrite the built-in components
+-	As a library B developer, I want to consume Library A and overwrite the built-in components
+-	As a library C developer, I want to consume Library B and overwrite the built-in components
+-	As a developer, I want to consume an intermediary library A, B or C and overwrite components from the library.
 
 #### Acceptance criteria
 -   A composed component should inherit the styles.
 -   A composed component can be injected into other components
 -   No circular dependency injection
+-	Although the level of context provider increases, the core principle **(dependency injection)** at the top level is maintained.
 
 #### Draft Structure
 ```mermaid
@@ -198,6 +214,11 @@ You allow the developers to use the injected dependencies using a useComponent h
             </ProvideComponents>
         )
     }
+```
+
+
+#### Nested
+```
 ```
 
 ## Bamboo Testing
