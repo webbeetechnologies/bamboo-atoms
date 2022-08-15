@@ -1,9 +1,12 @@
-import React, { memo, forwardRef } from 'react';
-import Typography from '../Typography';
+import type { FC } from 'react';
+import { textFactory } from '../Typography';
 import type { ILabelProps } from './types';
+import { useComponent } from '../../../core/ComponentsProvider';
 
-const Label = (props: ILabelProps, ref: any) => {
-    return <Typography ref={ref} label {...props} />;
+export const LabelDefault = textFactory('Label', {});
+
+const Label: FC<ILabelProps> = () => {
+    return useComponent('Label');
 };
 
-export default memo(forwardRef(Label));
+export default Label;

@@ -1,9 +1,12 @@
-import React, { memo, forwardRef } from 'react';
-import Typography from '../Typography';
+import type { FC } from 'react';
+import { textFactory } from '../Typography';
 import type { IUnderlineProps } from './types';
+import { useComponent } from '../../../core/ComponentsProvider';
 
-const Underline = (props: IUnderlineProps, ref: any) => {
-    return <Typography ref={ref} underline {...props} />;
+export const UnderlineDefault = textFactory('Underline', { textDecorationLine: 'underline' });
+
+const Underline: FC<IUnderlineProps> = () => {
+    return useComponent('Underline');
 };
 
-export default memo(forwardRef(Underline));
+export default Underline;

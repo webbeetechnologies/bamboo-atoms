@@ -1,9 +1,12 @@
-import React, { memo, forwardRef } from 'react';
-import Typography from '../Typography';
+import type { FC } from 'react';
+import { textFactory } from '../Typography';
 import type { IStrongProps } from './types';
+import { useComponent } from '../../../core/ComponentsProvider';
 
-const Strong = (props: IStrongProps, ref: any) => {
-    return <Typography ref={ref} strong {...props} />;
+export const StrongDefault = textFactory('Strong', { fontWeight: 'bold' });
+
+const Strong: FC<IStrongProps> = () => {
+    return useComponent('Strong');
 };
 
-export default memo(forwardRef(Strong));
+export default Strong;

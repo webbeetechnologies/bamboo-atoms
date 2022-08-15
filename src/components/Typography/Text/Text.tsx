@@ -1,9 +1,12 @@
-import React, { memo, forwardRef } from 'react';
-import Typography from '../Typography';
+import type { FC } from 'react';
+import { textFactory } from '../Typography';
 import type { ITextProps } from './types';
+import { useComponent } from '../../../core/ComponentsProvider';
 
-const Text = (props: ITextProps, ref: any) => {
-    return <Typography ref={ref} {...props} />;
+export const TextDefault = textFactory('Text', {});
+
+const Text: FC<ITextProps> = () => {
+    return useComponent('Text');
 };
 
-export default memo(forwardRef(Text));
+export default Text;

@@ -1,9 +1,12 @@
-import React, { memo, forwardRef } from 'react';
-import Typography from '../Typography';
+import type { FC } from 'react';
+import { textFactory } from '../Typography';
 import type { IItalicProps } from './types';
+import { useComponent } from '../../../core/ComponentsProvider';
 
-const Italic = (props: IItalicProps, ref: any) => {
-    return <Typography ref={ref} italic {...props} />;
+export const ItalicDefault = textFactory('Italic', { fontStyle: 'italic' });
+
+const Italic: FC<IItalicProps> = () => {
+    return useComponent('Italic');
 };
 
-export default memo(forwardRef(Italic));
+export default Italic;

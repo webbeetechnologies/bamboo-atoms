@@ -1,9 +1,12 @@
-import React, { memo, forwardRef } from 'react';
-import Typography from '../Typography';
+import type { FC } from 'react';
+import { textFactory } from '../Typography';
 import type { IHeadingProps } from './types';
+import { useComponent } from '../../../core/ComponentsProvider';
 
-const Heading = (props: IHeadingProps, ref: any) => {
-    return <Typography ref={ref} heading {...props} />;
+export const HeadingDefault = textFactory('Heading', { fontSize: 32, fontWeight: 'bold' });
+
+const Heading: FC<IHeadingProps> = () => {
+    return useComponent('Heading');
 };
 
-export default memo(forwardRef(Heading));
+export default Heading;

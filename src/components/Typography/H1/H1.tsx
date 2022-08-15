@@ -1,9 +1,12 @@
-import React, { memo, forwardRef } from 'react';
-import Typography from '../Typography';
+import type { FC } from 'react';
+import { useComponent } from '../../../core/ComponentsProvider';
+import { textFactory } from '../Typography';
 import type { IH1Props } from './types';
 
-const H1 = (props: IH1Props, ref: any) => {
-    return <Typography ref={ref} h1 {...props} />;
+export const H1Default = textFactory('H1', { fontSize: 32, fontWeight: 'bold' });
+
+export const H1: FC<IH1Props> = () => {
+    return useComponent('H1');
 };
 
-export default memo(forwardRef(H1));
+export default H1;

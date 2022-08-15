@@ -1,9 +1,14 @@
-import React, { memo, forwardRef } from 'react';
+import React, { FC, forwardRef } from 'react';
 import { TextInput as NativeTextInput } from 'react-native';
 import type { ITextInputProps } from './types';
+import { useComponent } from '../../core/ComponentsProvider';
 
-const TextInput = (props: ITextInputProps, ref: any) => {
+export const TextInputDefault = forwardRef((props: ITextInputProps, ref: any) => {
     return <NativeTextInput ref={ref} {...props} />;
+});
+
+const TextInput: FC<ITextInputProps> = () => {
+    return useComponent('TextInput');
 };
 
-export default memo(forwardRef(TextInput));
+export default TextInput;

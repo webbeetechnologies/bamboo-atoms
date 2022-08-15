@@ -1,9 +1,14 @@
-import React, { memo, forwardRef } from 'react';
-import Typography from '../Typography';
+import type { FC } from 'react';
+import { textFactory } from '../Typography';
 import type { IStrikethroughProps } from './types';
+import { useComponent } from '../../../core/ComponentsProvider';
 
-const Strikethrough = (props: IStrikethroughProps, ref: any) => {
-    return <Typography ref={ref} strikethrough {...props} />;
+export const StrikethroughDefault = textFactory('Strikethrough', {
+    textDecorationLine: 'line-through',
+});
+
+const Strikethrough: FC<IStrikethroughProps> = () => {
+    return useComponent('Strikethrough');
 };
 
-export default memo(forwardRef(Strikethrough));
+export default Strikethrough;
