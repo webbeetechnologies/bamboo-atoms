@@ -40,3 +40,7 @@ Provide a simplified and elegant way to create and inject themes. Shoot has ligh
 Though it enables complex theming, it is not a design library.
 
 A high level component library that would otherwise actually create a product.
+
+
+## Design Patterns
+// TODO: Add design patterns
