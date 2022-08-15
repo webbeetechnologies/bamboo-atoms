@@ -218,7 +218,27 @@ A higher level component library/ software product, consuming a lower level bamb
 
 
 #### Nested
-```
+```tsx
+	<ProvideComponents components={{ Button: HtmlButton }}>
+
+		{/* Higher Level library that implements shoots*/}
+		{/* LibraryA overwrites Button to a custom implementation of Button */}
+		<LibraryA>
+
+			{/* Lowest level of Shoots */}
+			<Shoots>
+					{/* Renders HtmlButton as the Button */}
+					({ View, Heading, Text, Button }) => (
+						<View>
+							<Heading>Heading</Heading>
+							<Text>....</Text>
+							<Button>Click Me</Button>
+						</View>
+					)
+			</Shoots>
+
+		</LibraryA>
+	</ProvideComponents>
 ```
 
 ## Bamboo Testing
