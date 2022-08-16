@@ -1,14 +1,9 @@
-import React, { forwardRef, FC } from 'react';
-import { Pressable } from 'react-native';
+import React, { forwardRef } from 'react';
+import { Button as NativeButton } from 'react-native';
 import type { IButtonProps } from './types';
-import { ConsumeComponents } from '../../core/ComponentsProvider';
 
-export const ButtonDefault = forwardRef((props: IButtonProps, ref: any) => {
-    return <Pressable ref={ref} {...props} />;
-});
-
-const ButtonComponent: FC<IButtonProps> = props => {
-    return <ConsumeComponents>{({ Button }) => <Button {...props} />}</ConsumeComponents>;
+export const Button = (props: IButtonProps, ref: any) => {
+    return <NativeButton ref={ref} {...props} />;
 };
 
-export default ButtonComponent;
+export default forwardRef(Button);

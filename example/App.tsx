@@ -1,23 +1,43 @@
 import React from 'react';
-import { Button, StyleSheet } from 'react-native';
-import { View, Text, Strikethrough, Strong, TextInput } from '../src/components';
-import { ProvideComponents } from '../src/core/ComponentsProvider';
+import {
+    Button as NativeButton,
+    ActivityIndicator as NativeActivityIndicator,
+    Text as NativeText,
+    View as NativeView,
+    StyleSheet,
+} from 'react-native';
+import { ConsumeComponents, ProvideComponents, useComponents } from 'bamboo-shoots';
 
-export default function App() {
+const App = () => {
+    const { Strikethrough } = useComponents();
+
     return (
-        <View style={styles.container}>
-            <Text>Open up App.tsx to start working on your app!</Text>
-            <Strikethrough>Strikethrough</Strikethrough>
-            <Strong>Strong</Strong>
-
-            <ProvideComponents components={{ Button: Button as any }}>
-                <Button title="Injected Button" />
+        <NativeView style={styles.container}>
+            <ProvideComponents
+                components={{
+                    Button: NativeButton as any,
+                    Underline: NativeText as any,
+                    Strong: NativeText as any,
+                    ActivityIndicator: NativeActivityIndicator as any,
+                }}>
+                <ConsumeComponents>
+                    {({ View, Button, Underline, Strong }) => (
+                        <View style={{ padding: 10, backgroundColor: '#f5f5f5', margin: 10 }}>
+                            <Button title="Okay" />
+                            <Button title="Delete" />
+                            <Button title="Cancel" />
+                            <Underline>Underline</Underline>
+                            <NativeText style={{ color: 'red' }}>
+                                <Strong>Strong (inherited styles)</Strong>
+                            </NativeText>
+                            <Strikethrough>Strikethrough</Strikethrough>
+                        </View>
+                    )}
+                </ConsumeComponents>
             </ProvideComponents>
-
-            <TextInput />
-        </View>
+        </NativeView>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -27,3 +47,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
+
+export default App;

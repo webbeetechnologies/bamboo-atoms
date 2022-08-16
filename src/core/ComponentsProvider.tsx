@@ -1,4 +1,25 @@
 import React, { createContext, FC, ReactNode } from 'react';
+import {
+    ActivityIndicator,
+    Button,
+    Image,
+    Switch,
+    TextInput,
+    H1,
+    H2,
+    H3,
+    H4,
+    H5,
+    H6,
+    Heading,
+    Italic,
+    Label,
+    Strikethrough,
+    Strong,
+    Text,
+    Underline,
+    View,
+} from '../components';
 import type {
     ActivityIndicatorProps,
     ButtonProps,
@@ -8,26 +29,6 @@ import type {
     TextProps,
     ViewProps,
 } from '../components';
-
-import { ActivityIndicatorDefault } from '../components/ActivityIndicator/ActivityIndicator';
-import { ButtonDefault } from '../components/Button/Button';
-import { ImageDefault } from '../components/Image/Image';
-import { SwitchDefault } from '../components/Switch/Switch';
-import { TextInputDefault } from '../components/TextInput/TextInput';
-import { H1Default } from '../components/Typography/H1/H1';
-import { H2Default } from '../components/Typography/H2/H2';
-import { H3Default } from '../components/Typography/H3/H3';
-import { H4Default } from '../components/Typography/H4/H4';
-import { H5Default } from '../components/Typography/H5/H5';
-import { H6Default } from '../components/Typography/H6/H6';
-import { HeadingDefault } from '../components/Typography/Heading/Heading';
-import { ItalicDefault } from '../components/Typography/Italic/Italic';
-import { LabelDefault } from '../components/Typography/Label/Label';
-import { StrikethroughDefault } from '../components/Typography/Strikethrough/Strikethrough';
-import { StrongDefault } from '../components/Typography/Strong/Strong';
-import { UnderlineDefault } from '../components/Typography/Underline/Underline';
-import { TextDefault } from '../components/Typography/Text/Text';
-import { ViewDefault } from '../components/View/View';
 
 // TODO better type-checking
 export interface ComponentsProviderContext {
@@ -53,25 +54,25 @@ export interface ComponentsProviderContext {
 }
 
 const defaultComponents = {
-    ActivityIndicator: ActivityIndicatorDefault,
-    Button: ButtonDefault,
-    Image: ImageDefault,
-    Switch: SwitchDefault,
-    TextInput: TextInputDefault,
-    H1: H1Default,
-    H2: H2Default,
-    H3: H3Default,
-    H4: H4Default,
-    H5: H5Default,
-    H6: H6Default,
-    Heading: HeadingDefault,
-    Italic: ItalicDefault,
-    Label: LabelDefault,
-    Strikethrough: StrikethroughDefault,
-    Strong: StrongDefault,
-    Text: TextDefault,
-    Underline: UnderlineDefault,
-    View: ViewDefault,
+    ActivityIndicator: ActivityIndicator,
+    Button: Button,
+    Image: Image,
+    Switch: Switch,
+    TextInput: TextInput,
+    H1: H1,
+    H2: H2,
+    H3: H3,
+    H4: H4,
+    H5: H5,
+    H6: H6,
+    Heading: Heading,
+    Italic: Italic,
+    Label: Label,
+    Strikethrough: Strikethrough,
+    Strong: Strong,
+    Text: Text,
+    Underline: Underline,
+    View: View,
 };
 
 export const ComponentsContext = createContext<ComponentsProviderContext>(defaultComponents);

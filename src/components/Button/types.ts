@@ -1,3 +1,3 @@
-import type { PressableProps } from 'react-native';
+import type { ButtonProps } from 'react-native';
 
-export interface IButtonProps extends PressableProps {}
+export interface IButtonProps extends ButtonProps {}
