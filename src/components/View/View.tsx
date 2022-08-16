@@ -1,14 +1,14 @@
-import React, { forwardRef, FC } from 'react';
+import React, { FC, forwardRef } from 'react';
 import { View as NativeView } from 'react-native';
 import type { IViewProps } from './types';
-import { useComponent } from '../../core/ComponentsProvider';
+import { ConsumeComponents } from '../../core/ComponentsProvider';
 
 export const ViewDefault = forwardRef((props: IViewProps, ref: any) => {
     return <NativeView ref={ref} {...props} />;
 });
 
-const View: FC<IViewProps> = () => {
-    return useComponent('View');
+const ViewComponent: FC<IViewProps> = props => {
+    return <ConsumeComponents>{({ View }) => <View {...props} />}</ConsumeComponents>;
 };
 
-export default View;
+export default ViewComponent;

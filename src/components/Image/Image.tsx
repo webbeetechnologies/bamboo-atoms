@@ -1,14 +1,14 @@
 import React, { forwardRef, FC } from 'react';
 import { Image as NativeImage } from 'react-native';
 import type { IImageProps } from './types';
-import { useComponent } from '../../core/ComponentsProvider';
+import { ConsumeComponents } from '../../core/ComponentsProvider';
 
 export const ImageDefault = forwardRef((props: IImageProps, ref: any) => {
     return <NativeImage ref={ref} {...props} />;
 });
 
-const Image: FC<IImageProps> = () => {
-    return useComponent('Image');
+const ImageComponent: FC<IImageProps> = props => {
+    return <ConsumeComponents>{({ Image }) => <Image {...props} />}</ConsumeComponents>;
 };
 
-export default Image;
+export default ImageComponent;

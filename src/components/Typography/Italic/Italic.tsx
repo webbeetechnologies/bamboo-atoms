@@ -1,12 +1,12 @@
-import type { FC } from 'react';
+import React, { FC } from 'react';
 import { textFactory } from '../Typography';
 import type { IItalicProps } from './types';
-import { useComponent } from '../../../core/ComponentsProvider';
+import { ConsumeComponents } from '../../../core/ComponentsProvider';
 
 export const ItalicDefault = textFactory('Italic', { fontStyle: 'italic' });
 
-const Italic: FC<IItalicProps> = () => {
-    return useComponent('Italic');
+const ItalicComponent: FC<IItalicProps> = props => {
+    return <ConsumeComponents>{({ Italic }) => <Italic {...props} />}</ConsumeComponents>;
 };
 
-export default Italic;
+export default ItalicComponent;

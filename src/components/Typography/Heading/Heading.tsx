@@ -1,12 +1,12 @@
-import type { FC } from 'react';
+import React, { FC } from 'react';
 import { textFactory } from '../Typography';
 import type { IHeadingProps } from './types';
-import { useComponent } from '../../../core/ComponentsProvider';
+import { ConsumeComponents } from '../../../core/ComponentsProvider';
 
 export const HeadingDefault = textFactory('Heading', { fontSize: 32, fontWeight: 'bold' });
 
-const Heading: FC<IHeadingProps> = () => {
-    return useComponent('Heading');
+const HeadingComponent: FC<IHeadingProps> = props => {
+    return <ConsumeComponents>{({ Heading }) => <Heading {...props} />}</ConsumeComponents>;
 };
 
-export default Heading;
+export default HeadingComponent;

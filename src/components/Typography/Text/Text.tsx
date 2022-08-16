@@ -1,12 +1,12 @@
-import type { FC } from 'react';
+import React, { FC } from 'react';
 import { textFactory } from '../Typography';
 import type { ITextProps } from './types';
-import { useComponent } from '../../../core/ComponentsProvider';
+import { ConsumeComponents } from '../../../core/ComponentsProvider';
 
 export const TextDefault = textFactory('Text', {});
 
-const Text: FC<ITextProps> = () => {
-    return useComponent('Text');
+const TextComponent: FC<ITextProps> = props => {
+    return <ConsumeComponents>{({ Text }) => <Text {...props} />}</ConsumeComponents>;
 };
 
-export default Text;
+export default TextComponent;

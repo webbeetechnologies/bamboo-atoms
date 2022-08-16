@@ -1,12 +1,12 @@
-import type { FC } from 'react';
+import React, { FC } from 'react';
 import { textFactory } from '../Typography';
 import type { IStrongProps } from './types';
-import { useComponent } from '../../../core/ComponentsProvider';
+import { ConsumeComponents } from '../../../core/ComponentsProvider';
 
 export const StrongDefault = textFactory('Strong', { fontWeight: 'bold' });
 
-const Strong: FC<IStrongProps> = () => {
-    return useComponent('Strong');
+const StrongComponent: FC<IStrongProps> = props => {
+    return <ConsumeComponents>{({ Strong }) => <Strong {...props} />}</ConsumeComponents>;
 };
 
-export default Strong;
+export default StrongComponent;

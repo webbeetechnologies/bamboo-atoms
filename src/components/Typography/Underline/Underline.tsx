@@ -1,12 +1,12 @@
-import type { FC } from 'react';
+import React, { FC } from 'react';
 import { textFactory } from '../Typography';
 import type { IUnderlineProps } from './types';
-import { useComponent } from '../../../core/ComponentsProvider';
+import { ConsumeComponents } from '../../../core/ComponentsProvider';
 
 export const UnderlineDefault = textFactory('Underline', { textDecorationLine: 'underline' });
 
-const Underline: FC<IUnderlineProps> = () => {
-    return useComponent('Underline');
+const UnderlineComponent: FC<IUnderlineProps> = props => {
+    return <ConsumeComponents>{({ Underline }) => <Underline {...props} />}</ConsumeComponents>;
 };
 
-export default Underline;
+export default UnderlineComponent;
