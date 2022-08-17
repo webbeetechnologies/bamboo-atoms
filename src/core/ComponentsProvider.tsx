@@ -1,4 +1,4 @@
-import React, { createContext, FC, ReactNode } from 'react';
+import React, { ComponentType, createContext, ReactNode } from 'react';
 import {
     ActivityIndicator,
     Button,
@@ -32,25 +32,25 @@ import type {
 
 // TODO better type-checking
 export interface ComponentsProviderContext {
-    ActivityIndicator: FC<ActivityIndicatorProps>;
-    Button: FC<ButtonProps>;
-    Image: FC<ImageProps>;
-    Switch: FC<SwitchProps>;
-    TextInput: FC<TextInputProps>;
-    H1: FC<TextProps>;
-    H2: FC<TextProps>;
-    H3: FC<TextProps>;
-    H4: FC<TextProps>;
-    H5: FC<TextProps>;
-    H6: FC<TextProps>;
-    Heading: FC<TextProps>;
-    Italic: FC<TextProps>;
-    Label: FC<TextProps>;
-    Strikethrough: FC<TextProps>;
-    Strong: FC<TextProps>;
-    Text: FC<TextProps>;
-    Underline: FC<TextProps>;
-    View: FC<ViewProps>;
+    ActivityIndicator: ComponentType<ActivityIndicatorProps> | ComponentType<any>;
+    Button: ComponentType<ButtonProps> | ComponentType<any>;
+    Image: ComponentType<ImageProps> | ComponentType<any>;
+    Switch: ComponentType<SwitchProps> | ComponentType<any>;
+    TextInput: ComponentType<TextInputProps> | ComponentType<any>;
+    H1: ComponentType<TextProps> | ComponentType<any>;
+    H2: ComponentType<TextProps> | ComponentType<any>;
+    H3: ComponentType<TextProps> | ComponentType<any>;
+    H4: ComponentType<TextProps> | ComponentType<any>;
+    H5: ComponentType<TextProps> | ComponentType<any>;
+    H6: ComponentType<TextProps> | ComponentType<any>;
+    Heading: ComponentType<TextProps> | ComponentType<any>;
+    Italic: ComponentType<TextProps> | ComponentType<any>;
+    Label: ComponentType<TextProps> | ComponentType<any>;
+    Strikethrough: ComponentType<TextProps> | ComponentType<any>;
+    Strong: ComponentType<TextProps> | ComponentType<any>;
+    Text: ComponentType<TextProps> | ComponentType<any>;
+    Underline: ComponentType<TextProps> | ComponentType<any>;
+    View: ComponentType<ViewProps> | ComponentType<any>;
 }
 
 const defaultComponents = {
@@ -84,8 +84,18 @@ export const ProvideComponents = ({
     components: Partial<ComponentsProviderContext>;
     children: ReactNode;
 }) => {
+    const defaultContextValue = Object.assign({}, defaultComponents);
+
+    // to avoid creating a new object
+    Object.keys(components).forEach(key => {
+        if (defaultContextValue[key as keyof ComponentsProviderContext]) {
+            // @ts-ignore
+            defaultContextValue[key] = components[key];
+        }
+    });
+
     return (
-        <ComponentsContext.Provider value={{ ...defaultComponents, ...components }}>
+        <ComponentsContext.Provider value={defaultContextValue}>
             {children}
         </ComponentsContext.Provider>
     );

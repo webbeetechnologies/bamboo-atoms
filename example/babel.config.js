@@ -15,8 +15,15 @@ module.exports = api => {
         ],
     ];
 
+    const env = {
+        production: {
+            plugins: ['react-native-paper/babel'],
+        },
+    };
+
     return {
         presets,
         plugins,
+        env,
     };
 };
