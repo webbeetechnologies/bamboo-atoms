@@ -29,6 +29,7 @@ import type {
     TextProps,
     ViewProps,
 } from '../components';
+import type { ExtendComponentsTypes } from '../types';
 
 // TODO better type-checking
 export interface ComponentsProviderContext {
@@ -101,10 +102,11 @@ export const ProvideComponents = ({
     );
 };
 
-export const ConsumeComponents = ({
+export const ConsumeComponents = <T extends {}>({
     children,
 }: {
-    children: (comp: ComponentsProviderContext) => ReactNode;
+    children: (comp: ExtendComponentsTypes<T>) => ReactNode;
 }) => {
+    // @ts-ignore
     return <ComponentsContext.Consumer>{comp => children(comp)}</ComponentsContext.Consumer>;
 };

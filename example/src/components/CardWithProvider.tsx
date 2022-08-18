@@ -7,6 +7,13 @@ import {
     Text as PaperText,
 } from 'react-native-paper';
 
+interface InjectedComponentTypes {
+    Button: typeof PaperButton;
+    Underline: typeof PaperText;
+    Strong: typeof PaperText;
+    ActivityIndicator: typeof PaperActivityIndicator;
+}
+
 class CardWithProvider extends Component {
     render() {
         return (
@@ -17,9 +24,10 @@ class CardWithProvider extends Component {
                     Strong: PaperText,
                     ActivityIndicator: PaperActivityIndicator,
                 }}>
-                <ConsumeComponents>
-                    {({ ActivityIndicator, View, Heading, Underline, Strong, Text }) => (
+                <ConsumeComponents<InjectedComponentTypes>>
+                    {({ ActivityIndicator, Button, View, Heading, Underline, Strong, Text }) => (
                         <View style={styles.card}>
+                            <Button mode="outlined">Outlined</Button>
                             <Heading style={styles.heading}>With Provider</Heading>
                             <ActivityIndicator />
                             <Underline>Underline</Underline>
