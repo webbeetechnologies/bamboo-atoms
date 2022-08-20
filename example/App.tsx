@@ -1,17 +1,36 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import CardWithProvider from './src/components/CardWithProvider';
-import { useComponents } from 'bamboo-shoots';
+import { extendTheme, useComponents, ProvideTheme } from 'bamboo-shoots';
 import CardWithHook from './src/components/CardWithHook';
 
 const App = () => {
     const { View } = useComponents();
+    // need to use extendTheme function to extend the theme
+    const theme = extendTheme({
+        config: {
+            colorMode: 'dark',
+        },
+        componentStyles: {
+            Text: {
+                dark: {
+                    color: 'red',
+                },
+                light: {
+                    color: '#000',
+                },
+            },
+        },
+        primaryColor: '#007AFF',
+    });
 
     return (
-        <View style={styles.container}>
-            <CardWithProvider />
-            <CardWithHook />
-        </View>
+        <ProvideTheme value={{ theme }}>
+            <View style={styles.container}>
+                <CardWithProvider />
+                <CardWithHook />
+            </View>
+        </ProvideTheme>
     );
 };
 

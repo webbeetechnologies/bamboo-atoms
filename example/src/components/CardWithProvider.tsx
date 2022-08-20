@@ -1,42 +1,42 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-import { ConsumeComponents, ProvideComponents } from 'bamboo-shoots';
+import { ConsumeComponents, extractComponents, ProvideComponents } from 'bamboo-shoots';
 import {
     ActivityIndicator as PaperActivityIndicator,
     Button as PaperButton,
     Text as PaperText,
 } from 'react-native-paper';
 
+// only need to define the types of injected components and custom components
 interface InjectedComponentTypes {
-    Button: typeof PaperButton;
-    Underline: typeof PaperText;
-    Strong: typeof PaperText;
     ActivityIndicator: typeof PaperActivityIndicator;
+    CustomButton: typeof PaperButton; // custom component
 }
 
 class CardWithProvider extends Component {
+    // recommended to use extractComponents func to extract the components from the context and insert injected component types as generic
+    renderComponents = extractComponents<InjectedComponentTypes>(
+        ({ ActivityIndicator, CustomButton, View, Heading, Strong, Text }) => (
+            <View style={styles.card}>
+                <CustomButton mode="outlined">Outlined</CustomButton>
+                <Heading style={styles.heading}>With Provider</Heading>
+                <ActivityIndicator />
+                <Text>
+                    <Strong>Strong (inherited styles)</Strong>
+                </Text>
+            </View>
+        ),
+    );
+
     render() {
         return (
             <ProvideComponents
                 components={{
-                    Button: PaperButton,
+                    CustomButton: PaperButton,
                     Underline: PaperText,
-                    Strong: PaperText,
                     ActivityIndicator: PaperActivityIndicator,
                 }}>
-                <ConsumeComponents<InjectedComponentTypes>>
-                    {({ ActivityIndicator, Button, View, Heading, Underline, Strong, Text }) => (
-                        <View style={styles.card}>
-                            <Button mode="outlined">Outlined</Button>
-                            <Heading style={styles.heading}>With Provider</Heading>
-                            <ActivityIndicator />
-                            <Underline>Underline</Underline>
-                            <Text style={{ color: 'red' }}>
-                                <Strong>Strong (inherited styles)</Strong>
-                            </Text>
-                        </View>
-                    )}
-                </ConsumeComponents>
+                <ConsumeComponents>{this.renderComponents}</ConsumeComponents>
             </ProvideComponents>
         );
     }
