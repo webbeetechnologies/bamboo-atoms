@@ -1,19 +1,7 @@
 {
   "extends": ["@react-native-community", "prettier"],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "bracketSpacing": true,
-        "jsxBracketSameLine": true,
-        "tabWidth": 4,
-        "printWidth": 100,
-        "singleQuote": true,
-        "jsxSingleQuote": false,
-        "trailingComma": "all", // add comma at the end of the line of the last item in an array or object
-        "arrowParens": "avoid"
-      }
-    ],
+    "prettier/prettier": ["error"],
     "prefer-const": "warn", // to avoid using let for variables that aren't reassigned
     "no-console": ["error", { "allow": ["warn", "error"] }]
   },

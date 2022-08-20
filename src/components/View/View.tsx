@@ -1,9 +1,13 @@
 import React, { forwardRef, memo } from 'react';
-import { View as NativeView } from 'react-native';
+import { View as NativeView, StyleSheet } from 'react-native';
+import { useComponentTheme } from '../../hooks';
 import type { IViewProps } from './types';
 
 const View = (props: IViewProps, ref: any) => {
-    return <NativeView ref={ref} {...props} />;
+    const { style, ...rest } = props;
+    const themeStyles = useComponentTheme('View');
+
+    return <NativeView ref={ref} style={StyleSheet.flatten([themeStyles, style])} {...rest} />;
 };
 
 export default memo(forwardRef(View));

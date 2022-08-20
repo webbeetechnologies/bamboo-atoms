@@ -1,4 +1,4 @@
-import React, { ComponentType, createContext, ReactNode } from 'react';
+import React, { ComponentType, createContext, ReactNode, useMemo } from 'react';
 import {
     ActivityIndicator,
     Button,
@@ -29,10 +29,13 @@ import type {
     TextProps,
     ViewProps,
 } from '../components';
-import type { ExtendComponentsTypes } from '../types';
+import type { NoInfer } from '../types';
+
+// to replace the properties of ComponentsProviderContext with the properties of T
+export type ExtendComponentsTypes<T> = Omit<DefaultComponents, keyof NoInfer<T>> & NoInfer<T>;
 
 // TODO better type-checking
-export interface ComponentsProviderContext {
+export interface DefaultComponents {
     ActivityIndicator: ComponentType<ActivityIndicatorProps> | ComponentType<any>;
     Button: ComponentType<ButtonProps> | ComponentType<any>;
     Image: ComponentType<ImageProps> | ComponentType<any>;
@@ -52,6 +55,10 @@ export interface ComponentsProviderContext {
     Text: ComponentType<TextProps> | ComponentType<any>;
     Underline: ComponentType<TextProps> | ComponentType<any>;
     View: ComponentType<ViewProps> | ComponentType<any>;
+}
+
+export interface ComponentsProviderContext extends DefaultComponents {
+    [key: string]: ComponentType<any>;
 }
 
 const defaultComponents = {
@@ -85,15 +92,10 @@ export const ProvideComponents = ({
     components: Partial<ComponentsProviderContext>;
     children: ReactNode;
 }) => {
-    const defaultContextValue = Object.assign({}, defaultComponents);
-
-    // to avoid creating a new object
-    Object.keys(components).forEach(key => {
-        if (defaultContextValue[key as keyof ComponentsProviderContext]) {
-            // @ts-ignore
-            defaultContextValue[key] = components[key];
-        }
-    });
+    const defaultContextValue = useMemo(
+        () => ({ ...defaultComponents, ...components }),
+        [components],
+    );
 
     return (
         <ComponentsContext.Provider value={defaultContextValue}>
@@ -102,7 +104,7 @@ export const ProvideComponents = ({
     );
 };
 
-export const ConsumeComponents = <T extends {}>({
+export const ConsumeComponents = <T,>({
     children,
 }: {
     children: (comp: ExtendComponentsTypes<T>) => ReactNode;
