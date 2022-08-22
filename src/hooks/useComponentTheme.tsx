@@ -1,29 +1,27 @@
-import { useContext } from 'react';
-import { Appearance, StyleProp } from 'react-native';
-import { ComponentStyles, ThemeContext } from '../core';
-import type { WithInteractionProps } from '../core/ThemeProvider';
-
-const normalizeComponentStyles = (styles: StyleProp<any> & WithInteractionProps<any>) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { _interactions, ...rest } = styles;
-
-    return { ...rest };
-};
+import { useContext, useMemo } from 'react';
+import type { StyleProp } from 'react-native';
+import type { ComponentStyles } from '../core';
+import useColorMode from './useColorMode';
+import { ThemeContext } from '../core';
 
 const useComponentTheme = (componentName: keyof ComponentStyles) => {
-    const defaultMode = Appearance.getColorScheme();
-    const { theme } = useContext(ThemeContext);
-    const { config, componentStyles } = theme;
-    const { colorMode } = config;
+    const { theme, extractStyles } = useContext(ThemeContext);
+    const { componentStyles } = theme;
+    const colorMode = useColorMode();
+    // @ts-ignore // if componentStyles schema is changed or replaced this will return an empty object
+    const { dark = {}, light = {}, ...rest } = componentStyles[componentName] || {};
+    const themeStyles: StyleProp<any> = colorMode === 'dark' ? dark : light;
 
-    if (colorMode === 'auto') {
-        if (!defaultMode) {
-            return normalizeComponentStyles(componentStyles[componentName].light);
-        }
-        return normalizeComponentStyles(componentStyles[componentName][defaultMode]);
-    } else {
-        return normalizeComponentStyles(componentStyles[componentName][colorMode]);
-    }
+    const styles = useMemo(() => ({ ...rest, ...themeStyles }), [rest, themeStyles]);
+
+    return !extractStyles
+        ? styles
+        : extractStyles({
+              theme,
+              componentName,
+              colorMode,
+              defaultStyles: styles,
+          });
 };
 
 export default useComponentTheme;

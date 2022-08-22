@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import CardWithProvider from './src/components/CardWithProvider';
-import { extendTheme, useComponents, ProvideTheme } from 'bamboo-shoots';
+import { extendTheme, useComponents, ProvideTheme, ExtractStylesFuncArgs } from 'bamboo-shoots';
 import CardWithHook from './src/components/CardWithHook';
 
 const App = () => {
@@ -12,20 +12,28 @@ const App = () => {
             colorMode: 'dark',
         },
         componentStyles: {
-            Text: {
+            Heading: {
+                width: 300,
+                marginBottom: 50,
+
                 dark: {
-                    color: 'red',
+                    backgroundColor: '#fff',
                 },
                 light: {
-                    color: '#000',
+                    backgroundColor: '#000',
                 },
             },
         },
         primaryColor: '#007AFF',
     });
 
+    // extractStyles func gives as object with 4 properties as an argument
+    const extractStyles = ({ componentName, defaultStyles }: ExtractStylesFuncArgs) => {
+        return componentName === 'Text' ? { backgroundColor: 'red' } : defaultStyles; // making the background of the text only red
+    };
+
     return (
-        <ProvideTheme value={{ theme }}>
+        <ProvideTheme value={{ theme, extractStyles: extractStyles }}>
             <View style={styles.container}>
                 <CardWithProvider />
                 <CardWithHook />

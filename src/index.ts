@@ -6,6 +6,8 @@ export {
     Theme,
     ExtendComponentsTypes,
     ComponentsProviderContext,
+    ExtractStylesFuncArgs,
+    ComponentStyles,
 } from './core';
 export { useComponents, useMediaQuery, useComponentTheme, useTheme } from './hooks';
 export type {
