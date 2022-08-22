@@ -4,5 +4,12 @@ export {
     ComponentsProviderContext,
     ComponentsContext,
     ExtendComponentsTypes,
-} from './ComponentsProvider';
-export { ProvideTheme, Theme, ComponentStyles, ThemeContext, extendTheme } from './ThemeProvider';
+} from './components';
+export {
+    ProvideTheme,
+    Theme,
+    ComponentStyles,
+    ThemeContext,
+    extendTheme,
+    ExtractStylesFuncArgs,
+} from './theme';

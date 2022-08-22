@@ -1,10 +1,11 @@
-import { useContext } from 'react';
-import { ThemeContext } from '../core';
+import { Appearance } from 'react-native';
+import { useTheme } from '../hooks';
 
 const useColorMode = () => {
-    const { theme } = useContext(ThemeContext);
+    const defaultMode = Appearance.getColorScheme() || 'light';
+    const { config } = useTheme();
 
-    return theme.config.colorMode;
+    return config.colorMode === 'auto' ? defaultMode : config.colorMode;
 };
 
 export default useColorMode;
