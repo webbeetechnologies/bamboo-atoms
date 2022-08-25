@@ -23,6 +23,15 @@ const App = () => {
                     backgroundColor: '#000',
                 },
             },
+            CustomButton: {
+                marginBottom: 10,
+                dark: {
+                    backgroundColor: 'blue',
+                },
+                light: {
+                    backgroundColor: 'red',
+                },
+            },
         },
         primaryColor: '#007AFF',
     });

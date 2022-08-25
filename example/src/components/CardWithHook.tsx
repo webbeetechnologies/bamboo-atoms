@@ -30,10 +30,10 @@ const CardWithHook = () => {
         orientation: 'portrait',
     });
 
-    const buttonStyles = useComponentTheme('Button');
+    const customButtonStyles = useComponentTheme('CustomButton');
 
     // eslint-disable-next-line no-console
-    console.log(isSmallScreenAndOnPortraitMode, buttonStyles, primaryColor);
+    console.log(isSmallScreenAndOnPortraitMode, customButtonStyles, primaryColor);
 
     return (
         <View style={styles.card}>
