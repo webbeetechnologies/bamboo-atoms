@@ -17,9 +17,10 @@ export function useMediaQuery(query: Query) {
     return queryResolver(query, width, height);
 }
 
-function queryResolver(query: any, width?: number, height?: number) {
+function queryResolver(query: Query, width?: number, height?: number) {
     for (const queryKey in query) {
-        if (!calculateQuery(queryKey, query[queryKey], height, width)) {
+        // if the func returns false, stop the loop and return false
+        if (!calculateQuery(queryKey, query[queryKey as keyof Query], height, width)) {
             return false;
         }
     }
@@ -27,34 +28,35 @@ function queryResolver(query: any, width?: number, height?: number) {
 }
 
 function calculateQuery(key: string, val?: number | string, height?: number, width?: number) {
-    let retval;
+    let returnVal: boolean;
     if (isNil(width) || isNil(height) || isNil(val)) {
-        return;
+        return false;
     }
+
     switch (key) {
         case 'maxWidth':
-            retval = !isNil(val) ? width <= val : undefined;
+            returnVal = width <= val;
             break;
         case 'minWidth':
-            retval = !isNil(val) ? width >= val : undefined;
+            returnVal = width >= val;
             break;
         case 'maxHeight':
-            retval = !isNil(val) ? height <= val : undefined;
+            returnVal = height <= val;
             break;
         case 'minHeight':
-            retval = !isNil(val) ? height >= val : undefined;
+            returnVal = height >= val;
             break;
         case 'orientation':
-            if (!isNil(val)) {
-                if (width > height) {
-                    retval = val === 'landscape';
-                } else {
-                    retval = val === 'portrait';
-                }
+            if (width > height) {
+                returnVal = val === 'landscape';
+            } else {
+                returnVal = val === 'portrait';
             }
             break;
         default:
+            returnVal = false;
             break;
     }
-    return retval;
+
+    return returnVal;
 }

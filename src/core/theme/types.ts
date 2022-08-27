@@ -25,7 +25,7 @@ export interface ComponentStyles {
     Text: StyleWithTheme<TextStyle>;
     Underline: StyleWithTheme<TextStyle>;
     View: StyleWithTheme<ViewStyle>;
-    [key: string]: StyleWithTheme<any>;
+    [key: string]: StyleWithTheme<ViewStyle | TextStyle | ImageStyle>; // all three possible styles
 }
 
 export interface Theme {

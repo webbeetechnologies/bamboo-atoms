@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "bamboo-shoots": ["../src/index"]
+      "bamboo-shoots": ["../src/index"],
+      "bamboo-shoots/styles": ["../src/styles"]
     },
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
