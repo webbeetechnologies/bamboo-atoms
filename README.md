@@ -44,3 +44,23 @@ A high level component library that would otherwise actually create a product.
 
 ## Design Patterns
 // TODO: Add design patterns
+
+
+## Build Setup
+
+``` bash
+# install dependencies
+yarn
+
+# install dependencies for the library and examples
+yarn bootstrap
+
+# run expo example app
+yarn run:example
+
+# bundling
+yarn prepare
+
+# packaging (will get .tgz file)
+npm pack
+```
