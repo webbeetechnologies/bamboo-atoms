@@ -1,8 +1,9 @@
 import { useContext } from 'react';
-import { ComponentsContext } from '../core/ComponentsProvider';
-import type { ExtendComponentsTypes } from '../types';
+import { ComponentsContext } from '../core';
+import type { ExtendComponentsTypes } from '../core';
 
-const useComponents = <T extends {}>() => {
+// comma to let compiler know that T is a generic type
+const useComponents = <T,>() => {
     return useContext(ComponentsContext) as {} as ExtendComponentsTypes<T>; // extendable // only need to define the property the user wants to replace // NoInfer is for avoid inferring the type of T when it's not specified
 };
 

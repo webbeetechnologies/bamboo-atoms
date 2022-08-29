@@ -1,11 +1,21 @@
 import React, { forwardRef, memo } from 'react';
-import { StyleProp, Text as NativeText } from 'react-native';
+import { StyleProp, StyleSheet, Text as NativeText } from 'react-native';
+import { useComponentTheme } from '../../hooks';
+import type { ComponentStyles } from '../../core';
 import type { ITypographyProps } from './types';
 
-export const textFactory = (_name: string, defaultStyle: StyleProp<any>) =>
+export const textFactory = (name: keyof ComponentStyles, defaultStyle: StyleProp<any>) =>
     memo(
         forwardRef((props: ITypographyProps, ref: any) => {
-            // const styles = useComponentStyles(name); // which will come from ThemeContext
-            return <NativeText ref={ref} {...props} style={[defaultStyle, props.style]} />;
+            const { style, ...rest } = props;
+            const themeStyles = useComponentTheme(name);
+
+            return (
+                <NativeText
+                    ref={ref}
+                    style={StyleSheet.flatten([defaultStyle, themeStyles, style])}
+                    {...rest}
+                />
+            );
         }),
     );

@@ -1,9 +1,19 @@
 import React, { forwardRef, memo } from 'react';
-import { ActivityIndicator as NativeActivityIndicator } from 'react-native';
+import { ActivityIndicator as NativeActivityIndicator, StyleSheet } from 'react-native';
+import { useComponentTheme } from '../../hooks';
 import type { IActivityIndicatorProps } from './types';
 
 export const ActivityIndicator = (props: IActivityIndicatorProps, ref: any) => {
-    return <NativeActivityIndicator ref={ref} {...props} />;
+    const { style, ...rest } = props;
+    const themeStyles = useComponentTheme('ActivityIndicator');
+
+    return (
+        <NativeActivityIndicator
+            ref={ref}
+            style={StyleSheet.flatten([themeStyles, style])}
+            {...rest}
+        />
+    );
 };
 
 export default memo(forwardRef(ActivityIndicator));
