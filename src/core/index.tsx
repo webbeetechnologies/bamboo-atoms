@@ -12,4 +12,5 @@ export {
     ThemeContext,
     extendTheme,
     ExtractStylesFuncArgs,
+    StyleWithTheme,
 } from './theme';
