@@ -55,12 +55,19 @@ yarn
 # install dependencies for the library and examples
 yarn bootstrap
 
-# run expo example app
-yarn run:example
-
 # bundling
 yarn prepare
 
 # packaging (will get .tgz file)
 npm pack
 ```
+
+## Demo
+```
+# run expo example app
+yarn run:example
+
+# run storybook
+yarn run:storybook
+```
+

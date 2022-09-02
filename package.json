@@ -21,6 +21,7 @@
     "prepare:husky": "husky install",
     "prepare": "bob build",
     "run:example": "cd example && yarn start",
+    "run:storybook": "cd example && yarn storybook",
     "bootstrap": "yarn --cwd example && yarn"
   },
   "devDependencies": {
