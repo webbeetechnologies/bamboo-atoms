@@ -22,30 +22,35 @@ export type Props = {};
 
 const theme = extendTheme({
     componentStyles: {
-        Heading: {
-            width: 300,
-            marginBottom: 50,
+        Text: {
+            fontWeight: 'bold',
 
             dark: {
-                backgroundColor: '#fff',
+                color: '#fff',
             },
             light: {
-                backgroundColor: '#000',
+                color: '#1977f2',
             },
         },
     },
     primaryColor: '#007AFF',
 });
 
-export const Example = (_props: Props) => {
-    const { Text } = useComponents();
+export const TextContainer = () => {
     const providedTheme = useTheme<CustomTheme>();
+    const { Text } = useComponents();
 
     return (
+        <Box alignItems="center">
+            <Text>{JSON.stringify(providedTheme)}</Text>
+        </Box>
+    );
+};
+
+export const Example = (_props: Props) => {
+    return (
         <ProvideTheme value={{ theme }}>
-            <Box alignItems="center">
-                <Text>{JSON.stringify(providedTheme)}</Text>
-            </Box>
+            <TextContainer />
         </ProvideTheme>
     );
 };
