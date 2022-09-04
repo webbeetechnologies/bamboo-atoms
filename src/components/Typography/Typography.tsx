@@ -1,7 +1,7 @@
 import React, { forwardRef, memo } from 'react';
 import { StyleProp, StyleSheet, Text as NativeText } from 'react-native';
-import { useComponentTheme } from '../../hooks';
-import type { ComponentStyles } from '../../core';
+import useComponentTheme from '../../hooks/useComponentTheme';
+import type { ComponentStyles } from '../../core/theme/types';
 import type { ITypographyProps } from './types';
 
 export const textFactory = (name: keyof ComponentStyles, defaultStyle: StyleProp<any>) =>

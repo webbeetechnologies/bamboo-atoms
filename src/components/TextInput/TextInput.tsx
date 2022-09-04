@@ -1,6 +1,6 @@
 import React, { forwardRef, memo } from 'react';
 import { StyleSheet, TextInput as NativeTextInput, TextStyle } from 'react-native';
-import { useComponentTheme } from '../../hooks';
+import useComponentTheme from '../../hooks/useComponentTheme';
 import type { ITextInputProps } from './types';
 
 export const TextInput = (props: ITextInputProps, ref: any) => {

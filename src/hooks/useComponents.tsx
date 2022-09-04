@@ -1,6 +1,5 @@
 import { useContext } from 'react';
-import { ComponentsContext } from '../core';
-import type { ExtendComponentsTypes } from '../core';
+import { ComponentsContext, ExtendComponentsTypes } from '../core';
 
 // comma to let compiler know that T is a generic type
 const useComponents = <T,>() => {
