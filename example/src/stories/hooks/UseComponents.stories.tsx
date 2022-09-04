@@ -21,7 +21,9 @@ Default.parameters = {
     return (
         <Box alignItems="center">
             <Text>Text Component</Text>
-            <Button>Button Component</Button>
+            <Button>
+                <Text>Button Component</Text>
+            </Button>
         </Box>
     );
             `,

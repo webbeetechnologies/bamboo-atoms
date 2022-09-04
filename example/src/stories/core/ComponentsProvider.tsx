@@ -10,11 +10,13 @@ type InjectionComponents = {
 };
 
 const ButtonContainer = (props: Props) => {
-    const { Button } = useComponents<InjectionComponents>();
+    const { Button, Text } = useComponents<InjectionComponents>();
 
     return (
         <Box alignItems="center">
-            <Button {...props}>Injected Button</Button>
+            <Button {...props}>
+                <Text>Injected Button</Text>
+            </Button>
         </Box>
     );
 };

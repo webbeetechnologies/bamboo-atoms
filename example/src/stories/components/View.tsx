@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native';
 export type Props = ViewProps & {};
 
 export const Example = ({ style, ...rest }: Props) => {
-    const { View } = useComponents();
+    const { View, Text } = useComponents();
 
     return (
         <Box alignItems="center">
@@ -22,7 +22,7 @@ export const Example = ({ style, ...rest }: Props) => {
                     style,
                 ])}
                 {...rest}>
-                Box
+                <Text>Box</Text>
             </View>
         </Box>
     );

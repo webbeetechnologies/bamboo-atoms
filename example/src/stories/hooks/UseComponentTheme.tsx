@@ -13,24 +13,32 @@ const theme = extendTheme({
             marginBottom: 50,
 
             dark: {
-                backgroundColor: '#fff',
+                color: '#fff',
             },
             light: {
-                backgroundColor: '#000',
+                color: '#000',
             },
         },
     },
 });
 
-export const Example = ({ componentName }: Props) => {
+const TextContainer = ({ componentName }: { componentName: string }) => {
     const { Text } = useComponents();
     const componentTheme = useComponentTheme(componentName);
 
     return (
+        <Box alignItems="center">
+            <Text>
+                {componentName}Theme: {JSON.stringify(componentTheme)}
+            </Text>
+        </Box>
+    );
+};
+
+export const Example = ({ componentName }: Props) => {
+    return (
         <ProvideTheme value={{ theme }}>
-            <Box alignItems="center">
-                <Text>{JSON.stringify(componentTheme)}</Text>
-            </Box>
+            <TextContainer componentName={componentName} />
         </ProvideTheme>
     );
 };
