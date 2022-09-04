@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useMemo } from 'react';
-import merge from 'lodash.merge';
+import merge from 'ts-deepmerge';
 import type { Theme, ThemeProviderContext, PartialTheme } from './types';
 import { componentStyles } from './defaultStyles';
 
