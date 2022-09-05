@@ -12,8 +12,12 @@ interface BoxProps extends ViewProps {
         | 'space-evenly';
 }
 
-const Box = ({ children, style, ...rest }: BoxProps) => {
-    return <View style={StyleSheet.flatten([{ ...rest }, style])}>{children}</View>;
+const Box = ({ children, style, alignItems, justifyContent, ...rest }: BoxProps) => {
+    return (
+        <View style={StyleSheet.flatten([{ alignItems, justifyContent }, style])} {...rest}>
+            {children}
+        </View>
+    );
 };
 
 export default Box;
