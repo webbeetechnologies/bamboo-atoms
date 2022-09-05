@@ -18,6 +18,7 @@ Default.parameters = {
     docs: {
         source: {
             code: `
+// For Paper components to work properly, we have to wrap all the components inside the Provider provided by the react-native-paper.
 type InjectionComponents = {
     Button: typeof PaperButton;
 };

@@ -4,6 +4,7 @@ import { Button as PaperButton, ButtonProps } from 'react-native-paper';
 
 export type Props = ButtonProps & {};
 
+// For Paper components to work properly, we have to wrap all the components inside the Provider provided by the react-native-paper.
 type InjectionComponents = {
     Button: typeof PaperButton;
 };
