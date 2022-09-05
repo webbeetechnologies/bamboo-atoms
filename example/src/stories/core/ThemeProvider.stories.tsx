@@ -40,11 +40,9 @@ export const Example = (props: Props) => {
 
     return (
         <ProvideTheme value={{ theme }}>
-            <Box alignItems="center">
-                <View {...props}>
-                    <Text>Styles from the provider</Text>
-                </View>
-            </Box>
+            <View {...props}>
+                <Text>Styles from the provider</Text>
+            </View>
         </ProvideTheme>
     );
 };

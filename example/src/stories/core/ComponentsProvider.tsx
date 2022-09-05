@@ -1,7 +1,6 @@
 import React from 'react';
 import { ProvideComponents, useComponents } from 'bamboo-shoots';
 import { Button as PaperButton, ButtonProps } from 'react-native-paper';
-import Box from '../../components/Box';
 
 export type Props = ButtonProps & {};
 
@@ -13,11 +12,9 @@ const ButtonContainer = (props: Props) => {
     const { Button, Text } = useComponents<InjectionComponents>();
 
     return (
-        <Box alignItems="center">
-            <Button {...props}>
-                <Text>Injected Button</Text>
-            </Button>
-        </Box>
+        <Button {...props}>
+            <Text>Injected Button</Text>
+        </Button>
     );
 };
 

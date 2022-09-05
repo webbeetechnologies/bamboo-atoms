@@ -19,12 +19,12 @@ Default.parameters = {
     const { Text, Button } = useComponents();
 
     return (
-        <Box alignItems="center">
+        <>
             <Text>Text Component</Text>
             <Button>
                 <Text>Button Component</Text>
             </Button>
-        </Box>
+        </>
     );
             `,
             language: 'tsx',

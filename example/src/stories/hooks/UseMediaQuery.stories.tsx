@@ -23,14 +23,12 @@ Default.parameters = {
     const query = useMediaQuery(props);
 
     return (
-        <Box alignItems="center">
-            <Text>
-                ...
-                <Text style={{ color: 'blue', fontWeight: 'bold' }}>
-                    {query ? 'true' : 'false'}
-                </Text>
+        <Text>
+            ...
+            <Text style={{ color: 'blue', fontWeight: 'bold' }}>
+                {query ? 'true' : 'false'}
             </Text>
-        </Box>
+        </Text>
     );
             `,
             language: 'tsx',

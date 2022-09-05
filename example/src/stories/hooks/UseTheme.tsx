@@ -1,4 +1,5 @@
 import React from 'react';
+import type { ViewStyle } from 'react-native';
 import {
     useComponents,
     ProvideTheme,
@@ -8,8 +9,6 @@ import {
     ComponentStyles,
     StyleWithTheme,
 } from 'bamboo-shoots';
-import Box from '../../components/Box';
-import type { ViewStyle } from 'react-native';
 
 export interface CustomTheme extends Theme {
     primaryColor: string;
@@ -40,11 +39,7 @@ export const TextContainer = () => {
     const providedTheme = useTheme<CustomTheme>();
     const { Text } = useComponents();
 
-    return (
-        <Box alignItems="center">
-            <Text>{JSON.stringify(providedTheme)}</Text>
-        </Box>
-    );
+    return <Text>{JSON.stringify(providedTheme)}</Text>;
 };
 
 export const Example = (_props: Props) => {

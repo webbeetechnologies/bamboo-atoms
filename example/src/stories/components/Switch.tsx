@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { SwitchProps, useComponents } from 'bamboo-shoots';
-import Box from '../../components/Box';
 
 export type Props = SwitchProps & {};
 
@@ -13,9 +12,5 @@ export const Example = (props: Props) => {
         setIsOn(!isOn);
     };
 
-    return (
-        <Box alignItems="center">
-            <Switch value={isOn} onValueChange={onToggleSwitch} {...props} />
-        </Box>
-    );
+    return <Switch value={isOn} onValueChange={onToggleSwitch} {...props} />;
 };

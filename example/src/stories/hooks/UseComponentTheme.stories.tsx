@@ -40,11 +40,9 @@ const TextContainer = ({ componentName }: { componentName: string }) => {
     const componentTheme = useComponentTheme(componentName);
 
     return (
-        <Box alignItems="center">
-            <Text>
-                {componentName}Theme: {JSON.stringify(componentTheme)}
-            </Text>
-        </Box>
+        <Text>
+            {componentName}Theme: {JSON.stringify(componentTheme)}
+        </Text>
     );
 };
 

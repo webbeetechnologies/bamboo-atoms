@@ -46,9 +46,7 @@ export const TextContainer = () => {
     const { Text } = useComponents();
 
     return (
-        <Box alignItems="center">
-            <Text>{JSON.stringify(providedTheme)}</Text>
-        </Box>
+        <Text>{JSON.stringify(providedTheme)}</Text>
     );
 };
 

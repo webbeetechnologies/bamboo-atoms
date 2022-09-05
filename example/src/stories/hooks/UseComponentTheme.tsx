@@ -1,6 +1,5 @@
 import React from 'react';
 import { useComponents, useComponentTheme, ProvideTheme, extendTheme } from 'bamboo-shoots';
-import Box from '../../components/Box';
 
 export type Props = {
     componentName: string;
@@ -27,11 +26,9 @@ const TextContainer = ({ componentName }: { componentName: string }) => {
     const componentTheme = useComponentTheme(componentName);
 
     return (
-        <Box alignItems="center">
-            <Text>
-                {componentName}Theme: {JSON.stringify(componentTheme)}
-            </Text>
-        </Box>
+        <Text>
+            {componentName}Theme: {JSON.stringify(componentTheme)}
+        </Text>
     );
 };
 

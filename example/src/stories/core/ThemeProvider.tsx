@@ -1,6 +1,5 @@
 import React from 'react';
 import { useComponents, ProvideTheme, ViewProps, extendTheme } from 'bamboo-shoots';
-import Box from '../../components/Box';
 
 export type Props = ViewProps & {};
 
@@ -28,11 +27,9 @@ export const Example = (props: Props) => {
 
     return (
         <ProvideTheme value={{ theme }}>
-            <Box alignItems="center">
-                <View {...props}>
-                    <Text>Styles from the provider</Text>
-                </View>
-            </Box>
+            <View {...props}>
+                <Text>Styles from the provider</Text>
+            </View>
         </ProvideTheme>
     );
 };

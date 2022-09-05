@@ -26,11 +26,9 @@ const ButtonContainer = (props: Props) => {
     const { Button } = useComponents<InjectionComponents>();
 
     return (
-        <Box alignItems="center">
-            <Button {...props}>
-                <Text>Injected Button</Text>
-            </Button>
-        </Box>
+        <Button {...props}>
+            <Text>Injected Button</Text>
+        </Button>
     );
 };
 
