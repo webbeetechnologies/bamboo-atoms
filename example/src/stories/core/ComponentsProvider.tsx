@@ -9,13 +9,9 @@ type InjectionComponents = {
 };
 
 const ButtonContainer = (props: Props) => {
-    const { Button, Text } = useComponents<InjectionComponents>();
+    const { Button } = useComponents<InjectionComponents>();
 
-    return (
-        <Button {...props}>
-            <Text>Injected Button</Text>
-        </Button>
-    );
+    return <Button {...props}>Injected Button</Button>;
 };
 
 export const Example = (props: Props) => {

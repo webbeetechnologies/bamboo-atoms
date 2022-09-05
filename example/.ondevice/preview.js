@@ -1,12 +1,15 @@
 import { View } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 
 export const decorators = [
     withBackgrounds,
     Story => (
-        <View style={{ flex: 1, alignItems: 'center' }}>
-            <Story />
-        </View>
+        <PaperProvider>
+            <View style={{ flex: 1, alignItems: 'center' }}>
+                <Story />
+            </View>
+        </PaperProvider>
     ),
 ];
 export const parameters = {

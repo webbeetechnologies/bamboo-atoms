@@ -1,4 +1,5 @@
 import { View } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -12,8 +13,10 @@ export const parameters = {
 
 export const decorators = [
     Story => (
-        <View style={{ alignItems: 'center' }}>
-            <Story />
-        </View>
+        <PaperProvider>
+            <View style={{ flex: 1, alignItems: 'center' }}>
+                <Story />
+            </View>
+        </PaperProvider>
     ),
 ];
