@@ -22,6 +22,7 @@
     "prepare": "bob build",
     "run:example": "cd example && yarn start",
     "run:storybook": "cd example && yarn storybook",
+    "test:storybook": "cd example && yarn test-storybook",
     "bootstrap": "yarn --cwd example && yarn"
   },
   "devDependencies": {

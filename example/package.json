@@ -11,7 +11,9 @@
     "build-storybook": "build-storybook",
     "update-stories": "sb-rn-get-stories --config-path .ondevice",
     "prestart": "yarn update-stories",
-    "storybook-watcher": "sb-rn-watcher --config-path .ondevice"
+    "storybook-watcher": "sb-rn-watcher --config-path .ondevice",
+    "test-storybook": "test-storybook",
+    "chromatic": "npx chromatic --project-token=6b460fdb3508"
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.0",
@@ -41,12 +43,17 @@
     "@storybook/manager-webpack4": "^6.5.10",
     "@storybook/react": "^6.5.10",
     "@storybook/react-native": "next",
+    "@storybook/test-runner": "^0.7.0",
     "@storybook/testing-library": "^0.0.13",
     "@types/react": "~18.0.14",
     "@types/react-native": "~0.69.1",
     "babel-loader": "^8.2.5",
     "babel-plugin-react-native-web": "^0.18.9",
+    "chromatic": "^6.9.0",
+    "jest": "27",
     "typescript": "~4.3.5"
   },
-  "private": true
+  "private": true,
+  "readme": "ERROR: No README data found!",
+  "_id": "example@1.0.0"
 }
