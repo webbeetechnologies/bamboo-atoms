@@ -1,12 +1,10 @@
 import React from 'react';
 import { HeadingProps, useComponents } from 'bamboo-shoots';
 
-export type Props = HeadingProps & {
-    text: string;
-};
+export type Props = HeadingProps & {};
 
-export const Example = ({ text, ...rest }: Props) => {
+export const Example = ({ children, ...rest }: Props) => {
     const { Heading } = useComponents();
 
-    return <Heading {...rest}>{text}</Heading>;
+    return <Heading {...rest}>{children}</Heading>;
 };

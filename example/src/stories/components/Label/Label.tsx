@@ -1,12 +1,10 @@
 import React from 'react';
 import { LabelProps, useComponents } from 'bamboo-shoots';
 
-export type Props = LabelProps & {
-    text: string;
-};
+export type Props = LabelProps & {};
 
-export const Example = ({ text, ...rest }: Props) => {
+export const Example = ({ children, ...rest }: Props) => {
     const { Label } = useComponents();
 
-    return <Label {...rest}>{text}</Label>;
+    return <Label {...rest}>{children}</Label>;
 };

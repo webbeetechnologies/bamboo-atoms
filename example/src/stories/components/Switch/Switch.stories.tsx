@@ -6,6 +6,11 @@ import { Example } from './Switch';
 export default {
     title: 'components/Switch',
     component: Example,
+    argTypes: {
+        thumbColor: { control: 'color' },
+        trackColor: { control: 'object', defaultValue: { false: '', true: '' } },
+        disabled: { control: 'boolean' },
+    },
 } as ComponentMeta<typeof Example>;
 
 export const Default: ComponentStory<typeof Example> = args => <Example {...args} />;

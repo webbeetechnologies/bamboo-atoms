@@ -1,16 +1,10 @@
 import React from 'react';
 import { ButtonProps, useComponents } from 'bamboo-shoots';
 
-export type Props = ButtonProps & {
-    text: string;
-};
+export type Props = ButtonProps & {};
 
-export const Example = ({ text, ...rest }: Props) => {
-    const { Button, Text } = useComponents();
+export const Example = ({ children, ...rest }: Props) => {
+    const { Button } = useComponents();
 
-    return (
-        <Button {...rest}>
-            <Text>{text}</Text>
-        </Button>
-    );
+    return <Button {...rest}>{children}</Button>;
 };
