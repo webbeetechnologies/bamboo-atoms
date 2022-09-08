@@ -1,6 +1,6 @@
 import React, { forwardRef, memo } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-import { useComponentTheme } from '../../hooks';
+import useComponentTheme from '../../hooks/useComponentTheme';
 import type { IButtonProps } from './types';
 
 export const Button = (props: IButtonProps, ref: any) => {

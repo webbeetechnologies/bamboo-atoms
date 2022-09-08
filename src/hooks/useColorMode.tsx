@@ -1,5 +1,5 @@
 import { Appearance } from 'react-native';
-import { useTheme } from '../hooks';
+import useTheme from './useTheme';
 
 const useColorMode = () => {
     const defaultMode = Appearance.getColorScheme() || 'light';

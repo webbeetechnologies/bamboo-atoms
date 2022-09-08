@@ -60,3 +60,7 @@ node_modules
 # personal
 .env
 .npmrc
+
+#storybook
+build-storybook.log
+example/.ondevice/storybook.requires.js

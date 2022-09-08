@@ -5,7 +5,7 @@
   "main": "lib/commonjs/index.js",
   "react-native": "src/index.ts",
   "module": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
+  "types": "lib/typescript/index.d.ts",
   "files": [
     "src",
     "lib",
@@ -21,8 +21,10 @@
     "type-check": "tsc --noEmit",
     "prepare:husky": "husky install",
     "prepare": "bob build",
-    "run:example": "cd example && yarn start",
-    "bootstrap": "yarn --cwd example && yarn"
+    "run:example": "yarn --cwd ./example start",
+    "run:storybook": "yarn --cwd ./example storybook",
+    "test:storybook": "yarn --cwd ./example test-storybook",
+    "bootstrap": "yarn --cwd ./example && yarn"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "2.0.0",
@@ -39,6 +41,7 @@
     "react-dom": "^18.2.0",
     "react-native": "^0.69.4",
     "react-native-builder-bob": "^0.18.3",
+    "react-native-web": "~0.18.7",
     "typescript": "^4.6.1-rc"
   },
   "peerDependencies": {
@@ -50,7 +53,7 @@
   },
   "dependencies": {
     "lodash.isnil": "^4.0.0",
-    "lodash.merge": "^4.6.2"
+    "ts-deepmerge": "^3.0.0"
   },
   "react-native-builder-bob": {
     "source": "src",
@@ -58,7 +61,12 @@
     "targets": [
       "commonjs",
       "module",
-      "typescript"
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
     ]
   },
   "eslintIgnore": [

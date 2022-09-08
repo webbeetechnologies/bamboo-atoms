@@ -1,6 +1,6 @@
 import React, { forwardRef, memo } from 'react';
 import { Image as NativeImage, ImageStyle, StyleSheet } from 'react-native';
-import { useComponentTheme } from '../../hooks';
+import useComponentTheme from '../../hooks/useComponentTheme';
 import type { IImageProps } from './types';
 
 export const Image = (props: IImageProps, ref: any) => {

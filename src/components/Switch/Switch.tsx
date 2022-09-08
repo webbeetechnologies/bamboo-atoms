@@ -1,6 +1,6 @@
 import React, { forwardRef, memo } from 'react';
 import { Switch as NativeSwitch, StyleSheet } from 'react-native';
-import { useComponentTheme } from '../../hooks';
+import useComponentTheme from '../../hooks/useComponentTheme';
 import type { ISwitchProps } from './types';
 
 export const Switch = (props: ISwitchProps, ref: any) => {

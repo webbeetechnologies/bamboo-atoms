@@ -5,6 +5,7 @@ export {
     extendTheme,
     Theme,
     ExtendComponentsTypes,
+    StyleWithTheme,
     ComponentsProviderContext,
     ExtractStylesFuncArgs,
     ComponentStyles,

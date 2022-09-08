@@ -1,6 +1,6 @@
 import type { ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
-type StyleWithTheme<T> = StyleProp<T> & {
+export type StyleWithTheme<T> = StyleProp<T> & {
     dark?: StyleProp<T>;
     light?: StyleProp<T>;
 };

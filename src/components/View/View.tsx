@@ -1,6 +1,6 @@
 import React, { forwardRef, memo } from 'react';
 import { View as NativeView, StyleSheet } from 'react-native';
-import { useComponentTheme } from '../../hooks';
+import useComponentTheme from '../../hooks/useComponentTheme';
 import type { IViewProps } from './types';
 
 const View = (props: IViewProps, ref: any) => {

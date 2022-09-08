@@ -1,8 +1,7 @@
 import { useContext, useMemo } from 'react';
 import type { StyleProp } from 'react-native';
-import type { ComponentStyles } from '../core';
+import { ThemeContext, ComponentStyles } from '../core/theme';
 import useColorMode from './useColorMode';
-import { ThemeContext } from '../core';
 
 const useComponentTheme = (componentName: keyof ComponentStyles) => {
     const { theme, extractStyles } = useContext(ThemeContext);

@@ -1,3 +1,3 @@
 export { ProvideTheme, ThemeContext, extendTheme } from './ThemeProvider';
 
-export type { Theme, ComponentStyles, ExtractStylesFuncArgs } from './types';
+export type { Theme, ComponentStyles, ExtractStylesFuncArgs, StyleWithTheme } from './types';
