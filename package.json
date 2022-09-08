@@ -1,6 +1,7 @@
 {
-  "name": "bamboo-shoots",
+  "name": "@webbee/bamboo-atoms",
   "version": "0.0.1",
+  "private": false,
   "main": "lib/commonjs/index.js",
   "react-native": "src/index.ts",
   "module": "lib/module/index.js",
@@ -12,7 +13,7 @@
     "!**/__fixtures__",
     "!**/__mocks__"
   ],
-  "repository": "git@github.com:webbeetechnologies/bamboo-shoots.git",
+  "repository": "git@github.com:webbeetechnologies/bamboo-atoms.git",
   "author": "Thet Aung <thetaung.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
