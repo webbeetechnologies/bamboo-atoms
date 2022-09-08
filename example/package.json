@@ -35,7 +35,6 @@
     "@storybook/addon-interactions": "^6.5.10",
     "@storybook/addon-links": "^6.5.10",
     "@storybook/addon-ondevice-actions": "^6.0.1-beta.7",
-    "@storybook/addon-ondevice-backgrounds": "^6.0.1-beta.7",
     "@storybook/addon-ondevice-controls": "^6.0.1-beta.7",
     "@storybook/addon-ondevice-notes": "^6.0.1-beta.7",
     "@storybook/addon-react-native-web": "^0.0.18",
