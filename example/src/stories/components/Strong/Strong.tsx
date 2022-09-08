@@ -1,12 +1,10 @@
 import React from 'react';
 import { StrongProps, useComponents } from 'bamboo-shoots';
 
-export type Props = StrongProps & {
-    text: string;
-};
+export type Props = StrongProps & {};
 
-export const Example = ({ text, ...rest }: Props) => {
+export const Example = ({ children, ...rest }: Props) => {
     const { Strong } = useComponents();
 
-    return <Strong {...rest}>{text}</Strong>;
+    return <Strong {...rest}>{children}</Strong>;
 };

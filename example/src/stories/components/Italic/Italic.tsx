@@ -1,12 +1,10 @@
 import React from 'react';
 import { ItalicProps, useComponents } from 'bamboo-shoots';
 
-export type Props = ItalicProps & {
-    text: string;
-};
+export type Props = ItalicProps & {};
 
-export const Example = ({ text, ...rest }: Props) => {
+export const Example = ({ children, ...rest }: Props) => {
     const { Italic } = useComponents();
 
-    return <Italic {...rest}>{text}</Italic>;
+    return <Italic {...rest}>{children}</Italic>;
 };

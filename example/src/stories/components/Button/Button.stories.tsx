@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Example } from './Button';
@@ -11,7 +12,7 @@ export default {
 export const Default: ComponentStory<typeof Example> = args => <Example {...args} />;
 
 Default.args = {
-    text: 'Hello World',
+    children: <Text>Hello World</Text>,
     disabled: false,
 };
 

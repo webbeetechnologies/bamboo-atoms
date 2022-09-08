@@ -1,12 +1,10 @@
 import React from 'react';
 import { H4Props, useComponents } from 'bamboo-shoots';
 
-export type Props = H4Props & {
-    text: string;
-};
+export type Props = H4Props & {};
 
-export const Example = ({ text, ...rest }: Props) => {
+export const Example = ({ children, ...rest }: Props) => {
     const { H4 } = useComponents();
 
-    return <H4 {...rest}>{text}</H4>;
+    return <H4 {...rest}>{children}</H4>;
 };

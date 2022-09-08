@@ -6,6 +6,21 @@ import { Example } from './Image';
 export default {
     title: 'components/Image',
     component: Example,
+    argTypes: {
+        progressiveRenderingEnabled: { control: 'boolean' },
+        borderRadius: { control: 'number' },
+        borderTopLeftRadius: { control: 'number' },
+        borderTopRightRadius: { control: 'number' },
+        borderBottomLeftRadius: { control: 'number' },
+        borderBottomRightRadius: { control: 'number' },
+        resizeMode: {
+            control: 'select',
+            options: ['cover', 'contain', 'stretch', 'repeat', 'center'],
+        },
+        resizeMethod: { control: 'select', options: ['auto', 'resize', 'scale'] },
+        loadingIndicatorSource: { control: 'object', defaultValue: { uri: '' } },
+        defaultSource: { control: 'object', defaultValue: { uri: '' } },
+    },
 } as ComponentMeta<typeof Example>;
 
 export const Default: ComponentStory<typeof Example> = args => <Example {...args} />;
