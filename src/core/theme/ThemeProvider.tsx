@@ -1,33 +1,41 @@
-import React, { createContext, ReactNode, useMemo } from 'react';
+import React, { createContext, useContext, useMemo } from 'react';
 import merge from 'ts-deepmerge';
-import type { Theme, ThemeProviderContext, PartialTheme } from './types';
+import type { ITheme, ThemeProviderContext, ProvideThemeArgs } from './types';
 import { componentStyles } from './defaultStyles';
+import { defaultExtractStyles } from './extractStyles';
 
-const defaultThemeValue: Theme = {
-    config: {
-        colorMode: 'auto',
-    },
-    componentStyles: componentStyles,
+const defaultThemeValue: ITheme = {
+    colorMode: 'auto',
+    ...componentStyles,
 };
 
 const defaultContextValue: ThemeProviderContext = {
-    theme: defaultThemeValue,
+    ...defaultThemeValue,
+    extractStyles: defaultExtractStyles,
 };
 
 export const ThemeContext = createContext<ThemeProviderContext>(defaultContextValue);
 
 export const ProvideTheme = ({
-    value,
+    theme,
+    extractStyles = defaultExtractStyles,
     children,
-}: {
-    value: ThemeProviderContext;
-    children: ReactNode;
-}) => {
-    const memoizedValue = useMemo(() => value, [value]);
+}: ProvideThemeArgs) => {
+    const contextValue = useContext(ThemeContext);
+
+    const memoizedValue = useMemo(() => {
+        const newContextValue = { ...theme, extractStyles };
+
+        return {
+            ...defaultContextValue,
+            ...newContextValue,
+            ...(defaultContextValue === contextValue ? newContextValue : contextValue),
+        };
+    }, [theme, extractStyles, contextValue]);
 
     return <ThemeContext.Provider value={memoizedValue}>{children}</ThemeContext.Provider>;
 };
 
-export const extendTheme = (theme: Partial<PartialTheme>): Theme => {
+export const extendTheme = (theme: Partial<ITheme>): ITheme => {
     return merge(defaultThemeValue, theme);
 };

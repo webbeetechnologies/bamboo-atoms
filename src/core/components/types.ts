@@ -11,7 +11,7 @@ import type {
 } from 'bamboo-shoots';
 import type { NoInfer } from '../../types';
 
-export type ExtendComponentsTypes<T> = Omit<DefaultComponents, keyof NoInfer<T>> & NoInfer<T>;
+export type IExtendComponentsTypes<T> = Omit<DefaultComponents, keyof NoInfer<T>> & NoInfer<T>;
 
 // TODO better type-checking
 export interface DefaultComponents {
@@ -36,6 +36,6 @@ export interface DefaultComponents {
     View: ComponentType<ViewProps> | ComponentType<any>;
 }
 
-export interface ComponentsProviderContext extends DefaultComponents {
+export interface IComponentsProviderContext extends DefaultComponents {
     [key: string]: ComponentType<any>;
 }

@@ -20,7 +20,7 @@ import {
     Underline,
     View,
 } from '../../components';
-import type { ComponentsProviderContext, ExtendComponentsTypes } from './types';
+import type { IComponentsProviderContext, IExtendComponentsTypes } from './types';
 
 const defaultComponents = {
     ActivityIndicator: ActivityIndicator,
@@ -44,13 +44,13 @@ const defaultComponents = {
     View: View,
 };
 
-export const ComponentsContext = createContext<ComponentsProviderContext>(defaultComponents);
+export const ComponentsContext = createContext<IComponentsProviderContext>(defaultComponents);
 
 export const ProvideComponents = ({
     components,
     children,
 }: {
-    components: Partial<ComponentsProviderContext>;
+    components: Partial<IComponentsProviderContext>;
     children: ReactNode;
 }) => {
     const contextValue = useContext(ComponentsContext);
@@ -72,8 +72,8 @@ export const ProvideComponents = ({
 export const ConsumeComponents = <T,>({
     children,
 }: {
-    children: (comp: ExtendComponentsTypes<T>) => ReactNode;
+    children: (comp: IExtendComponentsTypes<T>) => ReactNode;
 }) => {
     // @ts-ignore
-    return <ComponentsContext.Consumer>{comp => children(comp)}</ComponentsContext.Consumer>;
+    return <ComponentsContext.Consumer>{children}</ComponentsContext.Consumer>;
 };
