@@ -1,6 +1,6 @@
 {
   "name": "@webbee/bamboo-atoms",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "main": "lib/commonjs/index.js",
   "react-native": "src/index.ts",
@@ -24,7 +24,8 @@
     "run:example": "yarn --cwd ./example start",
     "run:storybook": "yarn --cwd ./example storybook",
     "test:storybook": "yarn --cwd ./example test-storybook",
-    "bootstrap": "yarn --cwd ./example && yarn"
+    "bootstrap": "yarn --cwd ./example && yarn",
+    "bundle": "npm pack --pack-destination=dist"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "2.0.0",
