@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useMemo } from 'react';
+import React, { createContext, ReactNode, useContext, useMemo } from 'react';
 import {
     ActivityIndicator,
     Button,
@@ -53,18 +53,19 @@ export const ProvideComponents = ({
     components: Partial<ComponentsProviderContext>;
     children: ReactNode;
 }) => {
-    const defaultContextValue = useMemo(
+    const contextValue = useContext(ComponentsContext);
+
+    const memoizedValue = useMemo(
         () => ({
             ...defaultComponents,
             ...components,
+            ...(defaultComponents === contextValue ? components : contextValue),
         }),
-        [components],
+        [contextValue, components],
     );
 
     return (
-        <ComponentsContext.Provider value={defaultContextValue}>
-            {children}
-        </ComponentsContext.Provider>
+        <ComponentsContext.Provider value={memoizedValue}>{children}</ComponentsContext.Provider>
     );
 };
 
