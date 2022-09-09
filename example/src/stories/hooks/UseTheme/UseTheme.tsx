@@ -5,31 +5,29 @@ import {
     ProvideTheme,
     extendTheme,
     useTheme,
-    Theme,
-    ComponentStyles,
-    StyleWithTheme,
+    ITheme,
+    IComponentStyles,
+    IStyleWithTheme,
 } from 'bamboo-shoots';
 
-export interface CustomTheme extends Theme {
+export interface CustomTheme extends ITheme {
     primaryColor: string;
-    componentStyles: ComponentStyles & {
-        CustomButton: StyleWithTheme<ViewStyle>;
+    componentStyles: IComponentStyles & {
+        CustomButton: IStyleWithTheme<ViewStyle>;
     };
 }
 
 export type Props = {};
 
 const theme = extendTheme({
-    componentStyles: {
-        Text: {
-            fontWeight: 'bold',
+    Text: {
+        fontWeight: 'bold',
 
-            dark: {
-                color: '#fff',
-            },
-            light: {
-                color: '#1977f2',
-            },
+        dark: {
+            color: '#fff',
+        },
+        light: {
+            color: '#1977f2',
         },
     },
     primaryColor: '#007AFF',
@@ -44,7 +42,7 @@ export const TextContainer = () => {
 
 export const Example = (_props: Props) => {
     return (
-        <ProvideTheme value={{ theme }}>
+        <ProvideTheme theme={theme}>
             <TextContainer />
         </ProvideTheme>
     );
