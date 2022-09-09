@@ -8,8 +8,11 @@ There are three fundamental parts to Bamboo shoots
 #### What problems do we intend to solve?
 
 Other available libraries implement an API that is complicated and often deviate from the react native implementation. You should only need to read react-native documentation to write your components.
+
 Case in point, libraries implementing _textStyle, _containerStyle props that would be passed down from one component to the other
+
 Complex theming: You should have to write your styles once, while still enabling customising styles for certain special sections.
+
 eg. Build custom styles for text and buttons in modals or headers
 Complex component composition; time and again, and especially in react native, you need to import a specifically styled component through out your component tree to ensure a consistent UI.
 
