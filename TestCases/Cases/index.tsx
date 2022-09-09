@@ -1,9 +1,9 @@
-import { StyleSheet, View } from "react-native";
-import { Card, Headline } from "react-native-paper";
-import NestedText from "./NestedText";
-import TopLevelContext from "./TopLevelContext";
-import TopLevelStyles from "./TopLevelStyles";
-
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Card, Headline } from 'react-native-paper';
+import NestedText from './NestedText';
+import TopLevelContext from './TopLevelContext';
+import TopLevelStyles from './TopLevelStyles';
 
 const style = StyleSheet.create({
     wrap: { gap: 15, padding: 15 } as any,
@@ -11,13 +11,13 @@ const style = StyleSheet.create({
         marginHorizontal: -2,
         marginTop: -2,
         marginBottom: 16,
-        backgroundColor: "#d5d5d5"
-    }
-})
+        backgroundColor: '#d5d5d5',
+    },
+});
 
-const CardHeader: typeof Headline = (props) => {
-    return <Card.Title style={style.cardTitle} title={<Headline {...props}></Headline>} />
-}
+const CardHeader: typeof Headline = props => {
+    return <Card.Title style={style.cardTitle} title={<Headline {...props} />} />;
+};
 
 export default () => {
     return (
@@ -29,14 +29,12 @@ export default () => {
                 </Card.Content>
             </Card>
 
-            
             <Card>
                 <CardHeader children="Top Level Components" />
                 <Card.Content>
                     <TopLevelContext />
                 </Card.Content>
             </Card>
-
 
             <Card>
                 <CardHeader children="Top Level Styles" />
@@ -45,5 +43,5 @@ export default () => {
                 </Card.Content>
             </Card>
         </View>
-    )
-}
+    );
+};
