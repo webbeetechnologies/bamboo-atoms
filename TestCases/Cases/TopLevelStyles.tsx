@@ -1,5 +1,5 @@
 import React from 'react';
-import { extendTheme, ProvideTheme, useComponents } from 'bamboo-shoots';
+import { extendTheme, ProvideTheme, useComponents } from '@webbee/bamboo-atoms';
 
 
 /**
@@ -104,8 +104,6 @@ export default () => {
                 <View>
                     <H4>Styles provided at top <H4>level but themed</H4></H4>
                 </View>
-                <Text>I'm blue, <Text>I should be blue!</Text></Text>
-                <Text style={{ color: "red" }}>I'm red, <Text>I should be red too!</Text></Text>
                 <Button><Text>Themed Button</Text></Button>
                 <Library2 />
             </ProvideTheme>

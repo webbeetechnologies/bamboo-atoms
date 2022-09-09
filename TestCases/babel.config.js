@@ -10,9 +10,6 @@ module.exports = api => {
             {
                 root: ['../src'],
                 extensions: ['.ios.js', '.android.js', '.js', '.jsx', '.ts', '.tsx', '.json'],
-                alias: {
-                    'bamboo-shoots': path.resolve(__dirname, '../src/'),
-                },
             },
         ],
     ];

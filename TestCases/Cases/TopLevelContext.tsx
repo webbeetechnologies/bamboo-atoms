@@ -1,5 +1,5 @@
 import React from 'react';
-import { ConsumeComponents, ProvideComponents, useComponents } from 'bamboo-shoots';
+import { ConsumeComponents, ProvideComponents, useComponents } from '@webbee/bamboo-atoms';
 
 /**
  * 
