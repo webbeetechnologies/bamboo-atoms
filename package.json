@@ -25,7 +25,7 @@
     "run:storybook": "yarn --cwd ./example storybook",
     "test:storybook": "yarn --cwd ./example test-storybook",
     "bootstrap": "yarn --cwd ./example && yarn",
-    "bundle": "npm pack --pack-destination=dist",
+    "bundle": "yarn prepare && npm pack --pack-destination=dist",
     "release": "yarn bundle && yarn publish dist/webbee-bamboo-atoms-$npm_package_version.tgz"
   },
   "devDependencies": {
