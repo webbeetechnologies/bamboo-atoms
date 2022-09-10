@@ -18,8 +18,8 @@ export default {
             options: ['cover', 'contain', 'stretch', 'repeat', 'center'],
         },
         resizeMethod: { control: 'select', options: ['auto', 'resize', 'scale'] },
-        loadingIndicatorSource: { control: 'object', defaultValue: { uri: '' } },
-        defaultSource: { control: 'object', defaultValue: { uri: '' } },
+        loadingIndicatorSource: { control: 'object', },
+        defaultSource: { control: 'object', },
     },
 } as ComponentMeta<typeof Example>;
 

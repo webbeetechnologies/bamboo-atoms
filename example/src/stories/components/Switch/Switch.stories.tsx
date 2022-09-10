@@ -8,7 +8,7 @@ export default {
     component: Example,
     argTypes: {
         thumbColor: { control: 'color' },
-        trackColor: { control: 'object', defaultValue: { false: '', true: '' } },
+        trackColor: { control: 'object' },
         disabled: { control: 'boolean' },
     },
 } as ComponentMeta<typeof Example>;

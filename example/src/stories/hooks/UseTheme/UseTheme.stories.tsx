@@ -46,7 +46,7 @@ export const TextContainer = () => {
     const { Text } = useComponents();
 
     return (
-        <Text>{JSON.stringify(providedTheme)}</Text>
+        <Text>{JSON.stringify(providedTheme, null, 4)}</Text>
     );
 };
 
