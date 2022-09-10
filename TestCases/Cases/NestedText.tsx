@@ -1,5 +1,5 @@
 import React from 'react';
-import { extendTheme, ProvideTheme, useComponents } from '@webbee/bamboo-atoms';
+import { extendTheme, ProvideTheme, useComponents } from 'bamboo-shoots';
 
 /**
  *
@@ -20,17 +20,14 @@ import { extendTheme, ProvideTheme, useComponents } from '@webbee/bamboo-atoms';
  * 3. Document for library creators: create overwrite components and necessary themes for them.
  */
 
-const userTheme = {
-    theme: extendTheme({
-        componentStyles: {
-            H4: { color: 'red', backgroundColor: 'yellow', padding: 8, marginBottom: 4 },
-            Text: { color: 'blue', backgroundColor: '#cecece', padding: 8, fontSize: 16 },
-        },
-    }),
-};
+const userTheme = extendTheme({
+    H4: { color: 'red', backgroundColor: 'yellow', padding: 8, marginBottom: 4 },
+    Text: { color: 'blue', backgroundColor: '#cecece', padding: 8, fontSize: 16 },
+    H1: { color: 'red' },
+});
 
 export default () => {
-    const { H4, Text } = useComponents(),
+    const { H4, Text, H1 } = useComponents(),
         textOverwriteColor1 = React.useRef({ fontSize: 12, backgroundColor: 'lime' }).current,
         textOverwriteColor2 = React.useRef({
             fontSize: 24,
@@ -40,11 +37,19 @@ export default () => {
 
     return (
         <>
-            <ProvideTheme value={userTheme}>
+            <ProvideTheme theme={userTheme}>
                 <H4>
                     Styles provided at <Text>top level</Text> outside new theme
                 </H4>
+                <H1>
+                    This should be red
+                    <Text style={{ color: 'green', backgroundColor: 'none' }}>
+                        This should be green
+                        <Text>This should be green also</Text>
+                    </Text>
+                </H1>
                 <Text style={textOverwriteColor1}>
+                    <H1>I'm H1 I should be red</H1>
                     I'm blue, <Text>I should be blue and smaller!</Text>
                 </Text>
                 <Text style={textOverwriteColor2}>

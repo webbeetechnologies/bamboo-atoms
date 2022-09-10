@@ -1,5 +1,5 @@
 import React from 'react';
-import { extendTheme, ProvideTheme, useComponents } from '@webbee/bamboo-atoms';
+import { extendTheme, ProvideTheme, useComponents } from 'bamboo-shoots';
 
 /**
  *
@@ -20,40 +20,28 @@ import { extendTheme, ProvideTheme, useComponents } from '@webbee/bamboo-atoms';
  * 3. Document for library creators: create overwrite components and necessary themes for them.
  */
 
-const library1Theme = {
-    theme: extendTheme({
-        componentStyles: {
-            Button: { backgroundColor: 'orange' },
-            Text: { color: 'purple' },
-        },
-    }),
-};
+const library1Theme = extendTheme({
+    Button: { backgroundColor: 'orange' },
+    Text: { color: 'purple' },
+});
 
-const library2Theme = {
-    theme: extendTheme({
-        componentStyles: {
-            Button: { backgroundColor: 'yellow' },
-            Text: { color: 'red' },
-        },
-    }),
-};
+const library2Theme = extendTheme({
+    Button: { backgroundColor: 'yellow' },
+    Text: { color: 'red' },
+});
 
-const userTheme = {
-    theme: extendTheme({
-        componentStyles: {
-            Button: { backgroundColor: 'red' },
-            H4: { color: 'green', margin: 24, paddingHorizontal: 16 },
-            View: { maxWidth: '300px', backgroundColor: '#ccc', padding: 8, marginVertical: 8 },
-            Text: { color: 'blue' },
-        },
-    }),
-};
+const userTheme = extendTheme({
+    Button: { backgroundColor: 'red' },
+    H4: { color: 'green', margin: 24, paddingHorizontal: 16 },
+    View: { maxWidth: '300px', backgroundColor: '#ccc', padding: 8, marginVertical: 8 },
+    Text: { color: 'blue' },
+});
 
 // Assume this is a component from a library
 const Library1 = () => {
     const { View, Heading, Button, Text, Strong } = useComponents();
     return (
-        <ProvideTheme value={library1Theme}>
+        <ProvideTheme theme={library1Theme}>
             <View>
                 <Heading>I'm rendered by Library 1</Heading>
                 <Button children={<Text>Library 1 Button</Text>} />
@@ -87,7 +75,7 @@ const Library1 = () => {
 const Library2 = () => {
     const { View, Heading, Button, Text } = useComponents();
     return (
-        <ProvideTheme value={library2Theme}>
+        <ProvideTheme theme={library2Theme}>
             <View>
                 <Heading>I'm rendered by Library 2</Heading>
                 <Button children={<Text>Library 2 button</Text>} />
@@ -103,10 +91,10 @@ export default () => {
     return (
         <>
             <H4>Styles provided at top level outside new theme</H4>
-            <ProvideTheme value={userTheme}>
+            <ProvideTheme theme={userTheme}>
                 <View>
                     <H4>
-                        Styles provided at top <H4>level but themed</H4>
+                        Styles provided at top <Text>level but themed</Text>
                     </H4>
                 </View>
                 <Button>

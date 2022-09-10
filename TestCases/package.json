@@ -10,7 +10,6 @@
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
         "update-stories": "sb-rn-get-stories --config-path .ondevice",
-        "prestart": "yarn update-stories",
         "storybook-watcher": "sb-rn-watcher --config-path .ondevice",
         "test-storybook": "test-storybook",
         "chromatic": "npx chromatic --project-token=6b460fdb3508"
