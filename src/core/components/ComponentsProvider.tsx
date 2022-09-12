@@ -62,7 +62,7 @@ export const ProvideComponents = ({
             ...(defaultComponents === contextValue ? components : contextValue),
         }),
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [components],
+        [],
     );
 
     return (
