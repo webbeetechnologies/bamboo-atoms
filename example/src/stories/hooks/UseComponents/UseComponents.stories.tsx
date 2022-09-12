@@ -2,6 +2,7 @@ import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Example } from './UseComponents';
+import DocsPage from './UseComponents.mdx';
 
 export default {
     title: 'hooks/useComponents',
@@ -30,5 +31,6 @@ Default.parameters = {
             language: 'tsx',
             type: 'auto',
         },
+        page: DocsPage,
     },
 };

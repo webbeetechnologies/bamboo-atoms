@@ -1,0 +1,32 @@
+<!-- Custom-MDX-Documentation.mdx -->
+
+# useMediaQuery Hook
+
+As the name suggests, `useMediaQuery` hook accepts the `query` object as an argument and returns a boolean value.
+
+import { ArgsTable } from "@storybook/addon-docs";
+
+The `query` object accepts 4 optional properties
+
+<ArgsTable />
+
+### Example Usage
+
+```tsx
+import { useComponents, useMediaQuery } from '@webbee/bamboo-atoms';
+
+export const Example = () => {
+    const { Text } = useComponents();
+    const isSmallScreenAndOnPortraitMode = useMediaQuery({
+        maxWidth: 400,
+        orientation: 'portrait',
+    });
+
+    return (
+        <Text>
+            Is the screen a small screen and on portrait mode? -
+            <Text style={{ color: 'blue', fontWeight: 'bold' }}>{query ? 'true' : 'false'}</Text>
+        </Text>
+    );
+};
+```

@@ -2,6 +2,7 @@ import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Example } from './ThemeProvider';
+import DocsPage from './ThemeProvider.mdx';
 
 export default {
     title: 'core/ThemeProvider',
@@ -50,5 +51,6 @@ export const Example = (props: Props) => {
             language: 'tsx',
             type: 'auto',
         },
+        page: DocsPage,
     },
 };

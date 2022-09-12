@@ -1,0 +1,80 @@
+<!-- Custom-MDX-Documentation.mdx -->
+
+# Theme Provider
+
+We use Context API for theming.
+`ProvideTheme` component accepts 2 props: `theme` and `extractStyles`.
+In `theme` props, we enter the object returned by the `extendTheme` function which let us extend the default theme, declare any custom properties inside the theme object that can be used anywhere or replaced the default properties.
+
+```tsx
+import {
+    useComponents,
+    ProvideTheme,
+    extendTheme,
+} from '@webbee/bamboo-atoms';
+
+const customTheme = extendTheme({
+    View: {
+        width: 100,
+        height: 100,
+
+        dark: {
+            backgroundColor: '#fff',
+        },
+        light: {
+            backgroundColor: '#f5f5f5',
+        },
+    },
+    Text: {
+        color: '#444',
+    },
+});
+
+export const Example = () => {
+    const { View, Text } = useComponents();
+
+    return (
+        <ProvideTheme theme={customTheme}>
+            <View>
+                <Text>Styles from the provider</Text>
+            </View>
+        </ProvideTheme>
+    );
+};
+```
+
+## extractStyles props
+
+`extractStyles` props accepts a function that returns a Style Object.
+It let us replace the function that calculates the Component Themes Styles that the default components uses.
+It gives us an object as an argument which as 3 properties: `theme` - the default theme object, `componentName` - the name of the default component or the custom component and `colorMode` - a default property inside the theme object
+
+The default components use `useComponentTheme` hook, under the hood, which leverages the default `extractStyles` function. And if the user replace it with their own implementation of `extractStyles` function and returns the theme styles for the default components accordingly.
+`useComponentTheme` hook is used inside the default components to fetch and apply the individual theme styles and apply them. That is why we can see the styles changes if we enter the theme styles for the default components in the theme provider.
+
+example:
+
+```tsx
+const extractStyles = ({ theme, componentName, colorMode }: IExtractStylesFuncArgs) => {
+    const { dark = {}, light = {}, ...rest } = theme[componentName];
+
+    // to make Text component only color: red
+    return componentName === 'Text'
+        ? { color: 'red' }
+        : { ...rest, ...(colorMode === 'light' ? light : dark) };
+};
+
+...
+export const Example = () => {
+   ...
+    return (
+        <ProvideTheme theme={customTheme}>
+            ...
+        </ProvideTheme>
+    );
+}
+...
+```
+
+We can consume the provided theme object using `useTheme` hook and `useComponentTheme` hook.
+Learn more about them in hooks section.

@@ -1,0 +1,30 @@
+<!-- Custom-MDX-Documentation.mdx -->
+
+# useComponents Hook
+
+`useComponents` hook can be use to consume/import the default components or the injected component.
+It return an object that has all the components available inside.
+
+import { Meta } from "@storybook/addon-docs";
+
+### Example Usage
+
+We can modify the types of default components if they're injected, by using a generic.
+The generic will automatically extend the default components' interface, so, we only need to add the types of the component we want to modify or replace.
+
+```tsx
+import { useComponents } from '@webbee/bamboo-atoms';
+
+export const Example = (_props: Props) => {
+    const { Text, Button } = useComponents();
+
+    return (
+        <>
+            <Text>Text Component</Text>
+            <Button>
+                <Text>Button Component</Text>
+            </Button>
+        </>
+    );
+};
+```

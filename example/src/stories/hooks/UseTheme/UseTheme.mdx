@@ -1,0 +1,57 @@
+<!-- Custom-MDX-Documentation.mdx -->
+
+# useTheme Hook
+
+`useTheme` hook is a simple hook that return the entire theme object that the provider provides.
+
+import { Meta } from "@storybook/addon-docs";
+
+### Example Usage
+
+```tsx
+import {
+    useComponents,
+    ProvideTheme,
+    extendTheme,
+    useTheme,
+    ITheme,
+    IComponentStyles,
+    IStyleWithTheme,
+} from '@webbee/bamboo-atoms';
+
+export interface CustomTheme extends ITheme {
+     primaryColor: string;
+     componentStyles: IComponentStyles & {
+         CustomButton: IStyleWithTheme<ViewStyle>;
+     };
+ }
+
+ const theme = extendTheme({
+     Text: {
+         fontWeight: 'bold',
+
+         dark: {
+             color: '#fff',
+         },
+         light: {
+             color: '#1977f2',
+         },
+     },
+     primaryColor: '#007AFF',
+ });
+
+ export const TextContainer = () => {
+     const providedTheme = useTheme<CustomTheme>();
+     const { Text } = useComponents();
+
+     return <Text>{JSON.stringify(providedTheme)}</Text>;
+ };
+
+ export const Example = () => {
+     return (
+         <ProvideTheme theme={theme}>
+             <TextContainer />
+         </ProvideTheme>
+     );
+ };
+```
