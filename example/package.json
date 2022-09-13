@@ -44,7 +44,6 @@
     "@storybook/react-native": "next",
     "@storybook/test-runner": "^0.7.0",
     "@storybook/testing-library": "^0.0.13",
-    "@types/mdx": "^2.0.2",
     "@types/react": "~18.0.14",
     "@types/react-native": "~0.69.1",
     "babel-loader": "^8.2.5",
