@@ -2,7 +2,7 @@ import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Example } from './UseMediaQuery';
-import DocsPage from './UseMediaQuery.mdx';
+import DocsPage from './UseMediaQuery.docs';
 
 export default {
     title: 'hooks/useMediaQuery',

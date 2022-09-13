@@ -2,7 +2,7 @@ import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Example } from './UseTheme';
-import DocsPage from './UseTheme.mdx';
+import DocsPage from './UseTheme.docs';
 
 export default {
     title: 'hooks/useTheme',

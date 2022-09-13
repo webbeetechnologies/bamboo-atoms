@@ -2,7 +2,7 @@ import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Example } from './ComponentsProvider';
-import DocsPage from './ComponentsProvider.mdx';
+import DocsPage from './ComponentsProvider.docs';
 
 export default {
     title: 'core/ComponentsProvider',
