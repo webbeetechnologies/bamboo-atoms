@@ -8,8 +8,6 @@ It accept an argument called `componentName` in which we can enter the name of t
 Under the hood, `useComponentTheme` leverages the default `extractStyles` function. And if the user replace it with their own implementation of `extractStyles` function and returns the theme styles for the default components accordingly.
 `useComponentTheme` hook is used inside the default components to fetch and apply the individual theme styles and apply them. That is why we can see the styles changes if we enter the theme styles for the default components in the theme provider.
 
-import { Meta } from "@storybook/addon-docs";
-
 ### Example Usage
 
 ```tsx
