@@ -56,7 +56,7 @@ export interface CustomTheme extends ITheme {
      const providedTheme = useTheme<CustomTheme>();
      const { Text } = useComponents();
 
-     return <Text>{JSON.stringify(providedTheme)}</Text>;
+     return <Text>{JSON.stringify(providedTheme, null, 4)}</Text>;
  };
 
  export const Example = () => {

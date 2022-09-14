@@ -7,9 +7,9 @@ export default {
     title: 'components/Switch',
     component: Example,
     argTypes: {
-        thumbColor: { control: 'color' },
-        trackColor: { control: 'object', defaultValue: { false: '', true: '' } },
-        disabled: { control: 'boolean' },
+        thumbColor: { control: { type: 'color' } },
+        trackColor: { control: { type: 'object' } },
+        disabled: { control: { type: 'boolean' } },
     },
 } as ComponentMeta<typeof Example>;
 

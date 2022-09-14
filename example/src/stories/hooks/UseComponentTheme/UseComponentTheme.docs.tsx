@@ -59,7 +59,7 @@ const TextContainer = ({ componentName }: { componentName: string }) => {
 
     return (
         <Text>
-            {componentName}Theme: {JSON.stringify(componentTheme)}
+            {componentName}Theme: {JSON.stringify(componentTheme, null, 4)}
         </Text>
     );
 };

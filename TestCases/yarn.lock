@@ -3788,7 +3788,7 @@
     read-pkg-up "^7.0.1"
     regenerator-runtime "^0.13.7"
 
-"@storybook/test-runner@^0.7.0":
+"@storybook/test-runner@^0.7.1":
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@storybook/test-runner/-/test-runner-0.7.1.tgz#ec4058ce24db76f897f195744c34603847912899"
   integrity sha512-7VYDGneZEX9aA7+nMkCvtsoTSOCTN1G3zNaacEHcD3b4/YrkFb++GHE43TnholoJ53aRUZw3YL85EPBsgo+V2Q==
