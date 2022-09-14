@@ -1,3 +1,3 @@
 export { ProvideComponents, ConsumeComponents, ComponentsContext } from './ComponentsProvider';
 
-export type { ComponentsProviderContext, ExtendComponentsTypes } from './types';
+export type { IComponentsProviderContext, IExtendComponentsTypes } from './types';

@@ -6,17 +6,15 @@ export type Props = {
 };
 
 const theme = extendTheme({
-    componentStyles: {
-        Heading: {
-            width: 300,
-            marginBottom: 50,
+    Heading: {
+        width: 300,
+        marginBottom: 50,
 
-            dark: {
-                color: '#fff',
-            },
-            light: {
-                color: '#000',
-            },
+        dark: {
+            color: '#fff',
+        },
+        light: {
+            color: '#000',
         },
     },
 });
@@ -34,7 +32,7 @@ const TextContainer = ({ componentName }: { componentName: string }) => {
 
 export const Example = ({ componentName }: Props) => {
     return (
-        <ProvideTheme value={{ theme }}>
+        <ProvideTheme theme={theme}>
             <TextContainer componentName={componentName} />
         </ProvideTheme>
     );

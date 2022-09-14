@@ -1,6 +1,6 @@
-import type { ComponentStyles } from './types';
+import type { IComponentStyles } from './types';
 
-export const componentStyles: ComponentStyles = {
+export const componentStyles: IComponentStyles = {
     ActivityIndicator: {},
     Button: {},
     Image: {},

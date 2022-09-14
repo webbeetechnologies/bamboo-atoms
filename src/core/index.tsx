@@ -1,16 +1,16 @@
 export {
     ProvideComponents,
     ConsumeComponents,
-    ComponentsProviderContext,
+    IComponentsProviderContext,
     ComponentsContext,
-    ExtendComponentsTypes,
+    IExtendComponentsTypes,
 } from './components';
 export {
     ProvideTheme,
-    Theme,
-    ComponentStyles,
+    ITheme,
+    IComponentStyles,
     ThemeContext,
     extendTheme,
-    ExtractStylesFuncArgs,
-    StyleWithTheme,
+    IExtractStylesFuncArgs,
+    IStyleWithTheme,
 } from './theme';

@@ -3,9 +3,9 @@ import useTheme from './useTheme';
 
 const useColorMode = () => {
     const defaultMode = Appearance.getColorScheme() || 'light';
-    const { config } = useTheme();
+    const { colorMode } = useTheme();
 
-    return config.colorMode === 'auto' ? defaultMode : config.colorMode;
+    return colorMode === 'auto' ? defaultMode : colorMode;
 };
 
 export default useColorMode;
