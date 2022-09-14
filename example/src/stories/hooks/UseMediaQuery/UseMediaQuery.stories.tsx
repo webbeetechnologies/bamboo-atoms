@@ -2,6 +2,7 @@ import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Example } from './UseMediaQuery';
+import DocsPage from './UseMediaQuery.docs';
 
 export default {
     title: 'hooks/useMediaQuery',
@@ -17,22 +18,6 @@ Default.args = {
 
 Default.parameters = {
     docs: {
-        source: {
-            code: `
-    const { Text } = useComponents();
-    const query = useMediaQuery(props);
-
-    return (
-        <Text>
-            ...
-            <Text style={{ color: 'blue', fontWeight: 'bold' }}>
-                {query ? 'true' : 'false'}
-            </Text>
-        </Text>
-    );
-            `,
-            language: 'tsx',
-            type: 'auto',
-        },
+        page: DocsPage,
     },
 };

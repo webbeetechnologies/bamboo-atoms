@@ -7,10 +7,10 @@ export default {
     title: 'components/ActivityIndicator',
     component: Example,
     argTypes: {
-        size: { control: { type: 'number', min: 10} },
-        color: { control: { type: 'color'} },
-        animating: { control: { type: 'boolean'} },
-        hidesWhenStopped: { control: { type: 'boolean'} },
+        size: { control: { type: 'number', min: 10 } },
+        color: { control: { type: 'color' } },
+        animating: { control: { type: 'boolean' } },
+        hidesWhenStopped: { control: { type: 'boolean' } },
     },
 } as ComponentMeta<typeof Example>;
 
