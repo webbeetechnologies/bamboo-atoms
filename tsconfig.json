@@ -26,5 +26,10 @@
     "strict": true,
     "target": "esnext"
   },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mdx"
+  ],
   "exclude": ["lib/**/*"]
 }

@@ -9,7 +9,7 @@ import {
 
 export type Props = ViewProps & {};
 
-const themeValue = extendTheme({
+const customTheme = extendTheme({
     View: {
         width: 100,
         height: 100,
@@ -39,7 +39,7 @@ export const Example = (props: Props) => {
     const { View, Text } = useComponents();
 
     return (
-        <ProvideTheme theme={themeValue} extractStyles={extractStyles}>
+        <ProvideTheme theme={customTheme} extractStyles={extractStyles}>
             <View {...props}>
                 <Text>Styles from the provider</Text>
             </View>

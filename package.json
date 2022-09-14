@@ -31,7 +31,6 @@
   "devDependencies": {
     "@react-native-community/eslint-config": "2.0.0",
     "@types/lodash.isnil": "^4.0.7",
-    "@types/lodash.merge": "^4.6.7",
     "@types/react": "^18.0.17",
     "@types/react-native": "^0.69.5",
     "eslint": "^7.10.0",
