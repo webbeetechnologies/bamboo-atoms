@@ -61,8 +61,8 @@ yarn bootstrap
 # bundling
 yarn prepare
 
-# packaging (will get .tgz file)
-npm pack
+# release to npm
+yarn release
 ```
 
 ## Demo
