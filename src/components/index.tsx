@@ -27,6 +27,7 @@ export {
     Strong,
     Text,
     Underline,
+    textFactory,
 } from './Typography';
 export type {
     H1Props,
