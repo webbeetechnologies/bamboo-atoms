@@ -1,9 +1,10 @@
 import { useContext } from 'react';
-import { Theme, ThemeContext } from '../core/theme';
+import { ITheme, ThemeContext } from '../core/theme';
 
 // letting the user define the type of the custom theme with generic
-const useTheme = <T extends Theme>() => {
-    const { theme } = useContext(ThemeContext);
+const useTheme = <T extends ITheme>() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { extractStyles, ...theme } = useContext(ThemeContext);
     return theme as T;
 };
 

@@ -1,57 +1,52 @@
 import type { ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
+import type { ReactNode } from 'react';
 
-export type StyleWithTheme<T> = StyleProp<T> & {
+export type IStyleWithTheme<T> = StyleProp<T> & {
     dark?: StyleProp<T>;
     light?: StyleProp<T>;
+    [key: string]: any; // to be extendable // can be Style, string, number, boolean
 };
 
-export interface ComponentStyles {
-    ActivityIndicator: StyleWithTheme<ViewStyle>;
-    Button: StyleWithTheme<ViewStyle>;
-    Image: StyleWithTheme<ImageStyle>;
-    Switch: StyleWithTheme<ViewStyle>;
-    TextInput: StyleWithTheme<ViewStyle>;
-    H1: StyleWithTheme<TextStyle>;
-    H2: StyleWithTheme<TextStyle>;
-    H3: StyleWithTheme<TextStyle>;
-    H4: StyleWithTheme<TextStyle>;
-    H5: StyleWithTheme<TextStyle>;
-    H6: StyleWithTheme<TextStyle>;
-    Heading: StyleWithTheme<TextStyle>;
-    Italic: StyleWithTheme<TextStyle>;
-    Label: StyleWithTheme<TextStyle>;
-    Strikethrough: StyleWithTheme<TextStyle>;
-    Strong: StyleWithTheme<TextStyle>;
-    Text: StyleWithTheme<TextStyle>;
-    Underline: StyleWithTheme<TextStyle>;
-    View: StyleWithTheme<ViewStyle>;
-    [key: string]: StyleWithTheme<ViewStyle | TextStyle | ImageStyle>; // all three possible styles
+export interface IComponentStyles {
+    ActivityIndicator: IStyleWithTheme<ViewStyle>;
+    Button: IStyleWithTheme<ViewStyle>;
+    Image: IStyleWithTheme<ImageStyle>;
+    Switch: IStyleWithTheme<ViewStyle>;
+    TextInput: IStyleWithTheme<ViewStyle>;
+    H1: IStyleWithTheme<TextStyle>;
+    H2: IStyleWithTheme<TextStyle>;
+    H3: IStyleWithTheme<TextStyle>;
+    H4: IStyleWithTheme<TextStyle>;
+    H5: IStyleWithTheme<TextStyle>;
+    H6: IStyleWithTheme<TextStyle>;
+    Heading: IStyleWithTheme<TextStyle>;
+    Italic: IStyleWithTheme<TextStyle>;
+    Label: IStyleWithTheme<TextStyle>;
+    Strikethrough: IStyleWithTheme<TextStyle>;
+    Strong: IStyleWithTheme<TextStyle>;
+    Text: IStyleWithTheme<TextStyle>;
+    Underline: IStyleWithTheme<TextStyle>;
+    View: IStyleWithTheme<ViewStyle>;
+    // [key: string]: StyleWithTheme<ViewStyle | TextStyle | ImageStyle>; // all three possible styles
 }
 
-export interface Theme {
-    config: {
-        colorMode: 'auto' | 'light' | 'dark';
-    };
-    componentStyles: ComponentStyles;
+export type ITheme = IComponentStyles & {
+    colorMode: 'auto' | 'light' | 'dark';
     [key: string]: any; // to make it extendable
-}
+};
 
-export interface PartialTheme {
-    config: {
-        colorMode?: 'auto' | 'light' | 'dark';
-    };
-    componentStyles?: Partial<ComponentStyles>;
-    [key: string]: any;
-}
-
-export interface ExtractStylesFuncArgs {
-    theme: Theme;
-    componentName: keyof ComponentStyles;
+export interface IExtractStylesFuncArgs {
+    theme: ITheme;
+    componentName: keyof IComponentStyles | string;
     colorMode: 'light' | 'dark';
-    defaultStyles: StyleProp<any>;
 }
 
-export interface ThemeProviderContext {
-    theme: Theme;
-    extractStyles?: (args: ExtractStylesFuncArgs) => StyleProp<any>;
+export type ThemeProviderContext = ITheme & {
+    extractStyles: (args: IExtractStylesFuncArgs) => StyleProp<any>;
+};
+
+export interface ProvideThemeArgs {
+    theme?: Partial<ITheme>;
+    extractStyles?: (args: IExtractStylesFuncArgs) => StyleProp<any>;
+    children: ReactNode;
 }

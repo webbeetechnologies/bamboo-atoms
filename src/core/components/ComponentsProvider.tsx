@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useMemo } from 'react';
+import React, { createContext, ReactNode, useContext, useMemo } from 'react';
 import {
     ActivityIndicator,
     Button,
@@ -20,7 +20,7 @@ import {
     Underline,
     View,
 } from '../../components';
-import type { ComponentsProviderContext, ExtendComponentsTypes } from './types';
+import type { IComponentsProviderContext, IExtendComponentsTypes } from './types';
 
 const defaultComponents = {
     ActivityIndicator: ActivityIndicator,
@@ -44,35 +44,37 @@ const defaultComponents = {
     View: View,
 };
 
-export const ComponentsContext = createContext<ComponentsProviderContext>(defaultComponents);
+export const ComponentsContext = createContext<IComponentsProviderContext>(defaultComponents);
 
 export const ProvideComponents = ({
     components,
     children,
 }: {
-    components: Partial<ComponentsProviderContext>;
+    components: Partial<IComponentsProviderContext>;
     children: ReactNode;
 }) => {
-    const defaultContextValue = useMemo(
+    const contextValue = useContext(ComponentsContext);
+
+    const memoizedValue = useMemo(
         () => ({
             ...defaultComponents,
             ...components,
+            ...(defaultComponents === contextValue ? components : contextValue),
         }),
-        [components],
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [],
     );
 
     return (
-        <ComponentsContext.Provider value={defaultContextValue}>
-            {children}
-        </ComponentsContext.Provider>
+        <ComponentsContext.Provider value={memoizedValue}>{children}</ComponentsContext.Provider>
     );
 };
 
 export const ConsumeComponents = <T,>({
     children,
 }: {
-    children: (comp: ExtendComponentsTypes<T>) => ReactNode;
+    children: (comp: IExtendComponentsTypes<T>) => ReactNode;
 }) => {
     // @ts-ignore
-    return <ComponentsContext.Consumer>{comp => children(comp)}</ComponentsContext.Consumer>;
+    return <ComponentsContext.Consumer>{children}</ComponentsContext.Consumer>;
 };

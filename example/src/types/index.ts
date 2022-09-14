@@ -1,9 +1,9 @@
-import type { ComponentStyles, Theme, StyleWithTheme } from 'bamboo-shoots';
+import type { IComponentStyles, ITheme, IStyleWithTheme } from 'bamboo-shoots';
 import type { ViewStyle } from 'react-native';
 
-export interface CustomTheme extends Theme {
+export interface CustomTheme extends ITheme {
     primaryColor: string;
-    componentStyles: ComponentStyles & {
-        CustomButton: StyleWithTheme<ViewStyle>;
+    componentStyles: IComponentStyles & {
+        CustomButton: IStyleWithTheme<ViewStyle>;
     };
 }

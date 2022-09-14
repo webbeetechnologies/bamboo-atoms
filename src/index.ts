@@ -3,12 +3,12 @@ export {
     ProvideComponents,
     ProvideTheme,
     extendTheme,
-    Theme,
-    ExtendComponentsTypes,
-    StyleWithTheme,
-    ComponentsProviderContext,
-    ExtractStylesFuncArgs,
-    ComponentStyles,
+    ITheme,
+    IExtendComponentsTypes,
+    IStyleWithTheme,
+    IComponentsProviderContext,
+    IExtractStylesFuncArgs,
+    IComponentStyles,
 } from './core';
 export { useComponents, useMediaQuery, useComponentTheme, useTheme } from './hooks';
 export type {
