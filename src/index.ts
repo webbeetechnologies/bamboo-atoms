@@ -11,7 +11,7 @@ export {
     IComponentStyles,
 } from './core';
 export { useComponents, useMediaQuery, useComponentTheme, useTheme } from './hooks';
-export type {
+export {
     ActivityIndicatorProps,
     ButtonProps,
     ImageProps,
@@ -30,5 +30,6 @@ export type {
     TextProps,
     UnderlineProps,
     ViewProps,
+    textFactory,
 } from './components';
 export { extractComponents } from './utils';

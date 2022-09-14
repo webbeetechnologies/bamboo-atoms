@@ -36,3 +36,5 @@ export type { TextProps } from './Text';
 
 export { Underline } from './Underline';
 export type { UnderlineProps } from './Underline';
+
+export { textFactory } from './Typography';
