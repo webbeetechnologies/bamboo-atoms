@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text as NativeText } from 'react-native';
+import React, { ComponentType } from 'react';
+import { StyleSheet } from 'react-native';
 import {
     extendTheme,
     ProvideComponents,
@@ -61,7 +61,7 @@ export const theme = extendTheme({
 });
 
 export interface InjectedComponentTypes {
-    Code: typeof NativeText;
+    Code: ComponentType<TextProps>;
 }
 
 const Code = ({ style, ...rest }: TextProps) => {
@@ -71,10 +71,12 @@ const Code = ({ style, ...rest }: TextProps) => {
     return <Text style={StyleSheet.flatten([codeTheme, style])} {...rest} />;
 };
 
+const components = { Code };
+
 export const withDocsWrapper = (Component: () => JSX.Element) => (props: typeof Component) => {
     return (
         <ProvideTheme theme={theme}>
-            <ProvideComponents components={{ Code }}>
+            <ProvideComponents components={components}>
                 <Component {...props} />
             </ProvideComponents>
         </ProvideTheme>
