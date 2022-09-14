@@ -33,10 +33,14 @@ export const Example = () => {
     return (
         <Text>
             Is the screen a small screen and on portrait mode? -
-            <Text style={{ color: 'blue', fontWeight: 'bold' }}>{query ? 'true' : 'false'}</Text>
+            <Text style={styles.textStyles}>{query ? 'true' : 'false'}</Text>
         </Text>
     );
 };
+
+const styles = StyleSheet.create({
+    textStyles: { color: 'blue', fontWeight: 'bold' },
+});
 `;
 
 export default withDocsWrapper(DocsPage);

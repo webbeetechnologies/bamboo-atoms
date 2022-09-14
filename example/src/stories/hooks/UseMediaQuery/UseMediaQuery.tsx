@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { useComponents, useMediaQuery } from 'bamboo-shoots';
 
 export type Props = {
@@ -16,7 +17,11 @@ export const Example = (props: Props) => {
     return (
         <Text>
             {Object.keys(props).map(key => `${key}: ${props[key as keyof Props]}, `)} -{' '}
-            <Text style={{ color: 'blue', fontWeight: 'bold' }}>{query ? 'true' : 'false'}</Text>
+            <Text style={styles.textStyles}>{query ? 'true' : 'false'}</Text>
         </Text>
     );
 };
+
+const styles = StyleSheet.create({
+    textStyles: { color: 'blue', fontWeight: 'bold' },
+});
