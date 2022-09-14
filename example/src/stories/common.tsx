@@ -10,10 +10,10 @@ import {
 } from 'bamboo-shoots';
 
 export const textArgTypes = {
-    allowFontScaling: { control: 'boolean' },
-    ellipsizeMode: { control: 'select', options: ['head', 'middle', 'tail', 'clip'] },
-    lineBreakMode: { control: 'select', options: ['head', 'middle', 'tail', 'clip'] },
-    numberOfLines: { control: 'number' },
+    allowFontScaling: { control: { type: 'boolean' } },
+    ellipsizeMode: { control: { type: 'select', options: ['head', 'middle', 'tail', 'clip'] } },
+    lineBreakMode: { control: { type: 'select', options: ['head', 'middle', 'tail', 'clip'] } },
+    numberOfLines: { control: { type: 'number' } },
 };
 
 // creating theme styles similar to mdx
