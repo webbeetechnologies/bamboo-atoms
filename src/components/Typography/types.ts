@@ -1,6 +1,7 @@
+import type { RefAttributes } from 'react';
 import type { TextProps as NativeTextProps } from 'react-native';
 
-export interface TextProps extends NativeTextProps {}
+export type TextProps = NativeTextProps & RefAttributes<TextProps>;
 
 export interface ITypographyProps extends TextProps {
     strong?: boolean;

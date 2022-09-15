@@ -1,3 +1,5 @@
+import type { RefAttributes } from 'react';
 import type { ActivityIndicatorProps } from 'react-native';
 
-export interface IActivityIndicatorProps extends ActivityIndicatorProps {}
+export type IActivityIndicatorProps = ActivityIndicatorProps &
+    RefAttributes<ActivityIndicatorProps>;

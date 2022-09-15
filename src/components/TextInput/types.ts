@@ -1,3 +1,4 @@
+import type { RefAttributes } from 'react';
 import type { TextInputProps } from 'react-native';
 
-export interface ITextInputProps extends TextInputProps {}
+export type ITextInputProps = TextInputProps & RefAttributes<TextInputProps>;
