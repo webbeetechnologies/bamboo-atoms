@@ -17,14 +17,18 @@ export const textFactory = (
             const { style, ...rest } = props;
             const themeStyles = useComponentTheme(name);
             const hasAncestorText = useContext(HasAncestorContext);
+            const isComponentInjected = DefaultComponent !== NativeText; // we want no theme styles applied for injected component
+
             const styles = useMemo(
                 () =>
                     StyleSheet.flatten([
                         defaultStyle,
-                        hasAncestorText && !isBlockLevelElement ? {} : themeStyles,
+                        hasAncestorText && !isBlockLevelElement && !isComponentInjected
+                            ? {}
+                            : themeStyles,
                         style,
                     ]),
-                [themeStyles, hasAncestorText, style],
+                [hasAncestorText, isComponentInjected, themeStyles, style],
             );
 
             return hasAncestorText ? (
