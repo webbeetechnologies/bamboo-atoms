@@ -1,3 +1,4 @@
+import type { RefAttributes } from 'react';
 import type { ImageProps } from 'react-native';
 
-export interface IImageProps extends ImageProps {}
+export type IImageProps = ImageProps & RefAttributes<ImageProps>;

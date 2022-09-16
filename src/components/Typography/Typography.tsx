@@ -17,6 +17,7 @@ export const textFactory = (
             const { style, ...rest } = props;
             const themeStyles = useComponentTheme(name);
             const hasAncestorText = useContext(HasAncestorContext);
+
             const styles = useMemo(
                 () =>
                     StyleSheet.flatten([
@@ -24,7 +25,7 @@ export const textFactory = (
                         hasAncestorText && !isBlockLevelElement ? {} : themeStyles,
                         style,
                     ]),
-                [themeStyles, hasAncestorText, style],
+                [hasAncestorText, themeStyles, style],
             );
 
             return hasAncestorText ? (

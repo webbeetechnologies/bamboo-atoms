@@ -27,13 +27,13 @@ export interface IComponentStyles {
     Text: IStyleWithTheme<TextStyle>;
     Underline: IStyleWithTheme<TextStyle>;
     View: IStyleWithTheme<ViewStyle>;
-    // [key: string]: StyleWithTheme<ViewStyle | TextStyle | ImageStyle>; // all three possible styles
+    [key: string]: IStyleWithTheme<ViewStyle | TextStyle | ImageStyle>; // all three possible styles
 }
 
-export type ITheme = IComponentStyles & {
+export interface ITheme extends IComponentStyles {
     colorMode: 'auto' | 'light' | 'dark';
-    [key: string]: any; // to make it extendable
-};
+    [key: string]: IStyleWithTheme<ViewStyle | TextStyle | ImageStyle> | any; // to make it extendable
+}
 
 export interface IExtractStylesFuncArgs {
     theme: ITheme;
