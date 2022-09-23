@@ -11,6 +11,6 @@ export {
     IComponentStyles,
     ThemeContext,
     extendTheme,
-    IExtractStylesFuncArgs,
+    IExtractThemeFuncArgs,
     IStyleWithTheme,
 } from './theme';
