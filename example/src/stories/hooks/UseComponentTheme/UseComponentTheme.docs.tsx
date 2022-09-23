@@ -18,8 +18,8 @@ const DocsPage = () => {
             </Text>
             <Text>
                 Under the hood, <Code>useComponentTheme</Code> leverages the default{' '}
-                <Code>extractStyles</Code> function. And if the user replace it with their own
-                implementation of <Code>extractStyles</Code> function and returns the theme styles
+                <Code>extractTheme</Code> function. And if the user replace it with their own
+                implementation of <Code>extractTheme</Code> function and returns the theme styles
                 for the default components accordingly.
             </Text>
             <Text>

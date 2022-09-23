@@ -12,7 +12,7 @@ const DocsPage = () => {
             <Text>
                 We use Context API for theming. <Code>ProvideTheme</Code> component accepts 2 props:{' '}
                 <Code>theme</Code>
-                and <Code>extractStyles</Code>. In <Code>theme</Code> props, we enter the object
+                and <Code>extractTheme</Code>. In <Code>theme</Code> props, we enter the object
                 returned by the
                 <Code>extendTheme</Code> function which let us extend the default theme, declare any
                 custom properties inside the theme object that can be used anywhere or replaced the
@@ -21,9 +21,9 @@ const DocsPage = () => {
 
             <Source language="tsx" code={firstCodeBlock} />
 
-            <H3>extractStyles props</H3>
+            <H3>extractTheme props</H3>
             <Text>
-                <Code>extractStyles</Code> props accepts a function that returns a Style Object.
+                <Code>extractTheme</Code> props accepts a function that returns a Style Object.
                 {'\n'}
                 It let us replace the function that calculates the Component Themes Styles that the
                 default components uses.
@@ -35,8 +35,8 @@ const DocsPage = () => {
             </Text>
             <Text>
                 The default components use <Code>useComponentTheme</Code> hook, under the hood,
-                which leverages the default <Code>extractStyles</Code> function. And if the user
-                replace it with their own implementation of <Code>extractStyles</Code> function and
+                which leverages the default <Code>extractTheme</Code> function. And if the user
+                replace it with their own implementation of <Code>extractTheme</Code> function and
                 returns the theme styles for the default components accordingly.
             </Text>
             <Text>
@@ -95,7 +95,7 @@ export const Example = () => {
 `;
 
 const secondCodeBlock = `
-const extractStyles = ({ theme, componentName, colorMode }: IExtractStylesFuncArgs) => {
+const extractTheme = ({ theme, componentName, colorMode }: IExtractThemeFuncArgs) => {
     const { dark = {}, light = {}, ...rest } = theme[componentName];
 
     // to make Text component only color: red
