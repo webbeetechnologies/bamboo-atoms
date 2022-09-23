@@ -108,7 +108,7 @@ const extractTheme = ({ theme, componentName, colorMode }: IExtractThemeFuncArgs
 export const Example = () => {
    ...
     return (
-        <ProvideTheme theme={customTheme}>
+        <ProvideTheme theme={customTheme} extractTheme={extractTheme}>
             ...
         </ProvideTheme>
     );
