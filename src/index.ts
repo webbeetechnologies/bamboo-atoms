@@ -10,7 +10,7 @@ export {
     IExtractThemeFuncArgs,
     IComponentStyles,
 } from './core';
-export { useComponents, useMediaQuery, useComponentTheme, useTheme } from './hooks';
+export { useComponents, useMediaQuery, useComponentTheme, useTheme, useColorMode } from './hooks';
 export {
     ActivityIndicatorProps,
     ButtonProps,

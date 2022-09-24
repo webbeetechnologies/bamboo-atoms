@@ -1,6 +1,6 @@
 {
   "name": "@webbee/bamboo-atoms",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "private": false,
   "main": "lib/commonjs/index.js",
   "react-native": "src/index.ts",
