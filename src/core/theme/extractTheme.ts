@@ -1,11 +1,7 @@
 import type { StyleProp } from 'react-native';
-import type { IExtractStylesFuncArgs } from 'bamboo-shoots';
+import type { IExtractThemeFuncArgs } from 'bamboo-shoots';
 
-export const defaultExtractStyles = ({
-    theme,
-    componentName,
-    colorMode,
-}: IExtractStylesFuncArgs) => {
+export const defaultExtractTheme = ({ theme, componentName, colorMode }: IExtractThemeFuncArgs) => {
     const { dark = {}, light = {}, ...rest } = theme[componentName] || {};
     const themeStyles: StyleProp<any> = colorMode === 'dark' ? dark : light;
 

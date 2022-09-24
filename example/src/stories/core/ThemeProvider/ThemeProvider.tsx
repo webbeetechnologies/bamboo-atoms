@@ -4,7 +4,7 @@ import {
     ProvideTheme,
     ViewProps,
     extendTheme,
-    IExtractStylesFuncArgs,
+    IExtractThemeFuncArgs,
 } from 'bamboo-shoots';
 
 export type Props = ViewProps & {};
@@ -26,7 +26,7 @@ const customTheme = extendTheme({
     },
 });
 
-const extractStyles = ({ theme, componentName, colorMode }: IExtractStylesFuncArgs) => {
+const extractTheme = ({ theme, componentName, colorMode }: IExtractThemeFuncArgs) => {
     const { dark = {}, light = {}, ...rest } = theme[componentName];
 
     // to make Text only color: red
@@ -39,7 +39,7 @@ export const Example = (props: Props) => {
     const { View, Text } = useComponents();
 
     return (
-        <ProvideTheme theme={customTheme} extractStyles={extractStyles}>
+        <ProvideTheme theme={customTheme} extractTheme={extractTheme}>
             <View {...props}>
                 <Text>Styles from the provider</Text>
             </View>

@@ -7,7 +7,7 @@ export {
     IExtendComponentsTypes,
     IStyleWithTheme,
     IComponentsProviderContext,
-    IExtractStylesFuncArgs,
+    IExtractThemeFuncArgs,
     IComponentStyles,
 } from './core';
 export { useComponents, useMediaQuery, useComponentTheme, useTheme } from './hooks';
