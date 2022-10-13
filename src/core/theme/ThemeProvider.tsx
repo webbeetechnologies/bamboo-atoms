@@ -30,6 +30,7 @@ export const ProvideTheme = ({
             ...defaultContextValue,
             ...newContextValue,
             ...(defaultContextValue === contextValue ? newContextValue : contextValue),
+            '': {},
         };
     }, [theme, extractStyles, contextValue]);
 
