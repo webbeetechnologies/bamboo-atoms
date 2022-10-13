@@ -4,6 +4,7 @@ export {
     IComponentsProviderContext,
     ComponentsContext,
     IExtendComponentsTypes,
+    DefaultComponents,
 } from './components';
 export {
     ProvideTheme,
@@ -11,6 +12,7 @@ export {
     IComponentStyles,
     ThemeContext,
     extendTheme,
-    IExtractThemeFuncArgs,
+    extractStyles,
+    IExtractStylesFuncArgs,
     IStyleWithTheme,
 } from './theme';
