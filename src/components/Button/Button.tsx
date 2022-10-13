@@ -1,13 +1,13 @@
 import React, { forwardRef, memo } from 'react';
-import { Pressable, StyleSheet } from 'react-native';
-import useComponentTheme from '../../hooks/useComponentTheme';
+import { Pressable } from 'react-native';
+import useComponentStyles from '../../hooks/useComponentStyles';
 import type { IButtonProps } from './types';
 
 export const Button = (props: IButtonProps, ref: any) => {
     const { style, ...rest } = props;
-    const themeStyles = useComponentTheme('Button');
+    const styles = useComponentStyles('Button', style);
 
-    return <Pressable ref={ref} style={StyleSheet.flatten([themeStyles, style])} {...rest} />;
+    return <Pressable ref={ref} style={styles} {...rest} />;
 };
 
 export default memo(forwardRef(Button));
