@@ -11,37 +11,35 @@ const DocsPage = () => {
             <H1>Theme Provider</H1>
             <Text>
                 We use Context API for theming. <Code>ProvideTheme</Code> component accepts 2 props:{' '}
-                <Code>theme</Code>
-                and <Code>extractTheme</Code>. In <Code>theme</Code> props, we enter the object
-                returned by the
-                <Code>extendTheme</Code> function which let us extend the default theme, declare any
-                custom properties inside the theme object that can be used anywhere or replaced the
-                default properties.
+                <Code>theme</Code> and <Code>extractStyles</Code>. In <Code>theme</Code> props, we
+                enter the object returned by the <Code>extractStyles</Code> function which let us
+                extend the default theme, declare any custom properties inside the theme object that
+                can be used anywhere or replaced the default properties.
             </Text>
 
             <Source language="tsx" code={firstCodeBlock} />
 
-            <H3>extractTheme props</H3>
+            <H3>extractStyles prop</H3>
             <Text>
-                <Code>extractTheme</Code> props accepts a function that returns a Style Object.
+                <Code>extractStyles</Code> prop accepts a function that returns a Style Object.
                 {'\n'}
-                It let us replace the function that calculates the Component Themes Styles that the
-                default components uses.
+                It let us replace the function that calculates the all the styles that the default
+                components will get.
                 {'\n'}
-                It gives us an object as an argument which as 3 properties: <Code>theme</Code>- the
+                It gives us an object as an argument which as 4 properties: <Code>theme</Code>- the
                 default theme object, <Code>componentName</Code> - the name of the default component
-                or the custom component and <Code>colorMode</Code> - a default property inside the
-                theme object
+                or the custom component, <Code>colorMode</Code> - a default property inside the
+                theme object, and <Code>style</Code> - style prop passed from the component
             </Text>
             <Text>
-                The default components use <Code>useComponentTheme</Code> hook, under the hood,
-                which leverages the default <Code>extractTheme</Code> function. And if the user
-                replace it with their own implementation of <Code>extractTheme</Code> function and
-                returns the theme styles for the default components accordingly.
+                The default components use <Code>useComponentStyles</Code> hook, under the hood,
+                which leverages the default <Code>extractStyles</Code> function. And the user can
+                replace it with their own implementation of <Code>extractStyles</Code> function and
+                returns the component styles for the default components accordingly.
             </Text>
             <Text>
-                <Code>useComponentTheme</Code> hook is used inside the default components to fetch
-                and apply the individual theme styles and apply them.
+                <Code>useComponentStyles</Code> hook is used inside the default components to fetch
+                and apply the individual component styles and apply them.
                 {'\n'}
                 That is why we can see the styles changes if we enter the theme styles for the
                 default components in the theme provider.
@@ -51,7 +49,7 @@ const DocsPage = () => {
 
             <Text>
                 We can consume the provided theme object using <Code>useTheme</Code> hook and
-                <Code>useComponentTheme</Code> hook. Learn more about them in hooks section.
+                <Code>useComponentStyles</Code> hook. Learn more about them in hooks section.
             </Text>
         </View>
     );
@@ -62,6 +60,7 @@ import {
     useComponents,
     ProvideTheme,
     extendTheme,
+    IExtractStylesFuncArgs,
 } from '@webbee/bamboo-atoms';
 
 const customTheme = extendTheme({
@@ -95,20 +94,20 @@ export const Example = () => {
 `;
 
 const secondCodeBlock = `
-const extractTheme = ({ theme, componentName, colorMode }: IExtractThemeFuncArgs) => {
+const extractStyles = ({ theme, componentName, colorMode, style }: IExtractStylesFuncArgs) => {
     const { dark = {}, light = {}, ...rest } = theme[componentName];
 
     // to make Text component only color: red
     return componentName === 'Text'
-        ? { color: 'red' }
-        : { ...rest, ...(colorMode === 'light' ? light : dark) };
+        ? { color: 'red', ...style }
+        : { ...rest, ...(colorMode === 'light' ? light : dark), ...style };
 };
 
 ...
 export const Example = () => {
    ...
     return (
-        <ProvideTheme theme={customTheme} extractTheme={extractTheme}>
+        <ProvideTheme theme={customTheme} extractStyles={extractStyles}>
             ...
         </ProvideTheme>
     );

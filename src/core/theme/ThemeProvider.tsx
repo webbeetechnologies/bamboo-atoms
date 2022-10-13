@@ -2,7 +2,7 @@ import React, { createContext, useContext, useMemo } from 'react';
 import merge from 'ts-deepmerge';
 import type { ITheme, ThemeProviderContext, ProvideThemeArgs } from './types';
 import { componentStyles } from './defaultStyles';
-import { defaultExtractTheme } from './extractTheme';
+import { defaultExtractStyles } from './extractStyles';
 
 const defaultThemeValue: ITheme = {
     colorMode: 'auto',
@@ -11,27 +11,28 @@ const defaultThemeValue: ITheme = {
 
 const defaultContextValue: ThemeProviderContext = {
     ...defaultThemeValue,
-    extractTheme: defaultExtractTheme,
+    extractStyles: defaultExtractStyles,
 };
 
 export const ThemeContext = createContext<ThemeProviderContext>(defaultContextValue);
 
 export const ProvideTheme = ({
     theme,
-    extractTheme = defaultExtractTheme,
+    extractStyles = defaultExtractStyles,
     children,
 }: ProvideThemeArgs) => {
     const contextValue = useContext(ThemeContext);
 
     const memoizedValue = useMemo(() => {
-        const newContextValue = { ...theme, extractTheme };
+        const newContextValue = { ...theme, extractStyles };
 
         return {
             ...defaultContextValue,
             ...newContextValue,
             ...(defaultContextValue === contextValue ? newContextValue : contextValue),
+            '': {},
         };
-    }, [theme, extractTheme, contextValue]);
+    }, [theme, extractStyles, contextValue]);
 
     return <ThemeContext.Provider value={memoizedValue}>{children}</ThemeContext.Provider>;
 };

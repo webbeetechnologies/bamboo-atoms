@@ -8,22 +8,22 @@ const DocsPage = () => {
 
     return (
         <View>
-            <H1>useComponentTheme Hook</H1>
+            <H1>UseComponentStyles Hook</H1>
             <Text>
                 We can get the theme styles of a default component using{' '}
-                <Code>useComponentTheme</Code> hook.
+                <Code>UseComponentStyles</Code> hook.
                 {'\n'}
                 It accept an argument called <Code>componentName</Code> in which we can enter the
                 name of the component that we want to get the styles of.
             </Text>
             <Text>
-                Under the hood, <Code>useComponentTheme</Code> leverages the default{' '}
+                Under the hood, <Code>UseComponentStyles</Code> leverages the default{' '}
                 <Code>extractTheme</Code> function. And if the user replace it with their own
                 implementation of <Code>extractTheme</Code> function and returns the theme styles
                 for the default components accordingly.
             </Text>
             <Text>
-                <Code>useComponentTheme</Code> hook is used inside the default components to fetch
+                <Code>UseComponentStyles</Code> hook is used inside the default components to fetch
                 and apply the individual theme styles and apply them. That is why we can see the
                 styles changes if we enter the theme styles for the default components in the theme
                 provider.
@@ -36,7 +36,7 @@ const DocsPage = () => {
 };
 
 const firstCodeBlock = `
-import { useComponents, useComponentTheme, ProvideTheme, extendTheme } from '@webbee/bamboo-atoms';
+import { useComponents, UseComponentStyles, ProvideTheme, extendTheme } from '@webbee/bamboo-atoms';
 
 // this will return a deepmarged theme obj
 const theme = extendTheme({
@@ -55,11 +55,11 @@ const theme = extendTheme({
 
 const TextContainer = ({ componentName }: { componentName: string }) => {
     const { Text } = useComponents();
-    const componentTheme = useComponentTheme(componentName);
+    const componentStyles = UseComponentStyles(componentName, {});
 
     return (
         <Text>
-            {componentName}Theme: {JSON.stringify(componentTheme, null, 4)}
+            {componentStyles}Theme: {JSON.stringify(componentTheme, null, 4)}
         </Text>
     );
 };

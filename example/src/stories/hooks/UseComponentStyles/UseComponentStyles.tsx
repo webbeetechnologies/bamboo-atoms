@@ -1,5 +1,5 @@
 import React from 'react';
-import { useComponents, useComponentTheme, ProvideTheme, extendTheme } from 'bamboo-shoots';
+import { useComponents, useComponentStyles, ProvideTheme, extendTheme } from 'bamboo-shoots';
 
 export type Props = {
     componentName: string;
@@ -21,11 +21,11 @@ const theme = extendTheme({
 
 const TextContainer = ({ componentName }: { componentName: string }) => {
     const { Text } = useComponents();
-    const componentTheme = useComponentTheme(componentName);
+    const componentStyles = useComponentStyles(componentName, {});
 
     return (
         <Text>
-            {componentName}Theme: {JSON.stringify(componentTheme, null, 4)}
+            {componentName}Theme: {JSON.stringify(componentStyles, null, 4)}
         </Text>
     );
 };

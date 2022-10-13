@@ -1,13 +1,13 @@
 import React, { forwardRef, memo } from 'react';
-import { Switch as NativeSwitch, StyleSheet } from 'react-native';
-import useComponentTheme from '../../hooks/useComponentTheme';
+import { Switch as NativeSwitch } from 'react-native';
+import useComponentStyles from '../../hooks/useComponentStyles';
 import type { ISwitchProps } from './types';
 
 export const Switch = (props: ISwitchProps, ref: any) => {
     const { style, ...rest } = props;
-    const themeStyles = useComponentTheme('Switch');
+    const styles = useComponentStyles('Switch', style);
 
-    return <NativeSwitch ref={ref} style={StyleSheet.flatten([themeStyles, style])} {...rest} />;
+    return <NativeSwitch ref={ref} style={styles} {...rest} />;
 };
 
 export default memo(forwardRef(Switch));

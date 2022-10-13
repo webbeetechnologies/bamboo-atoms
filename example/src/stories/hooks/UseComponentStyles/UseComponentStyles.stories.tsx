@@ -1,11 +1,11 @@
 import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Example } from './UseComponentTheme';
-import DocsPage from './UseComponentTheme.docs';
+import { Example } from './UseComponentStyles';
+import DocsPage from './UseComponentStyles.docs';
 
 export default {
-    title: 'hooks/useComponentTheme',
+    title: 'hooks/UseComponentStyles',
     component: Example,
 } as ComponentMeta<typeof Example>;
 

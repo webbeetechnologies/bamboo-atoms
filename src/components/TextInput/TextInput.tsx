@@ -1,19 +1,13 @@
 import React, { forwardRef, memo } from 'react';
-import { StyleSheet, TextInput as NativeTextInput, TextStyle } from 'react-native';
-import useComponentTheme from '../../hooks/useComponentTheme';
+import { TextInput as NativeTextInput } from 'react-native';
+import useComponentStyles from '../../hooks/useComponentStyles';
 import type { ITextInputProps } from './types';
 
 export const TextInput = (props: ITextInputProps, ref: any) => {
     const { style, ...rest } = props;
-    const themeStyles = useComponentTheme('TextInput');
+    const styles = useComponentStyles('TextInput', style);
 
-    return (
-        <NativeTextInput
-            ref={ref}
-            style={StyleSheet.flatten([themeStyles, style]) as TextStyle}
-            {...rest}
-        />
-    );
+    return <NativeTextInput ref={ref} style={styles} {...rest} />;
 };
 
 export default memo(forwardRef(TextInput));

@@ -5,7 +5,7 @@ import {
     ProvideComponents,
     useComponents,
     useMediaQuery,
-    useComponentTheme,
+    useComponentStyles,
     useTheme,
 } from 'bamboo-shoots';
 import type { CustomTheme } from '../types';
@@ -30,7 +30,7 @@ const CardWithHook = () => {
         orientation: 'portrait',
     });
 
-    const customButtonStyles = useComponentTheme('CustomButton');
+    const customButtonStyles = useComponentStyles('CustomButton');
 
     // eslint-disable-next-line no-console
     console.log(isSmallScreenAndOnPortraitMode, customButtonStyles, primaryColor);

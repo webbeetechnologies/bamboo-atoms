@@ -3,14 +3,16 @@ export {
     ProvideComponents,
     ProvideTheme,
     extendTheme,
+    extractStyles,
     ITheme,
     IExtendComponentsTypes,
     IStyleWithTheme,
     IComponentsProviderContext,
-    IExtractThemeFuncArgs,
+    IExtractStylesFuncArgs,
     IComponentStyles,
+    DefaultComponents,
 } from './core';
-export { useComponents, useMediaQuery, useComponentTheme, useTheme, useColorMode } from './hooks';
+export { useComponents, useMediaQuery, useComponentStyles, useTheme, useColorMode } from './hooks';
 export {
     ActivityIndicatorProps,
     ButtonProps,
