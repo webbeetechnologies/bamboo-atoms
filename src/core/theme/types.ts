@@ -35,18 +35,19 @@ export interface ITheme extends IComponentStyles {
     [key: string]: IStyleWithTheme<ViewStyle | TextStyle | ImageStyle> | any; // to make it extendable
 }
 
-export interface IExtractThemeFuncArgs {
+export interface IExtractStylesFuncArgs {
     theme: ITheme;
     componentName: keyof IComponentStyles | string;
     colorMode: 'light' | 'dark';
+    style: StyleProp<any>;
 }
 
 export type ThemeProviderContext = ITheme & {
-    extractTheme: (args: IExtractThemeFuncArgs) => StyleProp<any>;
+    extractStyles: (args: IExtractStylesFuncArgs) => StyleProp<any>;
 };
 
 export interface ProvideThemeArgs {
     theme?: Partial<ITheme>;
-    extractTheme?: (args: IExtractThemeFuncArgs) => StyleProp<any>;
+    extractStyles?: (args: IExtractStylesFuncArgs) => StyleProp<any>;
     children: ReactNode;
 }
