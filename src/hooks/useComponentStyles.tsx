@@ -3,9 +3,11 @@ import { StyleProp, StyleSheet } from 'react-native';
 import { ThemeContext, IComponentStyles } from '../core/theme';
 import useColorMode from './useColorMode';
 
+const defaultStyleObject = {};
+
 const useComponentStyles = (
     componentName: keyof IComponentStyles | string,
-    style: StyleProp<any> | StyleProp<any>[],
+    style: StyleProp<any> | StyleProp<any>[] = defaultStyleObject,
 ) => {
     const { extractStyles, ...theme } = useContext(ThemeContext);
     const colorMode = useColorMode();

@@ -30,7 +30,7 @@ const CardWithHook = () => {
         orientation: 'portrait',
     });
 
-    const customButtonStyles = useComponentStyles('CustomButton', {});
+    const customButtonStyles = useComponentStyles('CustomButton');
 
     // eslint-disable-next-line no-console
     console.log(isSmallScreenAndOnPortraitMode, customButtonStyles, primaryColor);

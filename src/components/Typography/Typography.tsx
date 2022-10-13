@@ -15,7 +15,7 @@ export const textFactory = (
     return memo(
         forwardRef((props: ITypographyProps, ref: any) => {
             const { style, ...rest } = props;
-            const componentStyles = useComponentStyles(name, {});
+            const componentStyles = useComponentStyles(name);
             const styleProp = useComponentStyles('', style); // we can't include it in componentStyles because of the conditional statement
             const hasAncestorText = useContext(HasAncestorContext);
 
