@@ -1,12 +1,11 @@
 import React, { ComponentType } from 'react';
-import { StyleSheet } from 'react-native';
 import {
     extendTheme,
     ProvideComponents,
     ProvideTheme,
     TextProps,
     useComponents,
-    useComponentTheme,
+    useComponentStyles,
 } from 'bamboo-shoots';
 
 export const textArgTypes = {
@@ -66,9 +65,9 @@ export interface InjectedComponentTypes {
 
 const Code = ({ style, ...rest }: TextProps) => {
     const { Text } = useComponents();
-    const codeTheme = useComponentTheme('Code');
+    const styles = useComponentStyles('Code', style);
 
-    return <Text style={StyleSheet.flatten([codeTheme, style])} {...rest} />;
+    return <Text style={styles} {...rest} />;
 };
 
 const components = { Code };

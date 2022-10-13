@@ -16,7 +16,11 @@ const components = {
 const ButtonContainer = (props: Props) => {
     const { Button } = useComponents<InjectedComponents>();
 
-    return <Button {...props}>Injected Button</Button>;
+    return (
+        <Button onPress={() => {}} {...props}>
+            Injected Button
+        </Button>
+    );
 };
 
 export const Example = (props: Props) => {
