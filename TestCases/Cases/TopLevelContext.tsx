@@ -1,9 +1,9 @@
 import React from 'react';
-import { ConsumeComponents, ProvideComponents, useComponents } from '@webbee/bamboo-atoms';
+import { ConsumeComponents, ProvideComponents, useComponents } from 'bamboo-atoms';
 
 /**
  *
- * UseCase: As a consumer of various libraries and bamboo shoots, I want to be able to inject new components and any location in component tree.
+ * UseCase: As a consumer of various libraries and bamboo atoms, I want to be able to inject new components and any location in component tree.
  *
  * Description: A consumer provides several components to overwrite the components used by libraries; but the custom components from the library overwrites the user components.
  * A consumer should be able to provide custom components that are used by the library.

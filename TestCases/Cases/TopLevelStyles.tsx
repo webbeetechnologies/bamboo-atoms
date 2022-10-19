@@ -1,9 +1,9 @@
 import React from 'react';
-import { extendTheme, ProvideTheme, useComponents } from 'bamboo-shoots';
+import { extendTheme, ProvideTheme, useComponents } from 'bamboo-atoms';
 
 /**
  *
- * UseCase: As a consumer of various libraries and bamboo shoots, I want to be able to inject component styles at the top level to overwrite all library styles.
+ * UseCase: As a consumer of various libraries and bamboo atoms, I want to be able to inject component styles at the top level to overwrite all library styles.
  *
  * Description: A consumer should be able to provide styles and themes to overwrite the design created by the libraries.
  *
