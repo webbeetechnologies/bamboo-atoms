@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonProps, useComponents } from 'bamboo-shoots';
+import { ButtonProps, useComponents } from 'bamboo-atoms';
 
 export type Props = ButtonProps & {};
 

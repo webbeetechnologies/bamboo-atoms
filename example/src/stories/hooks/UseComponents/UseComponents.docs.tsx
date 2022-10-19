@@ -1,5 +1,5 @@
 import React from 'react';
-import { useComponents } from 'bamboo-shoots';
+import { useComponents } from 'bamboo-atoms';
 import { Source } from '@storybook/addon-docs';
 import { InjectedComponentTypes, withDocsWrapper } from '../../common';
 

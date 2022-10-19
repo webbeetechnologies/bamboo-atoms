@@ -9,7 +9,7 @@ module.exports = api => {
                 root: ['../src'],
                 extensions: ['.ios.js', '.android.js', '.js', '.jsx', '.ts', '.tsx', '.json'],
                 alias: {
-                    'bamboo-shoots': '../src/',
+                    'bamboo-atoms': '../src/',
                 },
             },
         ],

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-import { ConsumeComponents, extractComponents, ProvideComponents } from 'bamboo-shoots';
+import { ConsumeComponents, extractComponents, ProvideComponents } from 'bamboo-atoms';
 import {
     ActivityIndicator as PaperActivityIndicator,
     Button as PaperButton,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LabelProps, useComponents } from 'bamboo-shoots';
+import { LabelProps, useComponents } from 'bamboo-atoms';
 
 export type Props = LabelProps & {};
 

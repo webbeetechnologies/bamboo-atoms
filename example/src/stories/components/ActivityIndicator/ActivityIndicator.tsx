@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicatorProps, useComponents } from 'bamboo-shoots';
+import { ActivityIndicatorProps, useComponents } from 'bamboo-atoms';
 
 export type Props = ActivityIndicatorProps & {};
 

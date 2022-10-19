@@ -1,5 +1,5 @@
 import React from 'react';
-import { useComponents } from 'bamboo-shoots';
+import { useComponents } from 'bamboo-atoms';
 import { Source } from '@storybook/addon-docs';
 import { InjectedComponentTypes, withDocsWrapper } from '../../common';
 
@@ -8,7 +8,7 @@ const DocsPage = () => {
 
     return (
         <View>
-            <H1>UseComponentStyles Hook</H1>
+            <H1>useComponentStyles Hook</H1>
             <Text>
                 We can get the theme styles of a default component using{' '}
                 <Code>UseComponentStyles</Code> hook.
@@ -17,13 +17,13 @@ const DocsPage = () => {
                 name of the component that we want to get the styles of.
             </Text>
             <Text>
-                Under the hood, <Code>UseComponentStyles</Code> leverages the default{' '}
+                Under the hood, <Code>useComponentStyles</Code> leverages the default{' '}
                 <Code>extractTheme</Code> function. And if the user replace it with their own
                 implementation of <Code>extractTheme</Code> function and returns the theme styles
                 for the default components accordingly.
             </Text>
             <Text>
-                <Code>UseComponentStyles</Code> hook is used inside the default components to fetch
+                <Code>useComponentStyles</Code> hook is used inside the default components to fetch
                 and apply the individual theme styles and apply them. That is why we can see the
                 styles changes if we enter the theme styles for the default components in the theme
                 provider.
@@ -38,7 +38,10 @@ const DocsPage = () => {
 const firstCodeBlock = `
 import { useComponents, UseComponentStyles, ProvideTheme, extendTheme } from '@webbee/bamboo-atoms';
 
-// this will return a deepmarged theme obj
+export type Props = {
+    componentName: string;
+};
+
 const theme = extendTheme({
     Heading: {
         width: 300,
@@ -55,16 +58,16 @@ const theme = extendTheme({
 
 const TextContainer = ({ componentName }: { componentName: string }) => {
     const { Text } = useComponents();
-    const componentStyles = UseComponentStyles(componentName, {});
+    const componentStyles = useComponentStyles(componentName, {});
 
     return (
         <Text>
-            {componentStyles}Theme: {JSON.stringify(componentTheme, null, 4)}
+            {componentName}Theme: {JSON.stringify(componentStyles, null, 4)}
         </Text>
     );
 };
 
-export const Example = ({ componentName }: Props) => {
+export const App = ({ componentName }: Props) => {
     return (
         <ProvideTheme theme={theme}>
             <TextContainer componentName={componentName} />

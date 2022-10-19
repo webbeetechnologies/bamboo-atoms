@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeadingProps, useComponents } from 'bamboo-shoots';
+import { HeadingProps, useComponents } from 'bamboo-atoms';
 
 export type Props = HeadingProps & {};
 

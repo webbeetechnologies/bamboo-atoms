@@ -1,5 +1,5 @@
-## Bamboo Shoots
-There are three fundamental parts to Bamboo shoots
+## Bamboo Atoms
+There are three fundamental parts to Bamboo Atoms
 1. Dependency Injection
 2. Performant cross-platform low-level components/hooks
 3. Theming
@@ -30,7 +30,7 @@ Be a performant, thoroughly (automation) tested, and highly theme-able repositor
 
 Export a barely styled set of low-level components that are a drop in replacement for react-native components.
 
-Provide an efficient way to compose complex elements using dependency injection principals. Bamboo Shoots provides an easily configurable component store and a neat useComponent hook that gives you the component specific for the current context.
+Provide an efficient way to compose complex elements using dependency injection principals. Bamboo Atoms provides an easily configurable component store and a neat useComponent hook that gives you the component specific for the current context.
 
 Provide a simplified and elegant way to create and inject themes. Shoot has light/dark modes built-in and also enables custom component theming at a component specific level. An efficient useTheme hook is available to deliver a refined experience.
 
@@ -57,7 +57,11 @@ yarn
 
 # install dependencies for the library and examples
 yarn bootstrap
+```
 
+## To Release
+
+```bash
 # bundling
 yarn prepare
 

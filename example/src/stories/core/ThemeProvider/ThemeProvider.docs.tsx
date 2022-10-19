@@ -1,5 +1,5 @@
 import React from 'react';
-import { useComponents } from 'bamboo-shoots';
+import { useComponents } from 'bamboo-atoms';
 import { Source } from '@storybook/addon-docs';
 import { InjectedComponentTypes, withDocsWrapper } from '../../common';
 
@@ -80,7 +80,7 @@ const customTheme = extendTheme({
     },
 });
 
-export const Example = () => {
+export const App = () => {
     const { View, Text } = useComponents();
 
     return (
@@ -104,7 +104,7 @@ const extractStyles = ({ theme, componentName, colorMode, style }: IExtractStyle
 };
 
 ...
-export const Example = () => {
+export const App = () => {
    ...
     return (
         <ProvideTheme theme={customTheme} extractStyles={extractStyles}>

@@ -1,5 +1,5 @@
-# Bamboo Shoots
-The following attributes define Bamboo shoots best:
+# Bamboo Atoms
+The following attributes define Bamboo Atoms best:
 -   dependency-injection
 -   strongly typed
 -   well tested
@@ -27,7 +27,7 @@ Build the library with support for Dark/Light modes.
 
 Implement minimal default style to represent an aesthetic UI.
 
-Give the ability to compose elements with different styles using nested react context using Bamboo shoots to make high-level components.
+Give the ability to compose elements with different styles using nested react context using Bamboo Atoms to make high-level components.
 
 Export access to the context using hooks, Providers and Consumers.
 
@@ -247,7 +247,7 @@ You want that the components you've written to be robust and well tested.
 
 You want to write well documented components. Storybook enables you to write stories for each of your components and create detailed automated testing of your stories.
 
-Bamboo Shoots should implement storybook for the component unit testing needs.
+Bamboo Atoms should implement storybook for the component unit testing needs.
 
 #### User Stories
 - As a developer, I want to use components that do not cause random unexpected behavior.
@@ -268,7 +268,7 @@ Bamboo Shoots should implement storybook for the component unit testing needs.
 ## Benchmarking
 You want to write performant code to ensure the application using your software doesn't run slow.
 
-Bamboo shoots components will be tested for performance in comparison against react-native components for mobile and HTML elements for the web. A performance baseline for all the components needs be established.
+Bamboo Atoms components will be tested for performance in comparison against react-native components for mobile and HTML elements for the web. A performance baseline for all the components needs be established.
 
 Create components and hooks that are memoized and do not update every render.
 
@@ -286,11 +286,11 @@ Library: [React Component Benchmark](https://github.com/paularmstrong/react-comp
  
 ## Component API
 
-You should write Bamboo shoots components that are drop-in replacements for react-native components and vice-versa.
+You should write Bamboo Atoms components that are drop-in replacements for react-native components and vice-versa.
 
-The typed interface for Bamboo shoot will always be same as that of react-native/react-native-web components.
+The typed interface for Bamboo Atoms will always be same as that of react-native/react-native-web components.
 
-The custom components that are unique to Bamboo Shoots also follow an API similar to react-native naming convention for props. That means, for example: click handler callback would be `onPress` instead of ~~`onClick`~~.
+The custom components that are unique to Bamboo Atoms also follow an API similar to react-native naming convention for props. That means, for example: click handler callback would be `onPress` instead of ~~`onClick`~~.
 
 The developers who adopt the system should have to learn one library, that is react-native.
 

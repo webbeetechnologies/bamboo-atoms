@@ -1,5 +1,5 @@
 import React from 'react';
-import { UnderlineProps, useComponents } from 'bamboo-shoots';
+import { UnderlineProps, useComponents } from 'bamboo-atoms';
 
 export type Props = UnderlineProps & {};
 

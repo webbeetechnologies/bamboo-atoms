@@ -1,5 +1,5 @@
 import React from 'react';
-import { ItalicProps, useComponents } from 'bamboo-shoots';
+import { ItalicProps, useComponents } from 'bamboo-atoms';
 
 export type Props = ItalicProps & {};
 

@@ -1,4 +1,4 @@
-# Bamboo Shoots - Components
+# Bamboo Atoms - Components
 You want to write memoized components that are themable out of the box.
 
 Wrap an existing react-native component to enable theming.
@@ -8,7 +8,7 @@ Where necessary, create a building-block component with theming support.
 
 ### Acceptance Criteria:
 - Performance of the component is comparable to an element native to the platform
-- If a Bamboo Shoot component needs to be wrapped in another Bamboo Shoot component, you do not build it; it's already high level component.
+- If a Bamboo Atoms component needs to be wrapped in another Bamboo Atoms component, you do not build it; it's already high level component.
 - All components exported are themable.
 - All components have built in support for dark/light modes.
 

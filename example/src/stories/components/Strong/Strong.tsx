@@ -1,5 +1,5 @@
 import React from 'react';
-import { StrongProps, useComponents } from 'bamboo-shoots';
+import { StrongProps, useComponents } from 'bamboo-atoms';
 
 export type Props = StrongProps & {};
 

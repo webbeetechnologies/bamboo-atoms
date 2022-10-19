@@ -6,7 +6,7 @@ import {
     TextProps,
     useComponents,
     useComponentStyles,
-} from 'bamboo-shoots';
+} from 'bamboo-atoms';
 
 export const textArgTypes = {
     allowFontScaling: { control: { type: 'boolean' } },

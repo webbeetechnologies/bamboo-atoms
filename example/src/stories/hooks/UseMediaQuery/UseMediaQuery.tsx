@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { useComponents, useMediaQuery } from 'bamboo-shoots';
+import { useComponents, useMediaQuery } from 'bamboo-atoms';
 
 export type Props = {
     maxWidth?: number;
