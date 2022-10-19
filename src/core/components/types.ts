@@ -8,7 +8,7 @@ import type {
     TextInputProps,
     TextProps,
     ViewProps,
-} from 'bamboo-shoots';
+} from '../../components';
 import type { NoInfer } from '../../types';
 
 export type IExtendComponentsTypes<T> = Omit<DefaultComponents, keyof NoInfer<T>> & NoInfer<T>;
