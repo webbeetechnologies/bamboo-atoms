@@ -1,5 +1,5 @@
 import type { StyleProp } from 'react-native';
-import type { IExtractStylesFuncArgs } from 'bamboo-shoots';
+import type { IExtractStylesFuncArgs } from './types';
 
 export const defaultExtractStyles = ({
     theme,

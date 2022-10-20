@@ -3,8 +3,8 @@
     "baseUrl": ".",
     "declaration": true,
     "paths": {
-      "bamboo-shoots": ["./src/index"], // this is for type-checking error in husky hook
-      "bamboo-shoots/styles": ["./src/styles"] // this is for type-checking error in husky hook
+      "bamboo-atoms": ["./src/index"], // this is for type-checking error in husky hook
+      "bamboo-atoms/styles": ["./src/styles"] // this is for type-checking error in husky hook
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

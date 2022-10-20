@@ -1,5 +1,5 @@
 import React from 'react';
-import { H6Props, useComponents } from 'bamboo-shoots';
+import { H6Props, useComponents } from 'bamboo-atoms';
 
 export type Props = H6Props & {};
 

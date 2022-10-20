@@ -1,5 +1,5 @@
 import React from 'react';
-import { H2Props, useComponents } from 'bamboo-shoots';
+import { H2Props, useComponents } from 'bamboo-atoms';
 
 export type Props = H2Props & {};
 

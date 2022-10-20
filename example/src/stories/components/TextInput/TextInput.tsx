@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInputProps, useComponents } from 'bamboo-shoots';
+import { TextInputProps, useComponents } from 'bamboo-atoms';
 
 export type Props = TextInputProps & {};
 

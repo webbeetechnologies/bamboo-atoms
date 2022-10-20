@@ -1,5 +1,5 @@
 import React from 'react';
-import { useComponents } from 'bamboo-shoots';
+import { useComponents } from 'bamboo-atoms';
 
 export type Props = {};
 

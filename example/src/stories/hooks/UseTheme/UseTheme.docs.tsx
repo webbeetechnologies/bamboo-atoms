@@ -1,5 +1,5 @@
 import React from 'react';
-import { useComponents } from 'bamboo-shoots';
+import { useComponents } from 'bamboo-atoms';
 import { Source } from '@storybook/addon-docs';
 import { InjectedComponentTypes, withDocsWrapper } from '../../common';
 
@@ -59,7 +59,7 @@ export interface CustomTheme extends ITheme {
      return <Text>{JSON.stringify(providedTheme, null, 4)}</Text>;
  };
 
- export const Example = () => {
+ export const App = () => {
      return (
          <ProvideTheme theme={theme}>
              <TextContainer />

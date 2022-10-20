@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageProps, useComponents } from 'bamboo-shoots';
+import { ImageProps, useComponents } from 'bamboo-atoms';
 
 export type Props = ImageProps & {};
 

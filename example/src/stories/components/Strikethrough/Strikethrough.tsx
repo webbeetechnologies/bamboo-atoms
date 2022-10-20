@@ -1,5 +1,5 @@
 import React from 'react';
-import { StrikethroughProps, useComponents } from 'bamboo-shoots';
+import { StrikethroughProps, useComponents } from 'bamboo-atoms';
 
 export type Props = StrikethroughProps & {};
 

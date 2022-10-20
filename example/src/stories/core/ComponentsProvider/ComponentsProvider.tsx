@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProvideComponents, useComponents } from 'bamboo-shoots';
+import { ProvideComponents, useComponents } from 'bamboo-atoms';
 import { Button as PaperButton, ButtonProps } from 'react-native-paper';
 
 export type Props = ButtonProps & {};

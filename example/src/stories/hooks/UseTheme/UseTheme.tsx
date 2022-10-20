@@ -8,7 +8,7 @@ import {
     ITheme,
     IComponentStyles,
     IStyleWithTheme,
-} from 'bamboo-shoots';
+} from 'bamboo-atoms';
 
 export interface CustomTheme extends ITheme {
     primaryColor: string;

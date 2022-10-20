@@ -7,7 +7,7 @@ import {
     useMediaQuery,
     useComponentStyles,
     useTheme,
-} from 'bamboo-shoots';
+} from 'bamboo-atoms';
 import type { CustomTheme } from '../types';
 
 interface InjectedComponentTypes {

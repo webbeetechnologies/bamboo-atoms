@@ -1,5 +1,5 @@
 import React from 'react';
-import { useComponents, useComponentStyles, ProvideTheme, extendTheme } from 'bamboo-shoots';
+import { useComponents, useComponentStyles, ProvideTheme, extendTheme } from 'bamboo-atoms';
 
 export type Props = {
     componentName: string;

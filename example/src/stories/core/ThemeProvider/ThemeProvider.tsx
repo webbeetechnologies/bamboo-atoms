@@ -5,7 +5,7 @@ import {
     ViewProps,
     extendTheme,
     IExtractStylesFuncArgs,
-} from 'bamboo-shoots';
+} from 'bamboo-atoms';
 
 export type Props = ViewProps & {};
 

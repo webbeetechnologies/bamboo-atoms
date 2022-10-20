@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SwitchProps, useComponents } from 'bamboo-shoots';
+import { SwitchProps, useComponents } from 'bamboo-atoms';
 
 export type Props = SwitchProps & {};
 
