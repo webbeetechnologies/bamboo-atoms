@@ -1,11 +1,14 @@
-import { Appearance } from 'react-native';
+import { useMemo } from 'react';
+import { resolveColorMode } from '../utils';
 import useTheme from './useTheme';
 
 const useColorMode = () => {
-    const defaultMode = Appearance.getColorScheme() || 'light';
-    const { colorMode } = useTheme();
+    const { colorMode, setColorMode, toggleColorMode } = useTheme();
 
-    return colorMode === 'auto' ? defaultMode : colorMode;
+    return useMemo(
+        () => ({ colorMode: resolveColorMode(colorMode), setColorMode, toggleColorMode }),
+        [colorMode, setColorMode, toggleColorMode],
+    );
 };
 
 export default useColorMode;
