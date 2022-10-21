@@ -1,13 +1,15 @@
-import { useComponentStyles } from '@webbee/bamboo-atoms';
-import { CustomButtonProps, RoundButton } from '.';
+import { useComponents, useComponentStyles } from '@webbee/bamboo-atoms';
+import { CustomButtonProps } from '.';
+import { InjectedComponentTypes } from '../Theme';
 
-const SymbolButton = ({ type = 'default', children, ...props }: CustomButtonProps) => {
-    const symbolButton = useComponentStyles('SymbolButton');
+const SymbolButton = ({ children, style, ...props }: CustomButtonProps) => {
+    const symbolButton = useComponentStyles('SymbolButton', style);
+    const { Text, RoundButton } = useComponents<InjectedComponentTypes>();
 
     // custom logic
     return (
         <RoundButton {...props} style={symbolButton}>
-            {children as any}
+            <Text>{children as any}</Text>
         </RoundButton>
     );
 };

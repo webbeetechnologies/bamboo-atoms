@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 import { useComponents, ViewProps } from '@webbee/bamboo-atoms';
 
-const Row = ({ children, ...rest }: ViewProps) => {
+const Row = ({ children, style, ...rest }: ViewProps) => {
     const { View } = useComponents();
     return (
-        <View style={styles.container} {...rest}>
+        <View style={[styles.container, style]} {...rest}>
             {children}
         </View>
     );

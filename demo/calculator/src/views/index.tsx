@@ -3,7 +3,7 @@ import { useComponents } from '@webbee/bamboo-atoms';
 import { InjectedComponentTypes } from '../components/Theme';
 
 const Index = () => {
-    const { View, Text, Row, RoundButton, AccentButton, SymbolButton, DoubleButton, ResultText } =
+    const { View, Row, RoundButton, AccentButton, SymbolButton, DoubleButton, ResultText } =
         useComponents<InjectedComponentTypes>();
 
     return (

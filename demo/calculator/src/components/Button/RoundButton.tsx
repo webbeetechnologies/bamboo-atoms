@@ -1,14 +1,15 @@
-import React from 'react';
-import { Dimensions } from 'react-native';
+import React, { useMemo } from 'react';
+import { useWindowDimensions } from 'react-native';
 import { useComponents, useComponentStyles } from '@webbee/bamboo-atoms';
 import { CustomButtonProps } from '.';
 
-export const RoundButton = ({ type = 'default', style, children, ...props }: CustomButtonProps) => {
+export const RoundButton = ({ style, children, ...props }: CustomButtonProps) => {
     // set dimmenstion
-    const screen = Dimensions.get('window');
-    const buttonWidth = screen.width / 6;
-    const { Button } = useComponents();
-    const roundButton = useComponentStyles('RoundButton');
+    const screen = useWindowDimensions();
+    const { Button, Text } = useComponents();
+    const roundButton = useComponentStyles('RoundButton', style);
+
+    const buttonWidth = useMemo(() => screen.width / 6, [screen]);
 
     // custom logic
     return (
@@ -19,7 +20,7 @@ export const RoundButton = ({ type = 'default', style, children, ...props }: Cus
                 roundButton,
                 style,
             ]}>
-            {children as any}
+            <Text>{children as any}</Text>
         </Button>
     );
 };
