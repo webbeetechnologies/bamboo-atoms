@@ -33,7 +33,7 @@ const library2Theme = extendTheme({
 const userTheme = extendTheme({
     Button: { backgroundColor: 'red' },
     H4: { color: 'green', margin: 24, paddingHorizontal: 16 },
-    View: { maxWidth: '300px', backgroundColor: '#ccc', padding: 8, marginVertical: 8 },
+    View: { maxWidth: 300, backgroundColor: '#ccc', padding: 8, marginVertical: 8 },
     Text: { color: 'blue' },
 });
 

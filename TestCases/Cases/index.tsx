@@ -4,6 +4,7 @@ import { Card, Headline } from 'react-native-paper';
 import NestedText from './NestedText';
 import TopLevelContext from './TopLevelContext';
 import TopLevelStyles from './TopLevelStyles';
+import { TobisGreatTest } from './TobisGreatTest';
 
 const style = StyleSheet.create({
     wrap: { gap: 15, padding: 15 } as any,
@@ -41,6 +42,11 @@ export default () => {
                 <Card.Content>
                     <TopLevelStyles />
                 </Card.Content>
+            </Card>
+
+            <Card>
+                <CardHeader children="Tobis great test" />
+                <TobisGreatTest />
             </Card>
         </View>
     );
