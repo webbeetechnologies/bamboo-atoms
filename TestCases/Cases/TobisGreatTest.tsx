@@ -14,14 +14,14 @@ const tobisGreatTheme = extendTheme({
     },
 });
 
-const tobisGreaterTheme = extendTheme({
+const tobisEvenGreaterTheme = extendTheme({
     colorMode: 'light',
 });
 
 export const TobisGreatTest = () => {
     const { Button, Text } = useComponents();
     return (
-        <ProvideTheme theme={tobisGreaterTheme}>
+        <ProvideTheme theme={tobisEvenGreaterTheme}>
             <ProvideTheme theme={tobisGreatTheme}>
                 <Button onPress={() => console.log('yeah')}>
                     <Text>Tobis great dark button</Text>
