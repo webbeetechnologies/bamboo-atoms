@@ -10,7 +10,7 @@ const useComponentStyles = (
     style: StyleProp<any> | StyleProp<any>[] = defaultStyleObject,
 ) => {
     const { extractStyles, ...theme } = useContext(ThemeContext);
-    const colorMode = useColorMode();
+    const { colorMode } = useColorMode();
 
     return useMemo(
         () => extractStyles({ theme, componentName, colorMode, style: StyleSheet.flatten(style) }),

@@ -15,4 +15,5 @@ export {
     extractStyles,
     IExtractStylesFuncArgs,
     IStyleWithTheme,
+    ColorMode,
 } from './theme';

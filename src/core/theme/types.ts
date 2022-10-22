@@ -30,15 +30,19 @@ export interface IComponentStyles {
     [key: string]: IStyleWithTheme<ViewStyle | TextStyle | ImageStyle>; // all three possible styles
 }
 
+export type ColorMode = 'auto' | 'light' | 'dark';
+
 export interface ITheme extends IComponentStyles {
-    colorMode: 'auto' | 'light' | 'dark';
+    colorMode: ColorMode;
+    setColorMode: (colorMode: ColorMode) => void;
+    toggleColorMode: () => void;
     [key: string]: IStyleWithTheme<ViewStyle | TextStyle | ImageStyle> | any; // to make it extendable
 }
 
 export interface IExtractStylesFuncArgs {
     theme: ITheme;
     componentName: keyof IComponentStyles | string;
-    colorMode: 'light' | 'dark';
+    colorMode: Omit<ColorMode, 'auto'>;
     style: StyleProp<any>;
 }
 

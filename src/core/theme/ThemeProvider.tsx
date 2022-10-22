@@ -1,11 +1,15 @@
-import React, { createContext, useContext, useMemo } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import merge from 'ts-deepmerge';
-import type { ITheme, ThemeProviderContext, ProvideThemeArgs } from './types';
+
+import { resolveColorMode } from '../../utils';
+import type { ITheme, ThemeProviderContext, ProvideThemeArgs, ColorMode } from './types';
 import { componentStyles } from './defaultStyles';
 import { defaultExtractStyles } from './extractStyles';
 
 const defaultThemeValue: ITheme = {
     colorMode: 'auto',
+    setColorMode: () => {},
+    toggleColorMode: () => {},
     ...componentStyles,
 };
 
@@ -23,6 +27,19 @@ export const ProvideTheme = ({
 }: ProvideThemeArgs) => {
     const contextValue = useContext(ThemeContext);
 
+    const [colorMode, setColorMode] = useState(theme?.colorMode || contextValue.colorMode);
+
+    const handleSetColorMode = useCallback((mode: ColorMode) => {
+        setColorMode(mode || 'auto');
+    }, []);
+    const toggleColorMode = useCallback(() => {
+        setColorMode(resolveColorMode(colorMode) === 'dark' ? 'light' : 'dark');
+    }, [colorMode]);
+
+    useEffect(() => {
+        if (theme?.colorMode) setColorMode(theme?.colorMode);
+    }, [theme?.colorMode]);
+
     const memoizedValue = useMemo(() => {
         const newContextValue = { ...theme, extractStyles };
 
@@ -31,8 +48,11 @@ export const ProvideTheme = ({
             ...newContextValue,
             ...(defaultContextValue === contextValue ? newContextValue : contextValue),
             '': {},
+            colorMode,
+            setColorMode: handleSetColorMode,
+            toggleColorMode,
         };
-    }, [theme, extractStyles, contextValue]);
+    }, [theme, extractStyles, contextValue, colorMode, handleSetColorMode, toggleColorMode]);
 
     return <ThemeContext.Provider value={memoizedValue}>{children}</ThemeContext.Provider>;
 };
