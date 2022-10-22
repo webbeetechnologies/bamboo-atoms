@@ -44,9 +44,11 @@ export const ProvideTheme = ({
         const newContextValue = { ...theme, extractStyles };
 
         return {
-            ...defaultContextValue,
-            ...newContextValue,
-            ...(defaultContextValue === contextValue ? newContextValue : contextValue),
+            ...merge(
+                defaultThemeValue,
+                newContextValue,
+                defaultContextValue === contextValue ? newContextValue : contextValue,
+            ),
             '': {},
             colorMode,
             setColorMode: handleSetColorMode,
