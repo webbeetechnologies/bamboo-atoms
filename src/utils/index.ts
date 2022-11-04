@@ -8,7 +8,7 @@ export const extractComponents =
     (props: IExtendComponentsTypes<T>) =>
         children(props);
 
-export const resolveColorMode = (colorMode: ColorMode): Omit<ColorMode, 'auto'> => {
+export const resolveColorMode = (colorMode: ColorMode) => {
     const defaultMode = Appearance.getColorScheme() || 'light';
 
     return colorMode === 'auto' ? defaultMode : colorMode;

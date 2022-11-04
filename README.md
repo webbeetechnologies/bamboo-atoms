@@ -49,7 +49,7 @@ A high level component library that would otherwise actually create a product.
 // TODO: Add design patterns
 
 
-## Build Setup
+## Get Started
 
 ``` bash
 # install dependencies
@@ -57,6 +57,9 @@ yarn
 
 # install dependencies for the library and examples
 yarn bootstrap
+
+# setup husky
+yarn prepare:husky
 ```
 
 ## To Release
