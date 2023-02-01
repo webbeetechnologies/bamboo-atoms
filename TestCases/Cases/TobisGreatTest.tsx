@@ -1,3 +1,4 @@
+import React from 'react';
 import { extendTheme, ProvideTheme, useComponents } from 'bamboo-atoms';
 
 const tobisGreatTheme = extendTheme({
@@ -23,7 +24,7 @@ export const TobisGreatTest = () => {
     return (
         <ProvideTheme theme={tobisEvenGreaterTheme}>
             <ProvideTheme theme={tobisGreatTheme}>
-                <Button onPress={() => console.log('yeah')}>
+                <Button onPress={() => {}}>
                     <Text>Tobis great dark button</Text>
                 </Button>
             </ProvideTheme>

@@ -42,7 +42,7 @@ export interface ITheme extends IComponentStyles {
 export interface IExtractStylesFuncArgs {
     theme: ITheme;
     componentName: keyof IComponentStyles | string;
-    colorMode: Omit<ColorMode, 'auto'>;
+    colorMode: 'light' | 'dark';
     style: StyleProp<any>;
 }
 
