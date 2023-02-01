@@ -1,6 +1,6 @@
 {
   "name": "@bambooapp/bamboo-atoms",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "private": false,
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
