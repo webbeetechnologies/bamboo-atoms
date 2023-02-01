@@ -23,7 +23,7 @@
     "test:storybook": "yarn --cwd ./example test-storybook",
     "bootstrap": "yarn --cwd ./example && yarn",
     "bundle": "yarn prepare && mkdir -p dist && npm pack --pack-destination=dist",
-    "do-release": "yarn publish dist/bambooapp-bamboo-atoms-$npm_package_version.tgz",
+    "do-release": "npm publish dist/bambooapp-bamboo-atoms-$npm_package_version.tgz",
     "release": "yarn bundle && yarn do-release"
   },
   "devDependencies": {
