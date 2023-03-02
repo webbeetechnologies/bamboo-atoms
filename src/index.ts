@@ -13,25 +13,5 @@ export {
     DefaultComponents,
 } from './core';
 export { useComponents, useMediaQuery, useComponentStyles, useTheme, useColorMode } from './hooks';
-export {
-    ActivityIndicatorProps,
-    ButtonProps,
-    ImageProps,
-    SwitchProps,
-    TextInputProps,
-    H1Props,
-    H2Props,
-    H3Props,
-    H4Props,
-    H6Props,
-    HeadingProps,
-    ItalicProps,
-    LabelProps,
-    StrikethroughProps,
-    StrongProps,
-    TextProps,
-    UnderlineProps,
-    ViewProps,
-    textFactory,
-} from './components';
+export * from './components';
 export { extractComponents } from './utils';
