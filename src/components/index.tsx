@@ -29,6 +29,7 @@ export {
     Underline,
     textFactory,
 } from './Typography';
+
 export type {
     H1Props,
     H2Props,
