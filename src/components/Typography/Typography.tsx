@@ -29,10 +29,10 @@ export const textFactory = (
             );
 
             return hasAncestorText ? (
-                <DefaultComponent ref={ref} style={styles} {...rest} />
+                <DefaultComponent ref={ref} style={styles} selectable {...rest} />
             ) : (
                 <HasAncestorContext.Provider value={true}>
-                    <DefaultComponent ref={ref} style={styles} {...rest} />
+                    <DefaultComponent ref={ref} style={styles} selectable {...rest} />
                 </HasAncestorContext.Provider>
             );
         }),
