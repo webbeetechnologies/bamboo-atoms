@@ -1,0 +1,12 @@
+{
+    "name": "@bambooapp/bamboo-repository",
+    "version": "1.0.0",
+    "description": "",
+    "main": "../lib/commonjs/repository/index.js",
+    "module": "../lib/module/repository/index.js",
+    "types": "../lib/typescript/repository/index.d.ts",
+    "author": "Shashank Agarwal <shashank@butlerapp.de>",
+    "license": "MIT",
+    "sideEffects": false
+}
+  

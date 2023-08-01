@@ -4,6 +4,8 @@ export {
     ProvideTheme,
     extendTheme,
     extractStyles,
+    componentRepository,
+    registerComponent,
     ITheme,
     IExtendComponentsTypes,
     IStyleWithTheme,
@@ -11,6 +13,8 @@ export {
     IExtractStylesFuncArgs,
     IComponentStyles,
     DefaultComponents,
+    ComponentWithTheme,
+
 } from './core';
 export { useComponents, useMediaQuery, useComponentStyles, useTheme, useColorMode } from './hooks';
 export * from './components';

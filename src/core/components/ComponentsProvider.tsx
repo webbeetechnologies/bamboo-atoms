@@ -21,6 +21,7 @@ import {
     View,
 } from '../../components';
 import type { IComponentsProviderContext, IExtendComponentsTypes } from './types';
+import { useRegisteryListener } from '../componentRepository';
 
 const defaultComponents = {
     ActivityIndicator: ActivityIndicator,
@@ -44,6 +45,7 @@ const defaultComponents = {
     View: View,
 };
 
+const ParentContext = createContext<boolean>(false);
 export const ComponentsContext = createContext<IComponentsProviderContext>(defaultComponents);
 
 export const ProvideComponents = ({
@@ -55,20 +57,29 @@ export const ProvideComponents = ({
 }) => {
     const contextValue = useContext(ComponentsContext);
 
+    const registeredComponents = useRegisteryListener({
+        hasParentContext: useContext(ParentContext),
+        type: 'components'
+    })
+
     const memoizedValue = useMemo(
         () => ({
             ...defaultComponents,
+            ...registeredComponents,
             ...components,
             ...(defaultComponents === contextValue ? components : contextValue),
         }),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [],
+        [registeredComponents],
     );
 
     return (
-        <ComponentsContext.Provider value={memoizedValue}>{children}</ComponentsContext.Provider>
+        <ParentContext.Provider value={true}>
+            <ComponentsContext.Provider value={memoizedValue}>{children}</ComponentsContext.Provider>
+        </ParentContext.Provider>
     );
 };
+
+
 
 export const ConsumeComponents = <T,>({
     children,

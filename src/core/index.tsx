@@ -6,6 +6,7 @@ export {
     IExtendComponentsTypes,
     DefaultComponents,
 } from './components';
+
 export {
     ProvideTheme,
     ITheme,
@@ -17,3 +18,5 @@ export {
     IStyleWithTheme,
     ColorMode,
 } from './theme';
+
+export * from "./componentRepository";

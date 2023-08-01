@@ -13,6 +13,14 @@ import type { NoInfer } from '../../types';
 
 export type IExtendComponentsTypes<T> = Omit<DefaultComponents, keyof NoInfer<T>> & NoInfer<T>;
 
+
+declare global {
+    namespace BambooAtoms {
+        interface Components {}
+    }
+}
+
+
 // TODO better type-checking
 export interface DefaultComponents {
     ActivityIndicator: ComponentType<ActivityIndicatorProps> | ComponentType<any>;
@@ -36,6 +44,6 @@ export interface DefaultComponents {
     View: ComponentType<ViewProps> | ComponentType<any>;
 }
 
-export interface IComponentsProviderContext extends DefaultComponents {
+export interface IComponentsProviderContext extends DefaultComponents, BambooAtoms.Components {
     [key: string]: ComponentType<any>;
 }
