@@ -5,6 +5,7 @@ import { resolveColorMode } from '../../utils';
 import type { ITheme, ThemeProviderContext, ProvideThemeArgs, ColorMode } from './types';
 import { componentStyles } from './defaultStyles';
 import { defaultExtractStyles } from './extractStyles';
+import { useRegisteryListener } from '../componentRepository';
 
 const defaultThemeValue: ITheme = {
     colorMode: 'auto',
@@ -18,6 +19,7 @@ const defaultContextValue: ThemeProviderContext = {
     extractStyles: defaultExtractStyles,
 };
 
+const RootContext = createContext(true);
 export const ThemeContext = createContext<ThemeProviderContext>(defaultContextValue);
 
 export const ProvideTheme = ({
@@ -29,9 +31,15 @@ export const ProvideTheme = ({
 
     const [colorMode, setColorMode] = useState(theme?.colorMode || contextValue.colorMode);
 
+    const registeredStyles = useRegisteryListener({
+        isRoot: useContext(RootContext),
+        type: 'styles',
+    });
+
     const handleSetColorMode = useCallback((mode: ColorMode) => {
         setColorMode(mode || 'auto');
     }, []);
+
     const toggleColorMode = useCallback(() => {
         setColorMode(resolveColorMode(colorMode) === 'dark' ? 'light' : 'dark');
     }, [colorMode]);
@@ -46,6 +54,7 @@ export const ProvideTheme = ({
         return {
             ...merge(
                 defaultThemeValue,
+                registeredStyles,
                 newContextValue,
                 defaultContextValue === contextValue ? newContextValue : contextValue,
             ),
@@ -54,9 +63,21 @@ export const ProvideTheme = ({
             setColorMode: handleSetColorMode,
             toggleColorMode,
         };
-    }, [theme, extractStyles, contextValue, colorMode, handleSetColorMode, toggleColorMode]);
+    }, [
+        theme,
+        registeredStyles,
+        extractStyles,
+        contextValue,
+        colorMode,
+        handleSetColorMode,
+        toggleColorMode,
+    ]);
 
-    return <ThemeContext.Provider value={memoizedValue}>{children}</ThemeContext.Provider>;
+    return (
+        <RootContext.Provider value={false}>
+            <ThemeContext.Provider value={memoizedValue}>{children}</ThemeContext.Provider>
+        </RootContext.Provider>
+    );
 };
 
 export const extendTheme = (theme: Partial<ITheme>): ITheme => {

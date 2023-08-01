@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useMemo } from 'react';
+import React, { createContext, ReactNode, useContext, useMemo, useRef } from 'react';
 import {
     ActivityIndicator,
     Button,
@@ -21,6 +21,7 @@ import {
     View,
 } from '../../components';
 import type { IComponentsProviderContext, IExtendComponentsTypes } from './types';
+import { useRegisteryListener } from '../componentRepository';
 
 const defaultComponents = {
     ActivityIndicator: ActivityIndicator,
@@ -44,29 +45,40 @@ const defaultComponents = {
     View: View,
 };
 
+const RootContext = createContext<boolean>(true);
 export const ComponentsContext = createContext<IComponentsProviderContext>(defaultComponents);
 
 export const ProvideComponents = ({
-    components,
+    components: componentsProp,
     children,
 }: {
     components: Partial<IComponentsProviderContext>;
     children: ReactNode;
 }) => {
     const contextValue = useContext(ComponentsContext);
+    const { components } = useRef({ components: componentsProp }).current;
+
+    const registeredComponents = useRegisteryListener({
+        isRoot: useContext(RootContext),
+        type: 'components',
+    });
 
     const memoizedValue = useMemo(
         () => ({
             ...defaultComponents,
+            ...registeredComponents,
             ...components,
             ...(defaultComponents === contextValue ? components : contextValue),
         }),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [],
+        [contextValue, registeredComponents, components],
     );
 
     return (
-        <ComponentsContext.Provider value={memoizedValue}>{children}</ComponentsContext.Provider>
+        <RootContext.Provider value={false}>
+            <ComponentsContext.Provider value={memoizedValue}>
+                {children}
+            </ComponentsContext.Provider>
+        </RootContext.Provider>
     );
 };
 

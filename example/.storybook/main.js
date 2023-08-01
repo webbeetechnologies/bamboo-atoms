@@ -7,4 +7,8 @@ module.exports = {
         '@storybook/addon-react-native-web',
     ],
     framework: '@storybook/react',
+    webpackFinal: async (config, { configType }) => {
+        config.devtool = 'source-map';
+        return config;
+    },
 };
