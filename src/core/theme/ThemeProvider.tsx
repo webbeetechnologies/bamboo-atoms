@@ -19,7 +19,7 @@ const defaultContextValue: ThemeProviderContext = {
     extractStyles: defaultExtractStyles,
 };
 
-const ParentContext = createContext(false);
+const RootContext = createContext(true);
 export const ThemeContext = createContext<ThemeProviderContext>(defaultContextValue);
 
 export const ProvideTheme = ({
@@ -32,7 +32,7 @@ export const ProvideTheme = ({
     const [colorMode, setColorMode] = useState(theme?.colorMode || contextValue.colorMode);
 
     const registeredStyles = useRegisteryListener({
-        hasParentContext: useContext(ParentContext),
+        isRoot: useContext(RootContext),
         type: 'styles'
     })
 
@@ -68,9 +68,9 @@ export const ProvideTheme = ({
     }, [theme, registeredStyles, extractStyles, contextValue, colorMode, handleSetColorMode, toggleColorMode]);
 
     return (
-        <ParentContext.Provider value={true}>
+        <RootContext.Provider value={false}>
             <ThemeContext.Provider value={memoizedValue}>{children}</ThemeContext.Provider>
-        </ParentContext.Provider>
+        </RootContext.Provider>
     );
 };
 

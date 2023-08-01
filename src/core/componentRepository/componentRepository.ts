@@ -36,21 +36,21 @@ const sliceGetters  = {
 type SliceGetters = typeof sliceGetters;
 
 
-export const useRegisteryListener = <T extends keyof SliceGetters>(props: { hasParentContext: boolean, type: T}) => {
-    const { hasParentContext,  } = props;
+export const useRegisteryListener = <T extends keyof SliceGetters>(props: { isRoot: boolean, type: T}) => {
+    const { isRoot,  } = props;
     const type = useRef(props.type).current;
     const [registeredItems, setRegisteredItems ] = useState<SliceGetters[T]>(sliceGetters[type]);
 
     useEffect(() => {
-        if (hasParentContext) return;
+        if (!isRoot) return;
 
         return componentRepository.listen(() => {
             setRegisteredItems(sliceGetters[type]);
         });
-    }, [hasParentContext, setRegisteredItems, type]);
+    }, [isRoot, setRegisteredItems, type]);
 
 
-    if (hasParentContext) null;
+    if (!isRoot) null;
 
     return registeredItems;
 }

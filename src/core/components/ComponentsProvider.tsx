@@ -45,7 +45,7 @@ const defaultComponents = {
     View: View,
 };
 
-const ParentContext = createContext<boolean>(false);
+const RootContext = createContext<boolean>(true);
 export const ComponentsContext = createContext<IComponentsProviderContext>(defaultComponents);
 
 export const ProvideComponents = ({
@@ -58,7 +58,7 @@ export const ProvideComponents = ({
     const contextValue = useContext(ComponentsContext);
 
     const registeredComponents = useRegisteryListener({
-        hasParentContext: useContext(ParentContext),
+        isRoot: useContext(RootContext),
         type: 'components'
     })
 
@@ -73,9 +73,9 @@ export const ProvideComponents = ({
     );
 
     return (
-        <ParentContext.Provider value={true}>
+        <RootContext.Provider value={false}>
             <ComponentsContext.Provider value={memoizedValue}>{children}</ComponentsContext.Provider>
-        </ParentContext.Provider>
+        </RootContext.Provider>
     );
 };
 
