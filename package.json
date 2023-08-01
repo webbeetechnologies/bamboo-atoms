@@ -1,6 +1,6 @@
 {
   "name": "@bambooapp/bamboo-atoms",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "types": "lib/typescript/index.d.ts",
@@ -24,7 +24,8 @@
     "bootstrap": "yarn --cwd ./example && yarn",
     "bundle": "yarn prepare && mkdir -p dist && npm pack --pack-destination=dist",
     "do-release": "npm publish ./dist/bambooapp-bamboo-atoms-$npm_package_version.tgz",
-    "release": "yarn bundle && yarn do-release"
+    "release": "yarn bundle && yarn do-release",
+    "release:dev": "npm version prepatch --preid=dev && yarn bundle && yarn do-release --tag=dev"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "2.0.0",
