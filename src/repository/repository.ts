@@ -45,9 +45,12 @@ export class Repository<T> extends EventEmitter {
      * Register a item with the src.
      */
     register = <X extends T = T, ItemName extends string = ''>(itemName: ItemName, item: X) => {
+        let updatedItem = this.#onRegister?.(item, itemName);
+        if (!updatedItem) updatedItem = item;
+
         this.registry = {
             ...this.registry,
-            [itemName]: this.#onRegister?.(item, itemName) ?? item,
+            [itemName]: updatedItem,
         };
 
         this.emit('item_registered', itemName);
