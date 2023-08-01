@@ -51,8 +51,10 @@ const MyAwesomeComponent = () => {
 registerComponent('MyAwesomeComponent', {
     Component: MyAwesomeComponent,
     defaultStyles: {
-        color: 'red',
-        fontSize: 16,
+        MyAwesomeComponent: {
+            color: 'red',
+            fontSize: 16,
+        }
     }
 })
 

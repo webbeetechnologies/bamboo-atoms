@@ -14,23 +14,18 @@ export const componentRepository = new Repository<ComponentWithTheme<any>>({name
 export const registerComponent: typeof componentRepository['register'] = (name: string, item) => componentRepository.register(name, item)
 
 
-const getAllFactory = <T extends keyof ComponentWithTheme>(arg: T) => () => {
-    const allComponents = componentRepository.getAll();
-
-    return Object.keys(allComponents).reduce((all: Record<string, ComponentWithTheme[T]>, current) => ({ ...all, [current]: allComponents[current][arg]}), {});
-}
-
-
-export const getAllComponents = getAllFactory('Component');
-
-
-export const getAllStyles = getAllFactory('defaultStyles');
 
 
 
 const sliceGetters  = {
-    styles: getAllStyles,
-    components: getAllComponents,
+    styles: () => {
+        const allComponents = componentRepository.getAll();
+        return Object.keys(allComponents).reduce((all: Record<string, ComponentWithTheme['defaultStyles']>, current) => ({ ...all, ...allComponents[current].defaultStyles }), {});
+    },
+    components: () => {
+        const allComponents = componentRepository.getAll();
+        return Object.keys(allComponents).reduce((all: Record<string, ComponentWithTheme['Component']>, current) => ({ ...all, [current]: allComponents[current].Component}), {});
+    },
 } as const
 
 type SliceGetters = typeof sliceGetters;

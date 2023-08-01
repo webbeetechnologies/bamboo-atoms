@@ -31,12 +31,14 @@ registerComponent("Code", {
         return <Text {...props} style={useComponentStyles('Code', props.style)} />
     },
     defaultStyles: {
-        borderColor: '#ddd',
-        borderWidth: 1,
-        borderRadius: 2,
-        padding: 4,
-        marginTop: 4,
-    },
+        Code: {
+            borderColor: '#ddd',
+            borderWidth: 1,
+            borderRadius: 2,
+            padding: 4,
+            marginTop: 4,
+        },
+    }
 });
 
 
@@ -50,9 +52,11 @@ registerComponent("CustomComponent", {
             <Text>default styles for lazy registered CustomComponent:</Text><Code style={componentStyles}>{JSON.stringify(componentStyles, null, 4)}</Code></View>
     },
     defaultStyles: {
-        backgroundColor: '#333',
-        color: '#fff'
-    },
+            CustomComponent: {
+            backgroundColor: '#333',
+            color: '#fff'
+        },
+    }
 });
 
 

@@ -6,7 +6,7 @@ export type Component<P = {}> = ComponentType<P> | ComponentType<P> & Record<str
 
 export type ComponentWithTheme<P = {}> = {
     Component: Component<P>,
-    defaultStyles: IStyleWithTheme<ViewStyle | TextStyle>;
+    defaultStyles: Record<string, IStyleWithTheme<ViewStyle | TextStyle>>;
 }
 
 export type AllComponents = Record<string, Component>
