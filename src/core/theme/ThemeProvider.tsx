@@ -33,8 +33,8 @@ export const ProvideTheme = ({
 
     const registeredStyles = useRegisteryListener({
         isRoot: useContext(RootContext),
-        type: 'styles'
-    })
+        type: 'styles',
+    });
 
     const handleSetColorMode = useCallback((mode: ColorMode) => {
         setColorMode(mode || 'auto');
@@ -44,11 +44,9 @@ export const ProvideTheme = ({
         setColorMode(resolveColorMode(colorMode) === 'dark' ? 'light' : 'dark');
     }, [colorMode]);
 
-
     useEffect(() => {
         if (theme?.colorMode) setColorMode(theme?.colorMode);
     }, [theme?.colorMode]);
-
 
     const memoizedValue = useMemo(() => {
         const newContextValue = { ...theme, extractStyles };
@@ -65,7 +63,15 @@ export const ProvideTheme = ({
             setColorMode: handleSetColorMode,
             toggleColorMode,
         };
-    }, [theme, registeredStyles, extractStyles, contextValue, colorMode, handleSetColorMode, toggleColorMode]);
+    }, [
+        theme,
+        registeredStyles,
+        extractStyles,
+        contextValue,
+        colorMode,
+        handleSetColorMode,
+        toggleColorMode,
+    ]);
 
     return (
         <RootContext.Provider value={false}>

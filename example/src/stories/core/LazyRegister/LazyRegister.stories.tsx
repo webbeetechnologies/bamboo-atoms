@@ -11,8 +11,7 @@ export default {
 
 export const Default: ComponentStory<typeof Example> = args => <Example {...args} />;
 
-Default.args = {
-};
+Default.args = {};
 
 Default.parameters = {
     docs: {

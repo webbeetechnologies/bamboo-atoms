@@ -19,4 +19,4 @@ export {
     ColorMode,
 } from './theme';
 
-export * from "./componentRepository";
+export * from './componentRepository';

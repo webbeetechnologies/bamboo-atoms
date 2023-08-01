@@ -4,30 +4,30 @@ import { Source } from '@storybook/addon-docs';
 import { InjectedComponentTypes, withDocsWrapper } from '../../common';
 
 const DocsPage = () => {
-    const { View, H1, H3, Text, Code, Strong } = useComponents<InjectedComponentTypes>();
+    const { View, H1, H3, Text } = useComponents<InjectedComponentTypes>();
 
     return (
         <View>
             <H1>Lazy Register Components and styles</H1>
             <Text>
-                Registering components lazily allows you to inject components somewhere down the component tree without having to worry about importing them all in one place.
+                Registering components lazily allows you to inject components somewhere down the
+                component tree without having to worry about importing them all in one place.
             </Text>
 
             <H3>Provide Components</H3>
             <Text>
-               Register a new component before or after the Component Provider context has already rendered.
-               Components passed to the context provider as props always takes precedence.
+                Register a new component before or after the Component Provider context has already
+                rendered. Components passed to the context provider as props always takes
+                precedence.
             </Text>
-
 
             <H3>Provide Theme</H3>
             <Text>
-                Register a component theme along with the component.
-                This allows you to also define a default theme for the component.
+                Register a component theme along with the component. This allows you to also define
+                a default theme for the component.
             </Text>
 
             <Source language="tsx" code={firstCodeBlock} />
-
         </View>
     );
 };
@@ -74,6 +74,5 @@ export const App = (props: Props) => {
     );
 };
 `;
-
 
 export default withDocsWrapper(DocsPage);

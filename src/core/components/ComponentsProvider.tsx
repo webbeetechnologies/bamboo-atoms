@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useMemo } from 'react';
+import React, { createContext, ReactNode, useContext, useMemo, useRef } from 'react';
 import {
     ActivityIndicator,
     Button,
@@ -49,18 +49,19 @@ const RootContext = createContext<boolean>(true);
 export const ComponentsContext = createContext<IComponentsProviderContext>(defaultComponents);
 
 export const ProvideComponents = ({
-    components,
+    components: componentsProp,
     children,
 }: {
     components: Partial<IComponentsProviderContext>;
     children: ReactNode;
 }) => {
     const contextValue = useContext(ComponentsContext);
+    const { components } = useRef({ components: componentsProp }).current;
 
     const registeredComponents = useRegisteryListener({
         isRoot: useContext(RootContext),
-        type: 'components'
-    })
+        type: 'components',
+    });
 
     const memoizedValue = useMemo(
         () => ({
@@ -69,17 +70,17 @@ export const ProvideComponents = ({
             ...components,
             ...(defaultComponents === contextValue ? components : contextValue),
         }),
-        [registeredComponents],
+        [contextValue, registeredComponents, components],
     );
 
     return (
         <RootContext.Provider value={false}>
-            <ComponentsContext.Provider value={memoizedValue}>{children}</ComponentsContext.Provider>
+            <ComponentsContext.Provider value={memoizedValue}>
+                {children}
+            </ComponentsContext.Provider>
         </RootContext.Provider>
     );
 };
-
-
 
 export const ConsumeComponents = <T,>({
     children,

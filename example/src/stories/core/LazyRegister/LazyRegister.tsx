@@ -1,7 +1,13 @@
 import React, { ComponentProps, ComponentType, PropsWithChildren } from 'react';
-import { Button as RNButton} from "react-native"
-import { ProvideComponents, ProvideTheme, TextProps, registerComponent, useComponentStyles, useComponents } from 'bamboo-atoms';
-
+import { Button as RNButton } from 'react-native';
+import {
+    ProvideComponents,
+    ProvideTheme,
+    TextProps,
+    registerComponent,
+    useComponentStyles,
+    useComponents,
+} from 'bamboo-atoms';
 
 export type Props = ComponentProps<typeof RNButton> & {};
 
@@ -9,26 +15,22 @@ export type Props = ComponentProps<typeof RNButton> & {};
 type InjectedComponents = {
     Button: typeof RNButton;
     CustomComponent: ComponentType;
-    Code: ComponentType<PropsWithChildren<TextProps>>
+    Code: ComponentType<PropsWithChildren<TextProps>>;
 };
 
-const components = {
-};
+const components = {};
 
-
-registerComponent("Button", {
-    Component: (props) => {
-        return <RNButton title='I am a React Native Button' { ...props } />
+registerComponent('Button', {
+    Component: props => {
+        return <RNButton title="I am a React Native Button" {...props} />;
     },
     defaultStyles: {},
 });
 
-
-
-registerComponent("Code", {
-    Component: (props) => {
-        const  { Text, } = useComponents();
-        return <Text {...props} style={useComponentStyles('Code', props.style)} />
+registerComponent('Code', {
+    Component: props => {
+        const { Text } = useComponents();
+        return <Text {...props} style={useComponentStyles('Code', props.style)} />;
     },
     defaultStyles: {
         Code: {
@@ -38,27 +40,29 @@ registerComponent("Code", {
             padding: 4,
             marginTop: 4,
         },
-    }
+    },
 });
 
-
-
-registerComponent("CustomComponent", {
+const customComponentStyles = { marginTop: 8 };
+registerComponent('CustomComponent', {
     Component: () => {
-        const  { Text, View, Code } = useComponents<InjectedComponents>();
+        const { Text, View, Code } = useComponents<InjectedComponents>();
 
         const componentStyles = useComponentStyles('CustomComponent');
-        return <View style={{ marginTop: 8, }}>
-            <Text>default styles for lazy registered CustomComponent:</Text><Code style={componentStyles}>{JSON.stringify(componentStyles, null, 4)}</Code></View>
+        return (
+            <View style={customComponentStyles}>
+                <Text>default styles for lazy registered CustomComponent:</Text>
+                <Code style={componentStyles}>{JSON.stringify(componentStyles, null, 4)}</Code>
+            </View>
+        );
     },
     defaultStyles: {
-            CustomComponent: {
+        CustomComponent: {
             backgroundColor: '#333',
-            color: '#fff'
+            color: '#fff',
         },
-    }
+    },
 });
-
 
 const ButtonContainer = (props: Props) => {
     const { Button, CustomComponent } = useComponents<InjectedComponents>();

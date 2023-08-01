@@ -1,10 +1,12 @@
-import EventEmitter, { ConstructorOptions, event, eventNS } from 'eventemitter2';
+import EventEmitter, { ConstructorOptions, event as Event, eventNS } from 'eventemitter2';
 import debounce from 'lodash.debounce';
 
 interface RepositoryConstructor<T> extends ConstructorOptions {
     onRegister?: (arg: T, name: string) => T;
     name?: string;
 }
+
+let id = Date.now();
 
 export class Repository<T> extends EventEmitter {
     private registry: Record<string, T> = {};
@@ -16,12 +18,13 @@ export class Repository<T> extends EventEmitter {
         return this.#name;
     }
 
-    static generateUniqueId = () =>
-        Buffer.from(Math.random().toString()).toString('base64').substring(10, 15);
+    static get uniqueId() {
+        return (id++).toString(36).substring(0, 15);
+    }
 
     constructor({
         onRegister = arg => arg,
-        name = Repository.generateUniqueId(),
+        name = Repository.uniqueId,
         ...options
     }: RepositoryConstructor<T> = {}) {
         super(options);
@@ -33,7 +36,7 @@ export class Repository<T> extends EventEmitter {
         return !!this.registry[itemName];
     };
 
-    emit(event: eventNS | event, ...values: any[]) {
+    emit(event: eventNS | Event, ...values: any[]) {
         event = typeof event === 'string' ? `${this.#name}::event` : event;
         return super.emit(event, ...values);
     }
@@ -57,29 +60,32 @@ export class Repository<T> extends EventEmitter {
         return this.registry;
     };
 
-
     /**
      * Register a listener to the module registry.
      * Return value returns a function that removes the listener.
      */
-    listen = (callback: (events: string[]) => void, { throttle = 100 }: { throttle?: number } = {}) => {
+    listen = (
+        callback: (events: string[]) => void,
+        { throttle = 100 }: { throttle?: number } = {},
+    ) => {
         let cached: string[] = [];
-        
 
         const wrappedCallback = () => {
             callback(cached);
             cached = [];
-        }
+        };
 
-        const debouncedCallback = !throttle ? wrappedCallback: debounce(wrappedCallback, Math.abs(throttle), {
-            trailing: true,
-            leading: false,
-        }) ;
+        const debouncedCallback = !throttle
+            ? wrappedCallback
+            : debounce(wrappedCallback, Math.abs(throttle), {
+                  trailing: true,
+                  leading: false,
+              });
 
         const handledCallback = (itemName: string) => {
             cached.push(itemName);
             debouncedCallback();
-        }
+        };
 
         this.on('item_registered', handledCallback);
         return () => {

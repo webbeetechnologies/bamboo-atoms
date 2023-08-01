@@ -13,13 +13,11 @@ import type { NoInfer } from '../../types';
 
 export type IExtendComponentsTypes<T> = Omit<DefaultComponents, keyof NoInfer<T>> & NoInfer<T>;
 
-
 declare global {
     namespace BambooAtoms {
         interface Components {}
     }
 }
-
 
 // TODO better type-checking
 export interface DefaultComponents {

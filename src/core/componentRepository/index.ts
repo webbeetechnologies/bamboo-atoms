@@ -1,2 +1,2 @@
-export * from "./componentRepository";
-export * from "./types";
+export * from './componentRepository';
+export * from './types';
