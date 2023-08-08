@@ -1,10 +1,10 @@
 import React, { ComponentProps, ComponentType, PropsWithChildren } from 'react';
-import { Button as RNButton } from 'react-native';
+import { Button as RNButton, Text as RNText, ViewProps } from 'react-native';
 import {
     ProvideComponents,
     ProvideTheme,
     TextProps,
-    registerComponent,
+    registerAtom,
     useComponentStyles,
     useComponents,
 } from 'bamboo-atoms';
@@ -16,18 +16,18 @@ type InjectedComponents = {
     Button: typeof RNButton;
     CustomComponent: ComponentType;
     Code: ComponentType<PropsWithChildren<TextProps>>;
+    HorizontalDivider: ComponentType<ViewProps>;
 };
 
 const components = {};
 
-registerComponent('Button', {
+registerAtom('Button', {
     Component: props => {
         return <RNButton title="I am a React Native Button" {...props} />;
     },
-    defaultStyles: {},
 });
 
-registerComponent('Code', {
+registerAtom('Code', {
     Component: props => {
         const { Text } = useComponents();
         return <Text {...props} style={useComponentStyles('Code', props.style)} />;
@@ -44,7 +44,7 @@ registerComponent('Code', {
 });
 
 const customComponentStyles = { marginTop: 8 };
-registerComponent('CustomComponent', {
+registerAtom('CustomComponent', {
     Component: () => {
         const { Text, View, Code } = useComponents<InjectedComponents>();
 
@@ -64,21 +64,77 @@ registerComponent('CustomComponent', {
     },
 });
 
-const ButtonContainer = (props: Props) => {
-    const { Button, CustomComponent } = useComponents<InjectedComponents>();
+registerAtom('H1', {
+    Component: (props: ComponentProps<typeof RNText>) => {
+        const componentStyles = useComponentStyles('H1');
+        return <RNText {...props} style={componentStyles} />;
+    },
+    defaultStyles: {
+        H1: {
+            fontSize: 20,
+            marginBottom: 8,
+        },
+    },
+});
+
+registerAtom('H2', {
+    Component: (props: ComponentProps<typeof RNText>) => {
+        const componentStyles = useComponentStyles('H2');
+        return <RNText {...props} style={componentStyles} />;
+    },
+    defaultStyles: {
+        H2: {
+            fontSize: 16,
+            padding: 4,
+            marginBottom: 8,
+            backgroundColor: '#ccc',
+            borderRadius: 2,
+        },
+    },
+});
+
+registerAtom('HorizontalDivider', {
+    Component: () => {
+        const { View } = useComponents();
+        const componentStyles = useComponentStyles('HorizontalDivider');
+
+        return <View style={componentStyles} />;
+    },
+    defaultStyles: {
+        HorizontalDivider: {
+            marginVertical: 8,
+            borderTopWidth: 1,
+            borderColor: '#999',
+            borderWidth: 0,
+            width: '100%',
+        },
+    },
+});
+
+const storyContainer = { alignSelf: 'flex-start' as const };
+
+const StoryRenderer = (props: Props) => {
+    const { View, Button, CustomComponent, HorizontalDivider, H1, H2 } =
+        useComponents<InjectedComponents>();
 
     return (
-        <ProvideTheme>
+        <View style={storyContainer}>
+            <H1>Usage: Replacing an existing default component passed as a prop</H1>
+            <H2>{`I'm a react-native Text Component,\nI replace the default H2 from bamboo-atoms.`}</H2>
+            <HorizontalDivider />
+            <H1>Usage: Injecting new components</H1>
             <Button onPress={() => {}} {...props} />
             <CustomComponent />
-        </ProvideTheme>
+        </View>
     );
 };
 
 export const Example = (props: Props) => {
     return (
         <ProvideComponents components={components}>
-            <ButtonContainer {...props} />
+            <ProvideTheme>
+                <StoryRenderer {...props} />
+            </ProvideTheme>
         </ProvideComponents>
     );
 };

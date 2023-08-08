@@ -66,8 +66,8 @@ export const ProvideComponents = ({
     const memoizedValue = useMemo(
         () => ({
             ...defaultComponents,
-            ...registeredComponents,
             ...components,
+            ...registeredComponents,
             ...(defaultComponents === contextValue ? components : contextValue),
         }),
         [contextValue, registeredComponents, components],

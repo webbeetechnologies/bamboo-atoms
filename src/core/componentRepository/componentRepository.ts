@@ -10,8 +10,8 @@ export const componentRepository = new Repository<ComponentWithTheme<any>>({
     },
 });
 
-export const registerComponent: typeof componentRepository['register'] = (name: string, item) =>
-    componentRepository.register(name, item);
+export const registerAtom: typeof componentRepository['register'] = (name: string, item) =>
+    componentRepository.register(name, { ...item, defaultStyles: item.defaultStyles ?? {} });
 
 const sliceGetters = {
     styles: () => {
@@ -44,7 +44,9 @@ export const useRegisteryListener = <T extends keyof SliceGetters>(props: {
 }) => {
     const { isRoot } = props;
     const type = useRef(props.type).current;
-    const [registeredItems, setRegisteredItems] = useState<SliceGetters[T]>(sliceGetters[type]);
+    const [registeredItems, setRegisteredItems] = useState<SliceGetters[T]>(
+        isRoot ? sliceGetters[type] : ({} as SliceGetters[T]),
+    );
 
     useEffect(() => {
         if (!isRoot) return;
