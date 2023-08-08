@@ -1,6 +1,6 @@
 {
   "name": "@bambooapp/bamboo-atoms",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "types": "lib/typescript/index.d.ts",

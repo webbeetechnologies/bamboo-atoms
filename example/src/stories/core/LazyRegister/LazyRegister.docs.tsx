@@ -33,7 +33,7 @@ const DocsPage = () => {
 };
 
 const firstCodeBlock = `
-import { ProvideComponents, useComponents, registerComponent } from '@webbee/bamboo-atoms';
+import { ProvideComponents, useComponents, registerAtom } from '@webbee/bamboo-atoms';
 
 type InjectedComponentTypes = { // only need to define the types of injected components and custom components
     MyAwesomeComponent: ComponentType<MyAwesomeComponentProps>;
@@ -48,7 +48,7 @@ const MyAwesomeComponent = () => {
     return <Text style={useComponentStyles("MyAwesomeComponent")}>I'm the most awesomest component. Expect me to be in red</Text>
 }
 
-registerComponent('MyAwesomeComponent', {
+registerAtom('MyAwesomeComponent', {
     Component: MyAwesomeComponent,
     defaultStyles: {
         MyAwesomeComponent: {

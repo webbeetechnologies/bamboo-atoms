@@ -5,7 +5,7 @@ export {
     extendTheme,
     extractStyles,
     componentRepository,
-    registerComponent,
+    registerAtom,
     ITheme,
     IExtendComponentsTypes,
     IStyleWithTheme,
