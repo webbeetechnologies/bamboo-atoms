@@ -1,5 +1,5 @@
-import React, { ComponentType, createContext, forwardRef, memo, useContext, useMemo } from 'react';
-import { StyleProp, StyleSheet, Text as NativeText } from 'react-native';
+import React, { ComponentType, createContext, forwardRef, memo, useContext } from 'react';
+import { StyleProp, Text as NativeText } from 'react-native';
 import { useComponentStyles } from '../../hooks';
 import type { IComponentStyles } from '../../core/theme/types';
 import type { ITypographyProps } from './types';
