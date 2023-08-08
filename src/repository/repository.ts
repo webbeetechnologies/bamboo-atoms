@@ -2,7 +2,7 @@ import EventEmitter, { ConstructorOptions, event as Event, eventNS } from 'event
 import debounce from 'lodash.debounce';
 
 interface RepositoryConstructor<T> extends ConstructorOptions {
-    onRegister?: (arg: T, name: string) => T;
+    onRegister?: (arg: T, name: string, registery: Record<string, T>) => T;
     name?: string;
 }
 
@@ -12,7 +12,7 @@ export class Repository<T> extends EventEmitter {
     private registry: Record<string, T> = {};
     readonly #name!: string;
 
-    readonly #onRegister!: (arg: T, name: string) => T;
+    readonly #onRegister!: (arg: T, name: string, registery: Record<string, T>) => T;
 
     get name() {
         return this.#name;
@@ -45,7 +45,7 @@ export class Repository<T> extends EventEmitter {
      * Register a item with the src.
      */
     register = <X extends T = T, ItemName extends string = ''>(itemName: ItemName, item: X) => {
-        let updatedItem = this.#onRegister?.(item, itemName);
+        let updatedItem = this.#onRegister?.(item, itemName, { ...this.registry });
         if (!updatedItem) updatedItem = item;
 
         this.registry = {

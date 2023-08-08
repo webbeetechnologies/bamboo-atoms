@@ -1,12 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { Repository } from '../../repository';
 import type { ComponentWithTheme } from './types';
+import merge from 'ts-deepmerge';
 
 export const componentRepository = new Repository<ComponentWithTheme<any>>({
     name: 'component-repository',
-    onRegister: (item, name) => {
+    onRegister: (item, name, registry) => {
         if (!item.Component.displayName) item.Component.displayName = name;
-        return item;
+        return {
+            ...item,
+            defaultStyles: merge(registry[name]?.defaultStyles ?? {}, item.defaultStyles ?? {}),
+        };
     },
 });
 
@@ -17,11 +21,9 @@ const sliceGetters = {
     styles: () => {
         const allComponents = componentRepository.getAll();
         return Object.keys(allComponents).reduce(
-            (all: Record<string, ComponentWithTheme['defaultStyles']>, current) => ({
-                ...all,
-                ...allComponents[current].defaultStyles,
-            }),
-            {},
+            (all: Record<string, ComponentWithTheme['defaultStyles']>[], current) =>
+                all.concat(all, allComponents[current].defaultStyles ?? {}),
+            [],
         );
     },
     components: () => {
@@ -44,8 +46,8 @@ export const useRegisteryListener = <T extends keyof SliceGetters>(props: {
 }) => {
     const { isRoot } = props;
     const type = useRef(props.type).current;
-    const [registeredItems, setRegisteredItems] = useState<SliceGetters[T]>(
-        isRoot ? sliceGetters[type] : ({} as SliceGetters[T]),
+    const [registeredItems, setRegisteredItems] = useState<SliceGetters[T] | null>(
+        isRoot ? sliceGetters[type] : null,
     );
 
     useEffect(() => {
@@ -58,5 +60,5 @@ export const useRegisteryListener = <T extends keyof SliceGetters>(props: {
 
     if (!isRoot) null;
 
-    return registeredItems;
+    return registeredItems as ReturnType<SliceGetters[T]> | null;
 };
