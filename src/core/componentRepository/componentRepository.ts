@@ -13,7 +13,7 @@ export const componentRepository = new Repository<ComponentWithTheme<any>>({
         if (!item.Component.displayName) item.Component.displayName = name;
 
         const registeredStyles = getDefaultStyles(registry[name]);
-        const itemDefaultStyles = getDefaultStyles(item.defaultStyles);
+        const itemDefaultStyles = getDefaultStyles(item);
 
         return {
             ...item,
@@ -25,7 +25,7 @@ export const componentRepository = new Repository<ComponentWithTheme<any>>({
 export const registerAtom: typeof componentRepository['register'] = (name: string, item) =>
     componentRepository.register(name, {
         ...item,
-        defaultStyles: getDefaultStyles(item.defaultStyles),
+        defaultStyles: getDefaultStyles(item),
     });
 
 const sliceGetters = {
@@ -33,7 +33,7 @@ const sliceGetters = {
         const allComponents = componentRepository.getAll();
         return Object.keys(allComponents).reduce(
             (all: Record<string, ComponentWithTheme['defaultStyles']>[], current) =>
-                all.concat(all, getDefaultStyles(allComponents[current].defaultStyles)),
+                all.concat(all, getDefaultStyles(allComponents[current])),
             [],
         );
     },
