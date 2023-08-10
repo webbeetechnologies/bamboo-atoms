@@ -67,7 +67,7 @@ export const ProvideComponents = ({
         () => ({
             ...defaultComponents,
             ...components,
-            ...(registeredComponents ?? {}),
+            ...(registeredComponents || {}),
             ...(defaultComponents === contextValue ? components : contextValue),
         }),
         [contextValue, registeredComponents, components],

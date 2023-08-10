@@ -3,26 +3,37 @@ import { Repository } from '../../repository';
 import type { ComponentWithTheme } from './types';
 import merge from 'ts-deepmerge';
 
+const getDefaultStyles = (item: Partial<ComponentWithTheme<any>> = {}) => {
+    return item.defaultStyles || {};
+};
+
 export const componentRepository = new Repository<ComponentWithTheme<any>>({
     name: 'component-repository',
     onRegister: (item, name, registry) => {
         if (!item.Component.displayName) item.Component.displayName = name;
+
+        const registeredStyles = getDefaultStyles(registry[name]);
+        const itemDefaultStyles = getDefaultStyles(item.defaultStyles);
+
         return {
             ...item,
-            defaultStyles: merge(registry[name]?.defaultStyles ?? {}, item.defaultStyles ?? {}),
+            defaultStyles: merge(registeredStyles, itemDefaultStyles),
         };
     },
 });
 
 export const registerAtom: typeof componentRepository['register'] = (name: string, item) =>
-    componentRepository.register(name, { ...item, defaultStyles: item.defaultStyles ?? {} });
+    componentRepository.register(name, {
+        ...item,
+        defaultStyles: getDefaultStyles(item.defaultStyles),
+    });
 
 const sliceGetters = {
     styles: () => {
         const allComponents = componentRepository.getAll();
         return Object.keys(allComponents).reduce(
             (all: Record<string, ComponentWithTheme['defaultStyles']>[], current) =>
-                all.concat(all, allComponents[current].defaultStyles ?? {}),
+                all.concat(all, getDefaultStyles(allComponents[current].defaultStyles)),
             [],
         );
     },
