@@ -13,7 +13,7 @@
     "prestart": "yarn update-stories",
     "storybook-watcher": "sb-rn-watcher --config-path .ondevice",
     "test-storybook": "test-storybook",
-    "chromatic": "npx chromatic --project-token=6b460fdb3508"
+    "chromatic": "npx chromatic --project-token=chpt_4fc1a3179528fbc"
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.0",

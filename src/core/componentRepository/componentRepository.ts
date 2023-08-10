@@ -1,27 +1,40 @@
 import { useEffect, useRef, useState } from 'react';
 import { Repository } from '../../repository';
 import type { ComponentWithTheme } from './types';
+import merge from 'ts-deepmerge';
+
+const getDefaultStyles = (item: Partial<ComponentWithTheme<any>> = {}) => {
+    return item.defaultStyles || {};
+};
 
 export const componentRepository = new Repository<ComponentWithTheme<any>>({
     name: 'component-repository',
-    onRegister: (item, name) => {
+    onRegister: (item, name, registry) => {
         if (!item.Component.displayName) item.Component.displayName = name;
-        return item;
+
+        const registeredStyles = getDefaultStyles(registry[name]);
+        const itemDefaultStyles = getDefaultStyles(item.defaultStyles);
+
+        return {
+            ...item,
+            defaultStyles: merge(registeredStyles, itemDefaultStyles),
+        };
     },
 });
 
 export const registerAtom: typeof componentRepository['register'] = (name: string, item) =>
-    componentRepository.register(name, { ...item, defaultStyles: item.defaultStyles ?? {} });
+    componentRepository.register(name, {
+        ...item,
+        defaultStyles: getDefaultStyles(item.defaultStyles),
+    });
 
 const sliceGetters = {
     styles: () => {
         const allComponents = componentRepository.getAll();
         return Object.keys(allComponents).reduce(
-            (all: Record<string, ComponentWithTheme['defaultStyles']>, current) => ({
-                ...all,
-                ...allComponents[current].defaultStyles,
-            }),
-            {},
+            (all: Record<string, ComponentWithTheme['defaultStyles']>[], current) =>
+                all.concat(all, getDefaultStyles(allComponents[current].defaultStyles)),
+            [],
         );
     },
     components: () => {
@@ -44,8 +57,8 @@ export const useRegisteryListener = <T extends keyof SliceGetters>(props: {
 }) => {
     const { isRoot } = props;
     const type = useRef(props.type).current;
-    const [registeredItems, setRegisteredItems] = useState<SliceGetters[T]>(
-        isRoot ? sliceGetters[type] : ({} as SliceGetters[T]),
+    const [registeredItems, setRegisteredItems] = useState<SliceGetters[T] | null>(
+        isRoot ? sliceGetters[type] : null,
     );
 
     useEffect(() => {
@@ -58,5 +71,5 @@ export const useRegisteryListener = <T extends keyof SliceGetters>(props: {
 
     if (!isRoot) null;
 
-    return registeredItems;
+    return registeredItems as ReturnType<SliceGetters[T]> | null;
 };

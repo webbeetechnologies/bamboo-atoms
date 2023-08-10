@@ -54,8 +54,8 @@ export const ProvideTheme = ({
         return {
             ...merge(
                 defaultThemeValue,
-                registeredStyles,
                 newContextValue,
+                ...(registeredStyles || []),
                 defaultContextValue === contextValue ? newContextValue : contextValue,
             ),
             '': {},
