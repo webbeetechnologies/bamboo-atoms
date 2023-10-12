@@ -3,6 +3,8 @@ import type { ComponentType } from 'react';
 import type {
     ActivityIndicatorProps,
     ButtonProps,
+    PressableProps,
+    TouchableWithoutFeedbackProps,
     ImageProps,
     SwitchProps,
     TextInputProps,
@@ -27,6 +29,8 @@ declare global {
 export interface DefaultComponents {
     ActivityIndicator: ComponentType<ActivityIndicatorProps> | ComponentType<any>;
     Button: ComponentType<ButtonProps> | ComponentType<any>;
+    Pressable: ComponentType<PressableProps> | ComponentType<any>;
+    TouchableWithoutFeedback: ComponentType<TouchableWithoutFeedbackProps> | ComponentType<any>;
     Image: ComponentType<ImageProps> | ComponentType<any>;
     Switch: ComponentType<SwitchProps> | ComponentType<any>;
     TextInput: ComponentType<TextInputProps> | ComponentType<any>;
