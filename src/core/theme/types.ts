@@ -10,6 +10,8 @@ export type IStyleWithTheme<T> = StyleProp<T> & {
 export interface IComponentStyles {
     ActivityIndicator: IStyleWithTheme<ViewStyle>;
     Button: IStyleWithTheme<ViewStyle>;
+    Pressable: IStyleWithTheme<ViewStyle>;
+    TouchableWithoutFeedback: IStyleWithTheme<ViewStyle>;
     Image: IStyleWithTheme<ImageStyle>;
     Switch: IStyleWithTheme<ViewStyle>;
     TextInput: IStyleWithTheme<ViewStyle>;

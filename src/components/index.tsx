@@ -13,6 +13,12 @@ export type { SwitchProps } from './Switch';
 export { TextInput } from './TextInput';
 export type { TextInputProps } from './TextInput';
 
+export { Pressable } from './Pressable';
+export type { PressableProps } from './Pressable';
+
+export { TouchableWithoutFeedback } from './TouchableWithoutFeedback';
+export type { TouchableWithoutFeedbackProps } from './TouchableWithoutFeedback';
+
 export {
     H1,
     H2,

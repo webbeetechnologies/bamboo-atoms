@@ -19,6 +19,8 @@ import {
     Text,
     Underline,
     View,
+    Pressable,
+    TouchableWithoutFeedback,
 } from '../../components';
 import type { IComponentsProviderContext, IExtendComponentsTypes } from './types';
 import { useRegisteryListener } from '../componentRepository';
@@ -43,6 +45,8 @@ const defaultComponents = {
     Text: Text,
     Underline: Underline,
     View: View,
+    Pressable: Pressable,
+    TouchableWithoutFeedback: TouchableWithoutFeedback,
 };
 
 const RootContext = createContext<boolean>(true);
