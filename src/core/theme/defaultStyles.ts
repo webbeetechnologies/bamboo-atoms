@@ -20,6 +20,8 @@ export const componentStyles: IComponentStyles = {
     Text: {},
     Underline: {},
     View: {},
+    Pressable: {},
+    TouchableWithoutFeedback: {},
 };
 
 export const {
@@ -42,4 +44,6 @@ export const {
     TextInput,
     Underline,
     View,
+    Pressable,
+    TouchableWithoutFeedback,
 } = componentStyles;

@@ -31,10 +31,14 @@ export const registerAtom: typeof componentRepository['register'] = (name: strin
 const sliceGetters = {
     styles: () => {
         const allComponents = componentRepository.getAll();
-        return Object.keys(allComponents).reduce(
-            (all: Record<string, ComponentWithTheme['defaultStyles']>[], current) =>
-                all.concat(all, getDefaultStyles(allComponents[current])),
-            [],
+        return Array.from(
+            new Set(
+                Object.keys(allComponents).reduce(
+                    (all: Record<string, ComponentWithTheme['defaultStyles']>[], current) =>
+                        all.concat(getDefaultStyles(allComponents[current])),
+                    [],
+                ),
+            ),
         );
     },
     components: () => {
