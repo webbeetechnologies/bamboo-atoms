@@ -1,5 +1,6 @@
 import { useWindowDimensions } from 'react-native';
 import isNil from 'lodash.isnil';
+import { useMemo } from 'react';
 
 type Query = {
     maxWidth?: number;
@@ -14,7 +15,7 @@ export function useMediaQuery(query: Query) {
     const height = dims?.height;
     const width = dims?.width;
 
-    return queryResolver(query, width, height);
+    return useMemo(() => queryResolver(query, width, height), [height, query, width]);
 }
 
 function queryResolver(query: Query, width?: number, height?: number) {
@@ -35,16 +36,16 @@ function calculateQuery(key: string, val?: number | string, height?: number, wid
 
     switch (key) {
         case 'maxWidth':
-            returnVal = width <= val;
+            returnVal = width <= +val;
             break;
         case 'minWidth':
-            returnVal = width >= val;
+            returnVal = width >= +val;
             break;
         case 'maxHeight':
-            returnVal = height <= val;
+            returnVal = height <= +val;
             break;
         case 'minHeight':
-            returnVal = height >= val;
+            returnVal = height >= +val;
             break;
         case 'orientation':
             if (width > height) {
