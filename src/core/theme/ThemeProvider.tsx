@@ -22,10 +22,13 @@ const defaultContextValue: ThemeProviderContext = {
 const RootContext = createContext(true);
 export const ThemeContext = createContext<ThemeProviderContext>(defaultContextValue);
 
+const arr: string[] = []
+
 export const ProvideTheme = ({
     theme,
     extractStyles = defaultExtractStyles,
     children,
+    overwritableProperties = arr,
 }: ProvideThemeArgs) => {
     const contextValue = useContext(ThemeContext);
 
@@ -49,14 +52,20 @@ export const ProvideTheme = ({
     }, [theme?.colorMode]);
 
     const memoizedValue = useMemo(() => {
-        const newContextValue = { ...theme, extractStyles };
+        const newContextValue = { ...theme, extractStyles } as ITheme & { extractStyles: Required<ProvideThemeArgs>['extractStyles']};
 
         return {
             ...merge(
+                {},
                 defaultThemeValue,
                 newContextValue,
                 ...(registeredStyles || []),
                 defaultContextValue === contextValue ? newContextValue : contextValue,
+                (overwritableProperties).reduce((acc, key) => {
+                    acc[key] = newContextValue[key] ?? contextValue[key]
+
+                    return acc
+                }, {} as Partial<ITheme>)
             ),
             '': {},
             colorMode,
