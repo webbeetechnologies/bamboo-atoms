@@ -56,5 +56,5 @@ export interface ProvideThemeArgs {
     theme?: Partial<ITheme>;
     extractStyles?: (args: IExtractStylesFuncArgs) => StyleProp<any>;
     children: ReactNode;
-    overwritableProperties?: (keyof ITheme)[]
+    overwritableProperties?: (keyof ITheme)[];
 }

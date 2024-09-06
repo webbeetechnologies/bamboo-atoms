@@ -14,6 +14,7 @@ export {
     IComponentStyles,
     DefaultComponents,
     ComponentWithTheme,
+    ThemeContext,
 } from './core';
 export { useComponents, useMediaQuery, useComponentStyles, useTheme, useColorMode } from './hooks';
 export * from './components';
