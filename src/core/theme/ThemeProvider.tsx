@@ -22,7 +22,7 @@ const defaultContextValue: ThemeProviderContext = {
 const RootContext = createContext(true);
 export const ThemeContext = createContext<ThemeProviderContext>(defaultContextValue);
 
-const arr: string[] = []
+const arr: string[] = [];
 
 export const ProvideTheme = ({
     theme,
@@ -52,7 +52,9 @@ export const ProvideTheme = ({
     }, [theme?.colorMode]);
 
     const memoizedValue = useMemo(() => {
-        const newContextValue = { ...theme, extractStyles } as ITheme & { extractStyles: Required<ProvideThemeArgs>['extractStyles']};
+        const newContextValue = { ...theme, extractStyles } as ITheme & {
+            extractStyles: Required<ProvideThemeArgs>['extractStyles'];
+        };
 
         return {
             ...merge(
@@ -61,11 +63,11 @@ export const ProvideTheme = ({
                 newContextValue,
                 ...(registeredStyles || []),
                 defaultContextValue === contextValue ? newContextValue : contextValue,
-                (overwritableProperties).reduce((acc, key) => {
-                    acc[key] = newContextValue[key] ?? contextValue[key]
+                overwritableProperties.reduce((acc, key) => {
+                    acc[key] = newContextValue[key] ?? contextValue[key];
 
-                    return acc
-                }, {} as Partial<ITheme>)
+                    return acc;
+                }, {} as Partial<ITheme>),
             ),
             '': {},
             colorMode,
@@ -74,9 +76,10 @@ export const ProvideTheme = ({
         };
     }, [
         theme,
-        registeredStyles,
         extractStyles,
+        registeredStyles,
         contextValue,
+        overwritableProperties,
         colorMode,
         handleSetColorMode,
         toggleColorMode,
